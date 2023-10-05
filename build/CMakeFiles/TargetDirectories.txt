@@ -1,0 +1,5 @@
+/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/CMakeFiles/edit_cache.dir
+/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/CMakeFiles/rebuild_cache.dir
+/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/tests/CMakeFiles/test_vector.dir
+/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/tests/CMakeFiles/edit_cache.dir
+/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/tests/CMakeFiles/rebuild_cache.dir
