@@ -130,6 +130,44 @@ test_vector/fast:
 	cd /home/dominik/Documents/scientific_computing/first_git/ASC-bla/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_vector.dir/build.make tests/CMakeFiles/test_vector.dir/build
 .PHONY : test_vector/fast
 
+# Convenience name for target.
+tests/CMakeFiles/test_matrix.dir/rule:
+	cd /home/dominik/Documents/scientific_computing/first_git/ASC-bla/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/test_matrix.dir/rule
+.PHONY : tests/CMakeFiles/test_matrix.dir/rule
+
+# Convenience name for target.
+test_matrix: tests/CMakeFiles/test_matrix.dir/rule
+.PHONY : test_matrix
+
+# fast build rule for target.
+test_matrix/fast:
+	cd /home/dominik/Documents/scientific_computing/first_git/ASC-bla/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_matrix.dir/build.make tests/CMakeFiles/test_matrix.dir/build
+.PHONY : test_matrix/fast
+
+test_matrix.o: test_matrix.cc.o
+.PHONY : test_matrix.o
+
+# target to build an object file
+test_matrix.cc.o:
+	cd /home/dominik/Documents/scientific_computing/first_git/ASC-bla/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_matrix.dir/build.make tests/CMakeFiles/test_matrix.dir/test_matrix.cc.o
+.PHONY : test_matrix.cc.o
+
+test_matrix.i: test_matrix.cc.i
+.PHONY : test_matrix.i
+
+# target to preprocess a source file
+test_matrix.cc.i:
+	cd /home/dominik/Documents/scientific_computing/first_git/ASC-bla/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_matrix.dir/build.make tests/CMakeFiles/test_matrix.dir/test_matrix.cc.i
+.PHONY : test_matrix.cc.i
+
+test_matrix.s: test_matrix.cc.s
+.PHONY : test_matrix.s
+
+# target to generate assembly for a file
+test_matrix.cc.s:
+	cd /home/dominik/Documents/scientific_computing/first_git/ASC-bla/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_matrix.dir/build.make tests/CMakeFiles/test_matrix.dir/test_matrix.cc.s
+.PHONY : test_matrix.cc.s
+
 test_vector.o: test_vector.cc.o
 .PHONY : test_vector.o
 
@@ -162,7 +200,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test_matrix"
 	@echo "... test_vector"
+	@echo "... test_matrix.o"
+	@echo "... test_matrix.i"
+	@echo "... test_matrix.s"
 	@echo "... test_vector.o"
 	@echo "... test_vector.i"
 	@echo "... test_vector.s"

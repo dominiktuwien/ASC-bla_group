@@ -129,6 +129,19 @@ test_vector/fast:
 	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_vector.dir/build.make tests/CMakeFiles/test_vector.dir/build
 .PHONY : test_vector/fast
 
+#=============================================================================
+# Target rules for targets named test_matrix
+
+# Build rule for target.
+test_matrix: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_matrix
+.PHONY : test_matrix
+
+# fast build rule for target.
+test_matrix/fast:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_matrix.dir/build.make tests/CMakeFiles/test_matrix.dir/build
+.PHONY : test_matrix/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -137,6 +150,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... test_matrix"
 	@echo "... test_vector"
 .PHONY : help
 
