@@ -1,4 +1,4 @@
-#ifndef FILE_MATRIX_H
+#ifndef FILE_MATRIX_H //to avoid double declaration if "matrix" is opened from multiple files
 #define FILE_MATRIX_H
 
 #include <iostream>
