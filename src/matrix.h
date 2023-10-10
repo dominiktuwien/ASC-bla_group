@@ -11,24 +11,24 @@ template <typename T, ORDERING ORD>
         //ORD* order_;
         T* data_;
         size_t height_;
-        size_t widht_;
+        size_t width_;
         size_t elements_;
         
     public:
 
     Matrix()
-        : height_(1), widht_(1), elements_(1), data_(new T[elements_]){data_[0] = 0.0; }
+        : height_(1), width_(1), elements_(1), data_(new T[elements_]){data_[0] = 0.0; }
 
-    Matrix (size_t height, size_t widht)
-        : height_(height), widht_(widht), elements_(height_*widht_), data_(new T[elements_]) 
+    Matrix (size_t height, size_t width)
+        : height_(height), width_(width), elements_(height_*width_), data_(new T[elements_]) 
     { for (size_t i = 0; i < elements_; i++)
         data_[i] = 0.0;
     }
 
-    Matrix (size_t height, size_t widht, const T* imputdata)
-        : height_(height), widht_(widht), elements_(height_*widht_), data_(new T[elements_]) 
+    Matrix (size_t height, size_t width, const T* inputdata)
+        : height_(height), width_(width), elements_(height_*width_), data_(new T[elements_]) 
     { for (size_t i = 0; i < elements_; i++)
-        data_[i] = imputdata[i];
+        data_[i] = inputdata[i];
     }
 
     Matrix (const Matrix & m)
@@ -38,7 +38,7 @@ template <typename T, ORDERING ORD>
     }
 
     Matrix (const Matrix && m)
-        : height_(0), widht_(0), elements_(0), data_(nullptr)
+        : height_(0), width_(0), elements_(0), data_(nullptr)
     {
         //std::swap(height_, m.height_);
         //std::swap(widht_, m.widht_);
