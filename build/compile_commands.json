@@ -4,5 +4,11 @@
   "command": "C:/Strawberry/c/bin/g++.exe  @CMakeFiles/test_vector.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles/test_vector.dir/test_vector.cc.obj -c C:/Felix/ESC/ASC-bla_group/tests/test_vector.cc",
   "file": "C:/Felix/ESC/ASC-bla_group/tests/test_vector.cc",
   "output": "tests/CMakeFiles/test_vector.dir/test_vector.cc.obj"
+},
+{
+  "directory": "C:/Felix/ESC/ASC-bla_group/build/tests",
+  "command": "C:/Strawberry/c/bin/g++.exe  @CMakeFiles/test_matrix.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles/test_matrix.dir/test_matrix.cc.obj -c C:/Felix/ESC/ASC-bla_group/tests/test_matrix.cc",
+  "file": "C:/Felix/ESC/ASC-bla_group/tests/test_matrix.cc",
+  "output": "tests/CMakeFiles/test_matrix.dir/test_matrix.cc.obj"
 }
 ]
