@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_vector.dir/test_vector.cc.o"
-  "CMakeFiles/test_vector.dir/test_vector.cc.o.d"
-  "test_vector"
+  "CMakeFiles/test_vector.dir/test_vector.cc.obj"
+  "CMakeFiles/test_vector.dir/test_vector.cc.obj.d"
+  "libtest_vector.dll.a"
+  "test_vector.exe"
+  "test_vector.exe.manifest"
   "test_vector.pdb"
 )
 
