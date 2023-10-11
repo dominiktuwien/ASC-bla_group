@@ -1,9 +1,5 @@
 tests/CMakeFiles/test_vector.dir/test_vector.cc.obj: \
-<<<<<<< HEAD
  C:\Users\eichl\Uni\7.\ Semester\Scientific\ Computing\Git-Clone\ASC-bla-Team\ASC-bla_group\tests\test_vector.cc \
-=======
- C:/Felix/ESC/ASC-bla_group/tests/test_vector.cc \
->>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/iostream \
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
@@ -130,8 +126,4 @@ tests/CMakeFiles/test_vector.dir/test_vector.cc.obj: \
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/ostream.tcc \
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/istream \
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/istream.tcc \
-<<<<<<< HEAD
  C:/Users/eichl/Uni/722F3~1.SEM/SCIENT~1/GIT-CL~1/ASC-BL~1/ASC-BL~1/src/vector.h
-=======
- C:/Felix/ESC/ASC-bla_group/src/vector.h
->>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
