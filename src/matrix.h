@@ -17,7 +17,7 @@ template <typename T> //, ORDERING ORD>
     public:
 
         Matrix()    //Standard-Konstruktor --1x1 Matrix mit Nullelement
-            : height_(1), widht_(1), n_of_elements_(1), data_(new T[n_of_1]){data_[0] = 0.0; }
+            : height_(1), widht_(1), n_of_elements_(1), data_(new T[1]){data_[0] = 0.0; }
 
         Matrix (size_t height, size_t width)
             : height_(height), widht_(width), n_of_elements_(height*width), data_(new T[n_of_height*width]) 
