@@ -26,13 +26,13 @@ template <typename T> //, ORDERING ORD>
         }
 
         Matrix (size_t height, size_t width, const T* imputdata)
-            : height_(height), width_(width), n_of_elements_(height_*width_), data_(new T[n_of_elements_]) 
+            : height_(height), width_(width), n_of_elements_(height*width), data_(new T[n_of_elements_]) 
         { for (size_t i = 0; i < n_of_elements_; i++)
             data_[i] = imputdata[i];
         }
 
         Matrix (const Matrix & m)       //wenn Matrix übergeben, muss nix verändert werden?
-            : Matrix(m.col_lenght_(),m.row_lenght_())
+            : Matrix(m.get_height(),m.get_width())
         {
             *this = m;
         }
@@ -45,14 +45,7 @@ template <typename T> //, ORDERING ORD>
             //std::swap(elements_, m.n_of_elements_);
             //std::swap(data_, m.data_);
         }
-    size_t get_height() const { return height_;}
-    size_t get_width() const { return width_;}
-    size_t Size() const { return n_of_elements_; }        
-    T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
-    const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
-
-
-    Matrix transpose()
+    
 
         ~Matrix() {delete [] data_; }
 
@@ -60,21 +53,66 @@ template <typename T> //, ORDERING ORD>
         Matrix & operator=(const Matrix & v2)
         {
             for (size_t i = 0; i < n_of_elements_; i++)
-                data_[i] = v2(i);
+                data_[i] = v2(i,i);     //needs fixing(because we now have 2 indices in matrices)
             return *this;
         }
 
         Matrix & operator=(Matrix && v2)
         {
             for (size_t i = 0; i < n_of_elements_; i++)
-                data_[i] = v2(i);
+                data_[i] = v2(i,i);     //needs fixing(because we defined a different () for a matrix)
             return *this;
         }
 
+        size_t get_height() const { return height_;}
+        size_t get_width() const { return width_;}
+        size_t Size() const { return n_of_elements_; }
+
+        Matrix transpose(){
+    
+            double x[n_of_elements_];
+            for(size_t z = 0; z< n_of_elements_;z++){
+                x[z] = data_[z];
+            }
+            //data_[1] = x[2];
+            //data_[2] = x[1];
+            for(size_t i=1; i<height_+1; i++){
+                for(size_t j=1; j<width_+1; j++){
+                    data_[(i-1)*width_+(j-1)]=x[(j-1)*width_+(i-1)];
+                }
+            }
+
+
+            Matrix<T> X(height_, width_, data_);
+            return X;
+        }
+
+        T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
+        const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
         
     };
     
-
+    template <typename T>
+    std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
+    {
+        //if (v.Size() > 0)
+            //ost << v(1,1);
+        for (size_t i = 1; i < v.get_height()+1; i++){
+            for (size_t j = 1; j < v.get_width()+1; j++){
+                if(j==1){
+                    ost << v(i,j);
+                }
+                if(j>1){
+                    ost << ", " << v(i,j);
+                }
+            }
+            ost << std::endl;
+            //if(i%(v.get_width-1)==0){
+                //ost << std::endl;
+            //}
+        }
+        return ost;
+    }
 
 }
 
