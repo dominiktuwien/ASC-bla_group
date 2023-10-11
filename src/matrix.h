@@ -14,7 +14,7 @@ template <typename T> //, ORDERING ORD>
         size_t width_;
         size_t n_of_elements_;   //kann man hier nicht direkt height_ * width_ für alle Matrizen machen? -Da
         
-    public:
+        public:
 
         Matrix()    //Standard-Konstruktor --1x1 Matrix mit Nullelement
             : height_(1), width_(1), n_of_elements_(1), data_(new T[1]){data_[0] = 0.0; }
@@ -45,11 +45,11 @@ template <typename T> //, ORDERING ORD>
             //std::swap(elements_, m.n_of_elements_);
             //std::swap(data_, m.data_);
         }
-    size_t get_height() const { return height_;}
-    size_t get_width() const { return width_;}
-    size_t Size() const { return n_of_elements_; }        
-    T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
-    const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
+        size_t get_height() const { return height_;}
+        size_t get_width() const { return width_;}
+        size_t Size() const { return n_of_elements_; }        
+        T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
+        const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
 
 
     Matrix transpose()
@@ -74,7 +74,14 @@ template <typename T> //, ORDERING ORD>
         
     };
     
+    template<typename T>
+    Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
+    {
+        //hier könnte ihr error handling stehen
+        for(size_t i = 0; i < a.get_height(); i++)
+            for(size_t j = 0; j < b.Size(); j+= b.get_width)
 
+    }
 
 }
 

@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/edit_cache.dir
-C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/rebuild_cache.dir
-C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/tests/CMakeFiles/test_vector.dir
-C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/tests/CMakeFiles/test_matrix.dir
-C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/tests/CMakeFiles/edit_cache.dir
-C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/tests/CMakeFiles/rebuild_cache.dir
-=======
 C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/edit_cache.dir
 C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/rebuild_cache.dir
 C:/Felix/ESC/ASC-bla_group/build/tests/CMakeFiles/test_vector.dir
+C:/Felix/ESC/ASC-bla_group/build/tests/CMakeFiles/test_matrix.dir
 C:/Felix/ESC/ASC-bla_group/build/tests/CMakeFiles/edit_cache.dir
 C:/Felix/ESC/ASC-bla_group/build/tests/CMakeFiles/rebuild_cache.dir
->>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1

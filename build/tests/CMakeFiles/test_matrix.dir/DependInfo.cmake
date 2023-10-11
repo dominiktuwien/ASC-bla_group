@@ -8,11 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-<<<<<<< HEAD
-  "C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/tests/test_matrix.cc" "tests/CMakeFiles/test_matrix.dir/test_matrix.cc.obj" "gcc" "tests/CMakeFiles/test_matrix.dir/test_matrix.cc.obj.d"
-=======
   "C:/Felix/ESC/ASC-bla_group/tests/test_matrix.cc" "tests/CMakeFiles/test_matrix.dir/test_matrix.cc.obj" "gcc" "tests/CMakeFiles/test_matrix.dir/test_matrix.cc.obj.d"
->>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
   )
 
 # Targets to which this target links which contain Fortran sources.

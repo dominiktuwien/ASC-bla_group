@@ -30,7 +30,8 @@
 					"source" : "tests",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -46,12 +47,20 @@
 					"name" : "ASC_bla",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
 			"targets" : 
 			[
+				{
+					"directoryIndex" : 1,
+					"id" : "test_matrix::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-test_matrix-Debug-ec0a0d60bcdc1bbbe6be.json",
+					"name" : "test_matrix",
+					"projectIndex" : 0
+				},
 				{
 					"directoryIndex" : 1,
 					"id" : "test_vector::@a44f0ac069e85531cdee",
