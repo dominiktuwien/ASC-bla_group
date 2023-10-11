@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group
+=======
+# Install script for directory: C:/Felix/ESC/ASC-bla_group
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +16,7 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
-    set(CMAKE_INSTALL_CONFIG_NAME "")
+    set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -39,7 +43,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+<<<<<<< HEAD
   include("C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/tests/cmake_install.cmake")
+=======
+  include("C:/Felix/ESC/ASC-bla_group/build/tests/cmake_install.cmake")
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +58,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "C:/Felix/ESC/ASC-bla_group/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

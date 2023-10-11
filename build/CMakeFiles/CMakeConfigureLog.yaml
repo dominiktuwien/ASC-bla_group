@@ -7,6 +7,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
+<<<<<<< HEAD
       The system is: Windows - 10.0.22621 - AMD64
 ...
 
@@ -19,6 +20,9 @@ events:
       - "CMakeLists.txt:2 (project)"
     message: |
       The system is: Windows - 10.0.22621 - AMD64
+=======
+      The system is: Windows - 10.0.19045 - AMD64
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
   -
     kind: "message-v1"
     backtrace:
@@ -39,7 +43,11 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
       
       The C compiler identification is GNU, found in:
+<<<<<<< HEAD
         C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/3.27.7/CompilerIdC/a.exe
+=======
+        C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/3.27.6/CompilerIdC/a.exe
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
       
   -
     kind: "message-v1"
@@ -50,7 +58,11 @@ events:
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+<<<<<<< HEAD
       Compiler: C:/Strawberry/c/bin/c++.exe 
+=======
+      Compiler: C:/Strawberry/c/bin/g++.exe 
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
       Build flags: 
       Id flags:  
       
@@ -61,7 +73,11 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
       
       The CXX compiler identification is GNU, found in:
+<<<<<<< HEAD
         C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/3.27.7/CompilerIdCXX/a.exe
+=======
+        C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/3.27.6/CompilerIdCXX/a.exe
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
       
   -
     kind: "try_compile-v1"
@@ -72,8 +88,13 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
+<<<<<<< HEAD
       source: "C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-90d5rd"
       binary: "C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-90d5rd"
+=======
+      source: "C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-j6ip9d"
+      binary: "C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-j6ip9d"
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -82,6 +103,7 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
+<<<<<<< HEAD
         Change Dir: 'C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-90d5rd'
         
         Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~1/msys2/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_8ac76/fast
@@ -91,12 +113,28 @@ events:
         C:\\Strawberry\\c\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
         Using built-in specs.
         COLLECT_GCC=C:\\Strawberry\\c\\bin\\gcc.exe
+=======
+        Change Dir: 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-j6ip9d'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/Strawberry/c/bin/gmake.exe -f Makefile cmTC_b9c54/fast
+        C:/Strawberry/c/bin/gmake.exe  -f CMakeFiles/cmTC_b9c54.dir/build.make CMakeFiles/cmTC_b9c54.dir/build
+        gmake.exe[1]: Entering directory 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-j6ip9d'
+        Building C object CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj
+        C:/Strawberry/c/bin/gcc.exe   -v -o CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCCompilerABI.c"
+        Using built-in specs.
+        COLLECT_GCC=C:/Strawberry/c/bin/gcc.exe
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         Target: x86_64-w64-mingw32
         Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe
         Thread model: posix
         gcc version 8.3.0 (x86_64-posix-seh, Built by strawberryperl.com project) 
+<<<<<<< HEAD
         COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
          C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj -version -o C:\\Users\\eichl\\AppData\\Local\\Temp\\cc5Gvn9O.s
+=======
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
+         C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj -version -o C:\\Users\\felix\\AppData\\Local\\Temp\\ccbO30I4.s
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         GNU C17 (x86_64-posix-seh, Built by strawberryperl.com project) version 8.3.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 7.2.0, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0, isl version isl-0.20-GMP
         
@@ -119,6 +157,7 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: 2b2b8fc336591179420b9cc1b35fa6e5
+<<<<<<< HEAD
         COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
          C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj C:\\Users\\eichl\\AppData\\Local\\Temp\\cc5Gvn9O.s
         GNU assembler version 2.32 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.32
@@ -132,6 +171,20 @@ events:
         C:\\Strawberry\\c\\bin\\gcc.exe  -v -Wl,--whole-archive CMakeFiles\\cmTC_8ac76.dir/objects.a -Wl,--no-whole-archive -o cmTC_8ac76.exe -Wl,--out-implib,libcmTC_8ac76.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
         Using built-in specs.
         COLLECT_GCC=C:\\Strawberry\\c\\bin\\gcc.exe
+=======
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
+         C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj C:\\Users\\felix\\AppData\\Local\\Temp\\ccbO30I4.s
+        GNU assembler version 2.32 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.32
+        COMPILER_PATH=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../libexec/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../lib/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona'
+        Linking C executable cmTC_b9c54.exe
+        "C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_b9c54.dir/objects.a
+        C:/Strawberry/c/bin/ar.exe qc CMakeFiles/cmTC_b9c54.dir/objects.a @CMakeFiles/cmTC_b9c54.dir/objects1.rsp
+        C:/Strawberry/c/bin/gcc.exe  -v -Wl,--whole-archive CMakeFiles/cmTC_b9c54.dir/objects.a -Wl,--no-whole-archive -o cmTC_b9c54.exe -Wl,--out-implib,libcmTC_b9c54.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+        Using built-in specs.
+        COLLECT_GCC=C:/Strawberry/c/bin/gcc.exe
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         COLLECT_LTO_WRAPPER=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe
         Target: x86_64-w64-mingw32
         Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe
@@ -139,10 +192,17 @@ events:
         gcc version 8.3.0 (x86_64-posix-seh, Built by strawberryperl.com project) 
         COMPILER_PATH=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../libexec/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../lib/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../
+<<<<<<< HEAD
         COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8ac76.exe' '-mtune=core2' '-march=nocona'
          C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\eichl\\AppData\\Local\\Temp\\ccV9Xgch.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_8ac76.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles\\cmTC_8ac76.dir/objects.a --no-whole-archive --out-implib libcmTC_8ac76.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o
         COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8ac76.exe' '-mtune=core2' '-march=nocona'
         mingw32-make[1]: Leaving directory 'C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-90d5rd'
+=======
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9c54.exe' '-mtune=core2' '-march=nocona'
+         C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\felix\\AppData\\Local\\Temp\\ccoUIaSq.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_b9c54.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles/cmTC_b9c54.dir/objects.a --no-whole-archive --out-implib libcmTC_b9c54.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9c54.exe' '-mtune=core2' '-march=nocona'
+        gmake.exe[1]: Leaving directory 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-j6ip9d'
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         
       exitCode: 0
   -
@@ -176,6 +236,7 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+<<<<<<< HEAD
         ignore line: [Change Dir: 'C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-90d5rd']
         ignore line: []
         ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~1/msys2/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_8ac76/fast]
@@ -185,12 +246,28 @@ events:
         ignore line: [C:\\Strawberry\\c\\bin\\gcc.exe   -v -o CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\Strawberry\\c\\bin\\gcc.exe]
+=======
+        ignore line: [Change Dir: 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-j6ip9d']
+        ignore line: []
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/Strawberry/c/bin/gmake.exe -f Makefile cmTC_b9c54/fast]
+        ignore line: [C:/Strawberry/c/bin/gmake.exe  -f CMakeFiles/cmTC_b9c54.dir/build.make CMakeFiles/cmTC_b9c54.dir/build]
+        ignore line: [gmake.exe[1]: Entering directory 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-j6ip9d']
+        ignore line: [Building C object CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [C:/Strawberry/c/bin/gcc.exe   -v -o CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCCompilerABI.c"]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:/Strawberry/c/bin/gcc.exe]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [Target: x86_64-w64-mingw32]
         ignore line: [Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe]
         ignore line: [Thread model: posix]
         ignore line: [gcc version 8.3.0 (x86_64-posix-seh  Built by strawberryperl.com project) ]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
         ignore line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj -version -o C:\\Users\\eichl\\AppData\\Local\\Temp\\cc5Gvn9O.s]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
+        ignore line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=core2 -march=nocona -auxbase-strip CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj -version -o C:\\Users\\felix\\AppData\\Local\\Temp\\ccbO30I4.s]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [GNU C17 (x86_64-posix-seh  Built by strawberryperl.com project) version 8.3.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 7.2.0  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0  isl version isl-0.20-GMP]
         ignore line: []
@@ -213,8 +290,13 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: 2b2b8fc336591179420b9cc1b35fa6e5]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
         ignore line: [ C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj C:\\Users\\eichl\\AppData\\Local\\Temp\\cc5Gvn9O.s]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
+        ignore line: [ C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj C:\\Users\\felix\\AppData\\Local\\Temp\\ccbO30I4.s]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [GNU assembler version 2.32 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.32]
         ignore line: [COMPILER_PATH=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/]
         ignore line: [C:/Strawberry/c/bin/../libexec/gcc/]
@@ -225,6 +307,7 @@ events:
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_8ac76.dir\\CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
         ignore line: [Linking C executable cmTC_8ac76.exe]
         ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_8ac76.dir\\link.txt --verbose=1]
@@ -233,6 +316,15 @@ events:
         ignore line: [C:\\Strawberry\\c\\bin\\gcc.exe  -v -Wl --whole-archive CMakeFiles\\cmTC_8ac76.dir/objects.a -Wl --no-whole-archive -o cmTC_8ac76.exe -Wl --out-implib libcmTC_8ac76.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\Strawberry\\c\\bin\\gcc.exe]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b9c54.dir/CMakeCCompilerABI.c.obj' '-c' '-mtune=core2' '-march=nocona']
+        ignore line: [Linking C executable cmTC_b9c54.exe]
+        ignore line: ["C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_b9c54.dir/objects.a]
+        ignore line: [C:/Strawberry/c/bin/ar.exe qc CMakeFiles/cmTC_b9c54.dir/objects.a @CMakeFiles/cmTC_b9c54.dir/objects1.rsp]
+        ignore line: [C:/Strawberry/c/bin/gcc.exe  -v -Wl --whole-archive CMakeFiles/cmTC_b9c54.dir/objects.a -Wl --no-whole-archive -o cmTC_b9c54.exe -Wl --out-implib libcmTC_b9c54.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:/Strawberry/c/bin/gcc.exe]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [COLLECT_LTO_WRAPPER=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe]
         ignore line: [Target: x86_64-w64-mingw32]
         ignore line: [Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe]
@@ -247,13 +339,22 @@ events:
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8ac76.exe' '-mtune=core2' '-march=nocona']
         link line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\eichl\\AppData\\Local\\Temp\\ccV9Xgch.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_8ac76.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles\\cmTC_8ac76.dir/objects.a --no-whole-archive --out-implib libcmTC_8ac76.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b9c54.exe' '-mtune=core2' '-march=nocona']
+        link line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\felix\\AppData\\Local\\Temp\\ccoUIaSq.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_eh -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_b9c54.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles/cmTC_b9c54.dir/objects.a --no-whole-archive --out-implib libcmTC_b9c54.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll] ==> ignore
           arg [-plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe] ==> ignore
+<<<<<<< HEAD
           arg [-plugin-opt=-fresolution=C:\\Users\\eichl\\AppData\\Local\\Temp\\ccV9Xgch.res] ==> ignore
+=======
+          arg [-plugin-opt=-fresolution=C:\\Users\\felix\\AppData\\Local\\Temp\\ccoUIaSq.res] ==> ignore
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_eh] ==> ignore
@@ -276,7 +377,11 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
+<<<<<<< HEAD
           arg [cmTC_8ac76.exe] ==> ignore
+=======
+          arg [cmTC_b9c54.exe] ==> ignore
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o] ==> obj [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o]
           arg [-LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0] ==> dir [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0]
@@ -286,10 +391,17 @@ events:
           arg [-LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib]
           arg [-LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../..] ==> dir [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../..]
           arg [--whole-archive] ==> ignore
+<<<<<<< HEAD
           arg [CMakeFiles\\cmTC_8ac76.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
           arg [libcmTC_8ac76.dll.a] ==> ignore
+=======
+          arg [CMakeFiles/cmTC_b9c54.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_b9c54.dll.a] ==> ignore
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -341,8 +453,13 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
+<<<<<<< HEAD
       source: "C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-14oxhy"
       binary: "C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-14oxhy"
+=======
+      source: "C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-hiafk9"
+      binary: "C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-hiafk9"
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -351,6 +468,7 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
+<<<<<<< HEAD
         Change Dir: 'C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-14oxhy'
         
         Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~1/msys2/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_43192/fast
@@ -360,12 +478,28 @@ events:
         C:\\Strawberry\\c\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
         Using built-in specs.
         COLLECT_GCC=C:\\Strawberry\\c\\bin\\c++.exe
+=======
+        Change Dir: 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-hiafk9'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/Strawberry/c/bin/gmake.exe -f Makefile cmTC_422e6/fast
+        C:/Strawberry/c/bin/gmake.exe  -f CMakeFiles/cmTC_422e6.dir/build.make CMakeFiles/cmTC_422e6.dir/build
+        gmake.exe[1]: Entering directory 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-hiafk9'
+        Building CXX object CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj
+        C:/Strawberry/c/bin/g++.exe   -v -o CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp"
+        Using built-in specs.
+        COLLECT_GCC=C:/Strawberry/c/bin/g++.exe
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         Target: x86_64-w64-mingw32
         Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe
         Thread model: posix
         gcc version 8.3.0 (x86_64-posix-seh, Built by strawberryperl.com project) 
+<<<<<<< HEAD
         COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
          C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1plus.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj -version -o C:\\Users\\eichl\\AppData\\Local\\Temp\\cc7ImIsf.s
+=======
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+         C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1plus.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj -version -o C:\\Users\\felix\\AppData\\Local\\Temp\\ccvL9kgx.s
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         GNU C++14 (x86_64-posix-seh, Built by strawberryperl.com project) version 8.3.0 (x86_64-w64-mingw32)
         	compiled by GNU C version 7.2.0, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0, isl version isl-0.20-GMP
         
@@ -394,6 +528,7 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: 157a953f7baac8915a5d933dc02b85b9
+<<<<<<< HEAD
         COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
          C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\eichl\\AppData\\Local\\Temp\\cc7ImIsf.s
         GNU assembler version 2.32 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.32
@@ -407,6 +542,20 @@ events:
         C:\\Strawberry\\c\\bin\\c++.exe  -v -Wl,--whole-archive CMakeFiles\\cmTC_43192.dir/objects.a -Wl,--no-whole-archive -o cmTC_43192.exe -Wl,--out-implib,libcmTC_43192.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
         Using built-in specs.
         COLLECT_GCC=C:\\Strawberry\\c\\bin\\c++.exe
+=======
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+         C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\felix\\AppData\\Local\\Temp\\ccvL9kgx.s
+        GNU assembler version 2.32 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.32
+        COMPILER_PATH=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../libexec/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/
+        LIBRARY_PATH=C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../lib/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+        Linking CXX executable cmTC_422e6.exe
+        "C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_422e6.dir/objects.a
+        C:/Strawberry/c/bin/ar.exe qc CMakeFiles/cmTC_422e6.dir/objects.a @CMakeFiles/cmTC_422e6.dir/objects1.rsp
+        C:/Strawberry/c/bin/g++.exe  -v -Wl,--whole-archive CMakeFiles/cmTC_422e6.dir/objects.a -Wl,--no-whole-archive -o cmTC_422e6.exe -Wl,--out-implib,libcmTC_422e6.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+        Using built-in specs.
+        COLLECT_GCC=C:/Strawberry/c/bin/g++.exe
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         COLLECT_LTO_WRAPPER=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe
         Target: x86_64-w64-mingw32
         Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe
@@ -414,10 +563,17 @@ events:
         gcc version 8.3.0 (x86_64-posix-seh, Built by strawberryperl.com project) 
         COMPILER_PATH=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../libexec/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/
         LIBRARY_PATH=C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/;C:/Strawberry/c/bin/../lib/gcc/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/;C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../
+<<<<<<< HEAD
         COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_43192.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
          C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\eichl\\AppData\\Local\\Temp\\cchQk1CH.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_43192.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles\\cmTC_43192.dir/objects.a --no-whole-archive --out-implib libcmTC_43192.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o
         COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_43192.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
         mingw32-make[1]: Leaving directory 'C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-14oxhy'
+=======
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_422e6.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+         C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\felix\\AppData\\Local\\Temp\\ccJugffN.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_422e6.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles/cmTC_422e6.dir/objects.a --no-whole-archive --out-implib libcmTC_422e6.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_422e6.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona'
+        gmake.exe[1]: Leaving directory 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-hiafk9'
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         
       exitCode: 0
   -
@@ -457,6 +613,7 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+<<<<<<< HEAD
         ignore line: [Change Dir: 'C:/Users/eichl/Uni/7. Semester/Scientific Computing/Git-Clone/ASC-bla-Team/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-14oxhy']
         ignore line: []
         ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~1/msys2/ucrt64/bin/mingw32-make.exe -f Makefile cmTC_43192/fast]
@@ -466,12 +623,28 @@ events:
         ignore line: [C:\\Strawberry\\c\\bin\\c++.exe   -v -o CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj -c "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\Strawberry\\c\\bin\\c++.exe]
+=======
+        ignore line: [Change Dir: 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-hiafk9']
+        ignore line: []
+        ignore line: [Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/Strawberry/c/bin/gmake.exe -f Makefile cmTC_422e6/fast]
+        ignore line: [C:/Strawberry/c/bin/gmake.exe  -f CMakeFiles/cmTC_422e6.dir/build.make CMakeFiles/cmTC_422e6.dir/build]
+        ignore line: [gmake.exe[1]: Entering directory 'C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/CMakeScratch/TryCompile-hiafk9']
+        ignore line: [Building CXX object CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [C:/Strawberry/c/bin/g++.exe   -v -o CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp"]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:/Strawberry/c/bin/g++.exe]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [Target: x86_64-w64-mingw32]
         ignore line: [Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe]
         ignore line: [Thread model: posix]
         ignore line: [gcc version 8.3.0 (x86_64-posix-seh  Built by strawberryperl.com project) ]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
         ignore line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1plus.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj -version -o C:\\Users\\eichl\\AppData\\Local\\Temp\\cc7ImIsf.s]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+        ignore line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/cc1plus.exe -quiet -v -iprefix C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/ -D_REENTRANT C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=core2 -march=nocona -auxbase-strip CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj -version -o C:\\Users\\felix\\AppData\\Local\\Temp\\ccvL9kgx.s]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [GNU C++14 (x86_64-posix-seh  Built by strawberryperl.com project) version 8.3.0 (x86_64-w64-mingw32)]
         ignore line: [	compiled by GNU C version 7.2.0  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0  isl version isl-0.20-GMP]
         ignore line: []
@@ -500,8 +673,13 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: 157a953f7baac8915a5d933dc02b85b9]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
         ignore line: [ C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj C:\\Users\\eichl\\AppData\\Local\\Temp\\cc7ImIsf.s]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+        ignore line: [ C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/bin/as.exe -v -o CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj C:\\Users\\felix\\AppData\\Local\\Temp\\ccvL9kgx.s]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [GNU assembler version 2.32 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.32]
         ignore line: [COMPILER_PATH=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/]
         ignore line: [C:/Strawberry/c/bin/../libexec/gcc/]
@@ -512,6 +690,7 @@ events:
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\\cmTC_43192.dir\\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
         ignore line: [Linking CXX executable cmTC_43192.exe]
         ignore line: ["C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_link_script CMakeFiles\\cmTC_43192.dir\\link.txt --verbose=1]
@@ -520,6 +699,15 @@ events:
         ignore line: [C:\\Strawberry\\c\\bin\\c++.exe  -v -Wl --whole-archive CMakeFiles\\cmTC_43192.dir/objects.a -Wl --no-whole-archive -o cmTC_43192.exe -Wl --out-implib libcmTC_43192.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=C:\\Strawberry\\c\\bin\\c++.exe]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_422e6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+        ignore line: [Linking CXX executable cmTC_422e6.exe]
+        ignore line: ["C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_422e6.dir/objects.a]
+        ignore line: [C:/Strawberry/c/bin/ar.exe qc CMakeFiles/cmTC_422e6.dir/objects.a @CMakeFiles/cmTC_422e6.dir/objects1.rsp]
+        ignore line: [C:/Strawberry/c/bin/g++.exe  -v -Wl --whole-archive CMakeFiles/cmTC_422e6.dir/objects.a -Wl --no-whole-archive -o cmTC_422e6.exe -Wl --out-implib libcmTC_422e6.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=C:/Strawberry/c/bin/g++.exe]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
         ignore line: [COLLECT_LTO_WRAPPER=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe]
         ignore line: [Target: x86_64-w64-mingw32]
         ignore line: [Configured with: ../../../src/gcc-8.3.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-mpc=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-isl=/opt/build/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh, Built by strawberryperl.com project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/include -I/opt/build/prerequisites/x86_64-zlib-static/include -I/opt/build/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/opt/lib -L/opt/build/prerequisites/x86_64-zlib-static/lib -L/opt/build/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/opt/build/x86_64-830-posix-seh-rt_v6/mingw64/bin/ld.exe]
@@ -534,13 +722,22 @@ events:
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/]
         ignore line: [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../]
+<<<<<<< HEAD
         ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_43192.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona']
         link line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\eichl\\AppData\\Local\\Temp\\cchQk1CH.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_43192.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles\\cmTC_43192.dir/objects.a --no-whole-archive --out-implib libcmTC_43192.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o]
+=======
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_422e6.exe' '-shared-libgcc' '-mtune=core2' '-march=nocona']
+        link line: [ C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe -plugin C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll -plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe -plugin-opt=-fresolution=C:\\Users\\felix\\AppData\\Local\\Temp\\ccJugffN.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-liconv -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lmsvcrt -m i386pep -Bdynamic -o cmTC_422e6.exe C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0 -LC:/Strawberry/c/bin/../lib/gcc -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib -LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../.. --whole-archive CMakeFiles/cmTC_422e6.dir/objects.a --no-whole-archive --out-implib libcmTC_422e6.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtend.o]
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/collect2.exe] ==> ignore
           arg [-plugin] ==> ignore
           arg [C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/liblto_plugin-0.dll] ==> ignore
           arg [-plugin-opt=C:/Strawberry/c/bin/../libexec/gcc/x86_64-w64-mingw32/8.3.0/lto-wrapper.exe] ==> ignore
+<<<<<<< HEAD
           arg [-plugin-opt=-fresolution=C:\\Users\\eichl\\AppData\\Local\\Temp\\cchQk1CH.res] ==> ignore
+=======
+          arg [-plugin-opt=-fresolution=C:\\Users\\felix\\AppData\\Local\\Temp\\ccJugffN.res] ==> ignore
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [-plugin-opt=-pass-through=-lmingw32] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -563,7 +760,11 @@ events:
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
+<<<<<<< HEAD
           arg [cmTC_43192.exe] ==> ignore
+=======
+          arg [cmTC_422e6.exe] ==> ignore
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
           arg [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o] ==> obj [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/crtbegin.o]
           arg [-LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0] ==> dir [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0]
@@ -573,6 +774,7 @@ events:
           arg [-LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib] ==> dir [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../../../x86_64-w64-mingw32/lib]
           arg [-LC:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../..] ==> dir [C:/Strawberry/c/bin/../lib/gcc/x86_64-w64-mingw32/8.3.0/../../..]
           arg [--whole-archive] ==> ignore
+<<<<<<< HEAD
           arg [CMakeFiles\\cmTC_43192.dir/objects.a] ==> ignore
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
@@ -7320,6 +7522,12 @@ events:
           arg [--no-whole-archive] ==> ignore
           arg [--out-implib] ==> ignore
           arg [libcmTC_17c88.dll.a] ==> ignore
+=======
+          arg [CMakeFiles/cmTC_422e6.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_422e6.dll.a] ==> ignore
+>>>>>>> 0f2745701d080cfcc109dab8d1f363eaa54578f1
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
