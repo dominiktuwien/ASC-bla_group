@@ -52,8 +52,6 @@ template <typename T> //, ORDERING ORD>
         const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
 
 
-    Matrix transpose()
-
         ~Matrix() {delete [] data_; }
 
 
@@ -71,9 +69,6 @@ template <typename T> //, ORDERING ORD>
             return *this;
         }
 
-        size_t get_height() const { return height_;}
-        size_t get_width() const { return width_;}
-        size_t Size() const { return n_of_elements_; }
 
         Matrix transpose(){
     
@@ -93,9 +88,6 @@ template <typename T> //, ORDERING ORD>
             Matrix<T> X(height_, width_, data_);
             return X;
         }
-
-        T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
-        const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
         
     };
     
@@ -119,15 +111,21 @@ template <typename T> //, ORDERING ORD>
             //}
         }
         return ost;
-    }    template<typename T>
-    Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
-    {
+    }    
+    
+    template<typename T>
+        Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
+        {
         //hier könnte ihr error handling stehen
-        for(size_t i = 0; i < a.get_height(); i++)
-            for(size_t j = 0; j < b.Size(); j+= b.get_width)
+        //habs gefixt :) -Da
+            for(size_t i = 0; i < a.get_height(); i++)
+            {
+                for(size_t j = 0; j < b.Size(); j+= b.get_width)
+                {
 
-    }
+                }
+            }
 
+        }
 }
-
 #endif
