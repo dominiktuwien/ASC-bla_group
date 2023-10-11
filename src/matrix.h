@@ -6,10 +6,10 @@
 namespace ASC_bla
 {
 enum ORDERING { ColMajor, RowMajor };
-template <typename T, ORDERING ORD>
+template <typename T> //, ORDERING ORD>
     class Matrix {
-        //ORD* order_;
-        T* data_;
+        //ORDERING* order_;
+        T * data_;
         size_t height_;
         size_t widht_;
         size_t elements_;
@@ -17,10 +17,10 @@ template <typename T, ORDERING ORD>
     public:
 
     Matrix()
-        : height_(1), widht_(1), elements_(1), data_(new T[elements_]){data_[0] = 0.0; }
+        : height_(1), widht_(1), elements_(1), data_(new T[1]){data_[0] = 0.0; }
 
-    Matrix (size_t height, size_t widht)
-        : height_(height), widht_(widht), elements_(height_*widht_), data_(new T[elements_]) 
+    Matrix (size_t height, size_t width)
+        : height_(height), widht_(width), elements_(height*width), data_(new T[height*width]) 
     { for (size_t i = 0; i < elements_; i++)
         data_[i] = 0.0;
     }
@@ -45,6 +45,10 @@ template <typename T, ORDERING ORD>
         //std::swap(elements_, m.elements_);
         //std::swap(data_, m.data_);
     }
+    size_t get_height() const { return height_;}
+    size_t get_widht() const { return widht_;}        
+    T & operator()(size_t x, size_t y) { return data_[i]; }
+    const T & operator()(size_t x, size_t y) const { return data_[i]; }
 
     ~Matrix() {delete [] data_; }
 
