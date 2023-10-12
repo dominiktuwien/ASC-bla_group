@@ -7,13 +7,64 @@
 namespace ASC_bla
 {
 enum ORDERING { ColMajor, RowMajor };
+
+
+template <typename T, typename TDIST = std::integral_constant<size_t,1> >
+  class MatrixView : public MatExpr<MatrixView<T,TDIST>>
+  {
+  protected:
+    T * data_;
+    size_t height_;
+    size_t width_;
+    size_t n_of_elements_;
+    TDIST dist_;
+  public:
+    MatrixView (size_t height, size_t width, T * data)
+      : data_(data), n_of_elements_(height*width), height_(height), width_(width) { }
+    
+    MatrixView (size_t height, size_t width, TDIST dist, T * data)
+      : data_(data), n_of_elements_(height*width), height_(height), width_(width), dist_(dist) { }
+    
+    template <typename TB>
+    MatrixView & operator= (const MatExpr<TB> & v2)
+    {
+      for (size_t i = 0; i < n_of_elements_; i++)
+        data_[dist_*i] = v2((i/v2.get_width()),(i%v2.get_width()) );
+      return *this;
+    }
+
+    MatrixView & operator= (T scal)
+    {
+      for (size_t i = 0; i < n_of_elements_; i++)
+        data_[dist_*i] = scal;
+      return *this;
+    }
+
+    auto View() const { return MatrixView(height_, width_, n_of_elements_, dist_, data_); }
+    size_t Get_width() {return width_}
+    size_t Get_height() {return height_}
+    size_t Size() const { return n_of_elements_; }
+    T & operator()(size_t x, size_t y) { return data_[(x)*width_+y]; }
+    const T & operator()(size_t x, size_t y) const { return data_[(x)*width_+y]; }
+    
+    auto Range(size_t first_x, size_t first_y, size_t next_x, size_t next_y) const {
+      return MatrixView((next_x-first_x)*(next_y-first_y), dist_, data_+(first_x)*width_+first_y*dist_);
+    }
+
+    auto Slice(size_t first, size_t slice) const {
+      return MatrixView<T,size_t> (size_/slice, dist_*slice, data_+first*dist_);
+    }
+      
+  };
+
+
 template <typename T> //, ORDERING ORD>
-    class Matrix {
+    class Matrix : public MatrixView<T> 
+    {
         //ORDERING* order_;
-        T * data_;
-        size_t height_;
-        size_t width_;
-        size_t n_of_elements_;   //kann man hier nicht direkt height_ * width_ für alle Matrizen machen? -Da
+        typedef MatrixView<T> BASE;
+        using BASE::n_of_elements_;
+        using BASE::data_; 
         
         public:
 
@@ -49,8 +100,8 @@ template <typename T> //, ORDERING ORD>
         size_t get_height() const { return height_;}
         size_t get_width() const { return width_;}
         size_t Size() const { return n_of_elements_; }        
-        T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
-        const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
+        T & operator()(size_t x, size_t y) { return data_[(x)*width_+y]; }
+        const T & operator()(size_t x, size_t y) const { return data_[(x)*width_+y]; }
 
 
         ~Matrix() {delete [] data_; }
@@ -60,14 +111,14 @@ template <typename T> //, ORDERING ORD>
         {
 
             for (size_t i = 0; i < n_of_elements_; i++)
-                data_[i] = v2((i/v2.get_width()) + 1 ,(i%v2.get_width()) +1 );     //fixed !
+                data_[i] = v2((i/v2.get_width()) ,(i%v2.get_width()) );     
             return *this;
         }
 
         Matrix & operator=(Matrix && v2)
         {
             for (size_t i = 0; i < n_of_elements_; i++)
-                data_[i] = v2((i/v2.get_width()) + 1 ,(i%v2.get_width()) +1 );     //fixed !
+                data_[i] = v2((i/v2.get_width())  ,(i%v2.get_width()));     
             return *this;
         }
 
@@ -78,8 +129,6 @@ template <typename T> //, ORDERING ORD>
             for(size_t z = 0; z< n_of_elements_;z++){
                 x[z] = data_[z];
             }
-            //data_[1] = x[2];
-            //data_[2] = x[1];
             for(size_t i=0; i<height_; i++){
                 for(size_t j=0; j<width_; j++){
                     data_[(i)*width_+(j)]=x[(j)*width_+(i)];
@@ -96,14 +145,12 @@ template <typename T> //, ORDERING ORD>
     template <typename T>
     std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
     {
-        //if (v.Size() > 0)
-            //ost << v(1,1);
-        for (size_t i = 1; i < v.get_height()+1; i++){
-            for (size_t j = 1; j < v.get_width()+1; j++){
-                if(j==1){
+        for (size_t i = 0; i < v.get_height(); i++){
+            for (size_t j = 0; j < v.get_width(); j++){
+                if(j==0){
                     ost << v(i,j);
                 }
-                if(j>1){
+                if(j>0){
                     ost << ", " << v(i,j);
                 }
             }
