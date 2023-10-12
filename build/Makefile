@@ -126,21 +126,32 @@ test_vector: cmake_check_build_system
 
 # fast build rule for target.
 test_vector/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_vector.dir/build.make tests/CMakeFiles/test_vector.dir/build
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/build
 .PHONY : test_vector/fast
 
-#=============================================================================
-# Target rules for targets named test_matrix
+tests/test_vector.obj: tests/test_vector.cc.obj
+.PHONY : tests/test_vector.obj
 
-# Build rule for target.
-test_matrix: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_matrix
-.PHONY : test_matrix
+# target to build an object file
+tests/test_vector.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/tests/test_vector.cc.obj
+.PHONY : tests/test_vector.cc.obj
 
-# fast build rule for target.
-test_matrix/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/test_matrix.dir/build.make tests/CMakeFiles/test_matrix.dir/build
-.PHONY : test_matrix/fast
+tests/test_vector.i: tests/test_vector.cc.i
+.PHONY : tests/test_vector.i
+
+# target to preprocess a source file
+tests/test_vector.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/tests/test_vector.cc.i
+.PHONY : tests/test_vector.cc.i
+
+tests/test_vector.s: tests/test_vector.cc.s
+.PHONY : tests/test_vector.s
+
+# target to generate assembly for a file
+tests/test_vector.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_vector.dir/build.make CMakeFiles/test_vector.dir/tests/test_vector.cc.s
+.PHONY : tests/test_vector.cc.s
 
 # Help Target
 help:
@@ -150,8 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test_matrix"
 	@echo "... test_vector"
+	@echo "... tests/test_vector.obj"
+	@echo "... tests/test_vector.i"
+	@echo "... tests/test_vector.s"
 .PHONY : help
 
 
