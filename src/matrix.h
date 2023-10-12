@@ -128,5 +128,20 @@ template <typename T> //, ORDERING ORD>
             }
 
         }
+    template<typename T>
+        Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
+        {
+            Matrix <T> X(b.get_height(),a.get_width())
+        //hier könnte ihr error handling stehen
+        //habs gefixt :) -Da
+            for(size_t i = 0; i < X.get_Size(); i++)
+            {
+                typename a_ =         
+            }
+
+        }
+
+
+
 }
 #endif
