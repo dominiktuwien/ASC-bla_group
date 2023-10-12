@@ -2,6 +2,7 @@
 #define FILE_MATRIX_H
 
 #include <iostream>
+#include <expression.h>
 
 namespace ASC_bla
 {
