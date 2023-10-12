@@ -1,6 +1,4 @@
-/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/CMakeFiles/edit_cache.dir
-/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/CMakeFiles/rebuild_cache.dir
-/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/tests/CMakeFiles/test_vector.dir
-/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/tests/CMakeFiles/test_matrix.dir
-/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/tests/CMakeFiles/edit_cache.dir
-/home/dominik/Documents/scientific_computing/first_git/ASC-bla/build/tests/CMakeFiles/rebuild_cache.dir
+C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/test_vector.dir
+C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/test_matrix.dir
+C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/edit_cache.dir
+C:/Felix/ESC/ASC-bla_group/build/CMakeFiles/rebuild_cache.dir

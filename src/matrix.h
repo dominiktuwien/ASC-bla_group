@@ -2,14 +2,14 @@
 #define FILE_MATRIX_H
 
 #include <iostream>
-#include <expression.h>
+//#include <expression.h>
 
 namespace ASC_bla
 {
 enum ORDERING { ColMajor, RowMajor };
-template <typename T> //, ORDERING ORD>
+template <typename T, ORDERING ORD = ORDERING::RowMajor>
     class Matrix {
-        //ORDERING* order_;
+        ORDERING ORD_ = ORD;
         T * data_;
         size_t height_;
         size_t width_;
@@ -48,9 +48,25 @@ template <typename T> //, ORDERING ORD>
         }
         size_t get_height() const { return height_;}
         size_t get_width() const { return width_;}
-        size_t Size() const { return n_of_elements_; }        
-        T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
-        const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
+        size_t size() const { return n_of_elements_; }        
+        T & operator()(size_t row, size_t col) { //indexing startet bei M[0,0]
+            if(ORD == ORDERING::RowMajor){ 
+                return data_[row*width_+col];
+                }
+            else{//bedeutet ColMajor
+                return data_[col*height_+row];
+            }
+        }
+
+
+        const T & operator()(size_t row, size_t col) const {
+            if(ORD == ORDERING::RowMajor){ 
+                return data_[row*width_+col];
+                }
+            else{//bedeutet ColMajor
+                return data_[col*height_+row];
+            }
+        }
 
 
         ~Matrix() {delete [] data_; }
@@ -90,20 +106,29 @@ template <typename T> //, ORDERING ORD>
             Matrix<T> X(height_, width_, data_);
             return X;
         }
+
+         Matrix alt_transpose(){
+            if(ORD_ == RowMajor) ORD_ = ORDERING::ColMajor;//return *this(bla::ORD::ColMajor)}
+            else//ORD == ColMajor
+                ORD_ = ORDERING::RowMajor;
+                
+                return *this;
+
+        }
         
-    };
+    }
     
-    template <typename T>
-    std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
+    template <typename T, ORDERING ORD>
+    std::ostream & operator<< (std::ostream & ost, const Matrix<T,ORD> & v)
     {
         //if (v.Size() > 0)
             //ost << v(1,1);
-        for (size_t i = 1; i < v.get_height()+1; i++){
-            for (size_t j = 1; j < v.get_width()+1; j++){
-                if(j==1){
+        for (size_t i = 0; i < v.get_height(); i++){
+            for (size_t j = 0; j < v.get_width(); j++){
+                if(j==0){
                     ost << v(i,j);
                 }
-                if(j>1){
+                if(j>0){
                     ost << ", " << v(i,j);
                 }
             }
@@ -113,10 +138,10 @@ template <typename T> //, ORDERING ORD>
             //}
         }
         return ost;
-    }    
+    }   
     
-    template<typename T>
-        Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
+    /*template<typename T>
+        Matrix  operator* (const Matrix<T> & a, const Matrix<T> & b)
         {
         //hier könnte ihr error handling stehen
         //habs gefixt :) -Da
@@ -140,7 +165,7 @@ template <typename T> //, ORDERING ORD>
                 typename a_ =         
             }
 
-        }
+        }*/
 
 
 
