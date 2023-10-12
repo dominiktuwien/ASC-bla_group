@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <array>
 
 #include <matrix.h>
 
@@ -17,5 +17,11 @@ int main()
     double test_data[4] = {3.0,5.0,8.0,2.0};
     bla::Matrix<double> B(2,2,test_data);
     std::cout << "data constructor hat funktioniert" << std::endl;
-
+    std::cout << "auf matrixelemente zugreifen: "<< std::endl;
+    std::cout << B(1,1) << "  " << B(1,2) << std::endl;
+    std::cout << B(2,1) << "  " << B(2,2) << std::endl;
+    bla::Matrix<double> C(B);
+    std::cout << "kopier constructor hat funktioniert" << std::endl;
+    std::cout << C(1,1) << "  " << C(1,2) << std::endl;
+    std::cout << C(2,1) << "  " << C(2,2) << std::endl;
 }

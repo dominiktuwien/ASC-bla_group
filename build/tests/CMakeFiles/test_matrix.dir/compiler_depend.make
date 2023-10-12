@@ -178,8 +178,15 @@ tests/CMakeFiles/test_matrix.dir/test_matrix.cc.o: ../tests/test_matrix.cc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
   ../src/matrix.h
 
+
+/usr/include/c++/11/bits/stl_relops.h:
+
+/usr/include/c++/11/array:
 
 /usr/include/c++/11/bits/istream.tcc:
 
@@ -224,6 +231,8 @@ tests/CMakeFiles/test_matrix.dir/test_matrix.cc.o: ../tests/test_matrix.cc \
 /usr/include/wctype.h:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
+
+/usr/include/c++/11/utility:
 
 /usr/include/errno.h:
 

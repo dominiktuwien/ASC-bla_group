@@ -20,19 +20,19 @@ template <typename T> //, ORDERING ORD>
             : height_(1), widht_(1), n_of_elements_(1), data_(new T[1]){data_[0] = 0.0; }
 
         Matrix (size_t height, size_t width)
-            : height_(height), widht_(width), n_of_elements_(height*width), data_(new T[n_of_height*width]) 
+            : height_(height), widht_(width), n_of_elements_(height*width), data_(new T[height*width]) 
         { for (size_t i = 0; i < n_of_elements_; i++)    //füllt Matrix Element für Element mit 0
             data_[i] = 0.0;
         }
 
-        Matrix (size_t height, size_t widht, const T* imputdata)
-            : height_(height), widht_(widht), n_of_elements_(height_*widht_), data_(new T[n_of_elements_]) 
+        Matrix (size_t height, size_t width, const T* imputdata)
+            : height_(height), widht_(width), n_of_elements_(height*width), data_(new T[height*width]) 
         { for (size_t i = 0; i < n_of_elements_; i++)
             data_[i] = imputdata[i];
         }
 
         Matrix (const Matrix & m)       //wenn Matrix übergeben, muss nix verändert werden?
-            : Matrix(m.col_lenght_(),m.row_lenght_())
+            : Matrix(m.get_height(),m.get_widht())
         {
             *this = m;
         }
@@ -42,13 +42,20 @@ template <typename T> //, ORDERING ORD>
         {
             //std::swap(height_, m.height_);
             //std::swap(widht_, m.widht_);
-            //std::swap(elements_, m.n_of_elements_);
+            //std::swap(n_of_elements_, m.n_of_elements_);
             //std::swap(data_, m.data_);
         }
     size_t get_height() const { return height_;}
     size_t get_widht() const { return widht_;}        
-    T & operator()(size_t x, size_t y) { return data_[i]; }
-    const T & operator()(size_t x, size_t y) const { return data_[i]; }
+    T & operator()(size_t x, size_t y) 
+    { 
+        return data_[(x-1) * widht_+ y -1]; 
+    }
+    const T & operator()(size_t x, size_t y) const 
+    { 
+        return data_[(x-1) * widht_+ y -1]; 
+    
+    }
 
         ~Matrix() {delete [] data_; }
 
