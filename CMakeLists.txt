@@ -5,8 +5,8 @@ set (CMAKE_CXX_STANDARD 17)
 
 include_directories(src)
 
-add_executable (test_vector tests/test_vector.cc)
-target_sources (test_vector PUBLIC src/vector.h src/expression.h)
+add_executable (test_matrix tests/test_matrix.cc)
+target_sources (test_matrix PUBLIC src/Matrix-Neu-Expression.h src/expression.h)
 
 add_executable (test_matrix tests/test_matrix.cc)
 target_sources (test_matrix PUBLIC src/matrix.h src/expression.h)

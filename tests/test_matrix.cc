@@ -1,7 +1,7 @@
 #include <iostream>
 #include <array>
 
-#include <matrix.h>
+#include <Matrix-Neu-Expression.h>
 
 namespace bla = ASC_bla;
 int main()
@@ -12,30 +12,23 @@ int main()
     //std::cout << "default constructor hat funktioniert" << std::endl;
     bla::Matrix<double> A(2,2);
     //std::cout << "größen constructor hat funktioniert" << std::endl;
-    std::cout << A.get_height() << "  "<< A.get_width()<< std::endl;
-    std::cout <<"A has size: " << A.size() << std::endl; */
-    int test_data[4] = {3,5,8,2};
-    bla::Matrix<int, bla::ORDERING::RowMajor> B(2,2,test_data);/*
+    //std::cout << A.get_height() << "  "<< A.get_width()<< std::endl;
+    //std::cout <<"A has size: " << A.Size() << std::endl;
+    std::cout << A << std::endl; 
+    double test_data[4] = {3.0,5.0,8.0,2.0};
+    bla::Matrix<double> B(2,2,test_data);
     //std::cout << "data constructor hat funktioniert" << std::endl;
-    std::cout << "auf matrixelemente zugreifen: "<< std::endl;
-    std::cout << B(0,0) << "  " << B(0,1) << std::endl;
-    std::cout << B(1,0) << "  " << B(1,1) << std::endl;
-    bla::Matrix<int> D(B);
+    bla::Matrix<double> D(B);
     std::cout << "kopier constructor hat funktioniert D:" << std::endl;
-    std::cout << D(0,0) << "  " << D(0,1) << std::endl;
-    std::cout << D(1,0) << "  " << D(1,1) << std::endl;    
-    std::cout << "B(1,2) = " << B(0,1) << std::endl;
-    std::cout << "B(2,1) = " << B(1,0) << std::endl;
-    std::cout << B << std::endl;*/
+    std::cout << D << std::endl;
+    //std::cout << B << std::endl;
+    //std::cout << B.transpose() << std::endl;
+    //double test_data_2[9] = {1.0,4.0,2.0,6.0,8.0,3.0,7.0,9.0,0.0};
+    //bla::Matrix<double> C(3,3,test_data_2);
+    //std::cout << C << std::endl;
+    //std::cout << C.transpose() << std::endl;
+    B = D;
     std::cout << B << std::endl;
-    std::cout << B.alt_transpose() << std::endl;
-    std::cout << B(0,1) << std::endl;
-    /*double test_data_2[9] = {1.0,4.0,2.0,6.0,8.0,3.0,7.0,9.0,0.0};
-    bla::Matrix<double> C(3,3,test_data_2);
-    std::cout << C << std::endl;
-    std::cout << C.transpose() << std::endl;
-    B = D ;
-    std::cout << B << std::endl;*/
 
 
     return 0;
