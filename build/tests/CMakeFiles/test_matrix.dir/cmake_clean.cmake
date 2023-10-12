@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_matrix.dir/test_matrix.cc.obj"
-  "CMakeFiles/test_matrix.dir/test_matrix.cc.obj.d"
-  "libtest_matrix.dll.a"
-  "test_matrix.exe"
-  "test_matrix.exe.manifest"
+  "CMakeFiles/test_matrix.dir/test_matrix.cc.o"
+  "CMakeFiles/test_matrix.dir/test_matrix.cc.o.d"
+  "test_matrix"
   "test_matrix.pdb"
 )
 

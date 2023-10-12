@@ -2,10 +2,14 @@
 	"artifacts" : 
 	[
 		{
+<<<<<<<< HEAD:build/.cmake/api/v1/reply/target-test_vector-Debug-01aba48e12178b3be50e.json
 			"path" : "test_vector.exe"
 		},
 		{
 			"path" : "test_vector.pdb"
+========
+			"path" : "tests/test_vector"
+>>>>>>>> 756d356e0d32494c22b8827f823cc570b6838576:build/.cmake/api/v1/reply/target-test_vector-9fefccdc7ebb29c3655a.json
 		}
 	],
 	"backtrace" : 1,
@@ -52,14 +56,23 @@
 			"compileCommandFragments" : 
 			[
 				{
+<<<<<<<< HEAD:build/.cmake/api/v1/reply/target-test_vector-Debug-01aba48e12178b3be50e.json
 					"fragment" : "-g -std=gnu++17"
+========
+					"fragment" : "-std=gnu++11"
+>>>>>>>> 756d356e0d32494c22b8827f823cc570b6838576:build/.cmake/api/v1/reply/target-test_vector-9fefccdc7ebb29c3655a.json
 				}
 			],
 			"includes" : 
 			[
 				{
+<<<<<<<< HEAD:build/.cmake/api/v1/reply/target-test_vector-Debug-01aba48e12178b3be50e.json
 					"backtrace" : 2,
 					"path" : "C:/Felix/ESC/ASC-bla_group/src"
+========
+					"backtrace" : 3,
+					"path" : "/home/dominik/Documents/scientific_computing/first_git/ASC-bla/src"
+>>>>>>>> 756d356e0d32494c22b8827f823cc570b6838576:build/.cmake/api/v1/reply/target-test_vector-9fefccdc7ebb29c3655a.json
 				}
 			],
 			"language" : "CXX",
@@ -83,22 +96,14 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
-			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
 	"name" : "test_vector",
-	"nameOnDisk" : "test_vector.exe",
+	"nameOnDisk" : "test_vector",
 	"paths" : 
 	{
 		"build" : ".",
