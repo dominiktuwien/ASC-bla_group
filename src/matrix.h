@@ -107,16 +107,24 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
             return X;
         }
 
-         Matrix alt_transpose(){
-            if(ORD_ == RowMajor) ORD_ = ORDERING::ColMajor;//return *this(bla::ORD::ColMajor)}
-            else//ORD == ColMajor
-                ORD_ = ORDERING::RowMajor;
+            auto alt_transpose(){
+            if constexpr(ORD == RowMajor){
+                Matrix<T,ORDERING::ColMajor> temp(width_, height_);
                 
-                return *this;
+                return temp;
+            }
+            
+                 //ORD_ = ORDERING::ColMajor;//return *this(bla::ORD::ColMajor)}
+            else{//ORD == ColMajor
+                Matrix<T,ORDERING::RowMajor> temp(width_, height_);
+                
+                return temp;}
+
+            
 
         }
         
-    }
+    };
     
     template <typename T, ORDERING ORD>
     std::ostream & operator<< (std::ostream & ost, const Matrix<T,ORD> & v)
