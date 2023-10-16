@@ -132,12 +132,12 @@
 		},
 		{
 			"backtrace" : 3,
-			"path" : "src/matrix.h",
+			"path" : "src/Matrix-Neu-using_expressions.h",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 3,
-			"path" : "src/expression.h",
+			"path" : "src/matexpression.h",
 			"sourceGroupIndex" : 1
 		}
 	],
