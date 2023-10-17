@@ -2,7 +2,7 @@
 #define FILE_MATRIX_H
 
 #include <iostream>
-#include <expression.h>
+//#include <expression.h>
 
 namespace ASC_bla
 {
@@ -38,7 +38,7 @@ template <typename T> //, ORDERING ORD>
             *this = m;
         }
 
-        Matrix (const Matrix && m)
+        Matrix (const Matrix && m) // TODO
             : height_(0), width_(0), n_of_elements_(0), data_(nullptr)
         {
             //std::swap(height_, m.height_);
@@ -46,32 +46,72 @@ template <typename T> //, ORDERING ORD>
             //std::swap(n_of_elements_, m.n_of_elements_);
             //std::swap(data_, m.data_);
         }
+
         size_t get_height() const { return height_;}
         size_t get_width() const { return width_;}
-        size_t Size() const { return n_of_elements_; }        
-        T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
-        const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
-
+        size_t Size() const { return n_of_elements_; } 
+        // 1 based call operators:     
+        //T & operator()(size_t x, size_t y) { return data_[(x-1)*width_+y-1]; }
+        //const T & operator()(size_t x, size_t y) const { return data_[(x-1)*width_+y-1]; }
+        // 0-based call operators:
+        T & operator()(size_t x, size_t y) { return data_[x*width_+y]; }
+        const T & operator()(size_t x, size_t y) const { return data_[x*width_+y]; }
 
         ~Matrix() {delete [] data_; }
 
 
+        // Matrix & operator=(const Matrix & v2)
+        // {
+
+        //     for (size_t i = 0; i < n_of_elements_; i++)
+        //         data_[i] = v2((i/v2.get_width()) + 1 ,(i%v2.get_width()) +1 );     //fixed !
+        //     return *this;
+        // }
+
+        // Matrix & operator=(Matrix && v2)
+        // {
+        //     for (size_t i = 0; i < n_of_elements_; i++)
+        //         data_[i] = v2((i/v2.get_width()) + 1 ,(i%v2.get_width()) +1 );     //fixed !
+        //     return *this;
+        // }
+
+        // 0-based
         Matrix & operator=(const Matrix & v2)
         {
 
             for (size_t i = 0; i < n_of_elements_; i++)
-                data_[i] = v2((i/v2.get_width()) + 1 ,(i%v2.get_width()) +1 );     //fixed !
+                data_[i] = v2((i/v2.get_width()) ,(i%v2.get_width()));     //fixed !
             return *this;
         }
 
         Matrix & operator=(Matrix && v2)
         {
             for (size_t i = 0; i < n_of_elements_; i++)
-                data_[i] = v2((i/v2.get_width()) + 1 ,(i%v2.get_width()) +1 );     //fixed !
+                data_[i] = v2((i/v2.get_width()) ,(i%v2.get_width()));     //fixed !
             return *this;
         }
 
 
+        // Matrix transpose(){
+    
+        //     double x[n_of_elements_];
+        //     for(size_t z = 0; z< n_of_elements_;z++){
+        //         x[z] = data_[z];
+        //     }
+        //     //data_[1] = x[2];
+        //     //data_[2] = x[1];
+        //     for(size_t i=1; i<height_+1; i++){
+        //         for(size_t j=1; j<width_+1; j++){
+        //             data_[(i-1)*width_+(j-1)]=x[(j-1)*width_+(i-1)];
+        //         }
+        //     }
+
+
+        //     Matrix<T> X(height_, width_, data_);
+        //     return X;
+        // }
+
+        // 0-based transpose
         Matrix transpose(){
     
             double x[n_of_elements_];
@@ -80,9 +120,9 @@ template <typename T> //, ORDERING ORD>
             }
             //data_[1] = x[2];
             //data_[2] = x[1];
-            for(size_t i=1; i<height_+1; i++){
-                for(size_t j=1; j<width_+1; j++){
-                    data_[(i-1)*width_+(j-1)]=x[(j-1)*width_+(i-1)];
+            for(size_t i=0; i<height_; i++){
+                for(size_t j=0; j<width_; j++){
+                    data_[i*width_+j]=x[j*width_+i];
                 }
             }
 
@@ -93,17 +133,40 @@ template <typename T> //, ORDERING ORD>
         
     };
     
+    // template <typename T>
+    // std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
+    // {
+    //     //if (v.Size() > 0)
+    //         //ost << v(1,1);
+    //     for (size_t i = 1; i < v.get_height()+1; i++){
+    //         for (size_t j = 1; j < v.get_width()+1; j++){
+    //             if(j==1){
+    //                 ost << v(i,j);
+    //             }
+    //             if(j>1){
+    //                 ost << ", " << v(i,j);
+    //             }
+    //         }
+    //         ost << std::endl;
+    //         //if(i%(v.get_width-1)==0){
+    //             //ost << std::endl;
+    //         //}
+    //     }
+    //     return ost;
+    // }    
+
+    // 0-based ostream
     template <typename T>
     std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
     {
         //if (v.Size() > 0)
             //ost << v(1,1);
-        for (size_t i = 1; i < v.get_height()+1; i++){
-            for (size_t j = 1; j < v.get_width()+1; j++){
-                if(j==1){
+        for (size_t i = 0; i < v.get_height(); i++){
+            for (size_t j = 0; j < v.get_width(); j++){
+                if(j==0){
                     ost << v(i,j);
                 }
-                if(j>1){
+                if(j>0){
                     ost << ", " << v(i,j);
                 }
             }
@@ -115,7 +178,27 @@ template <typename T> //, ORDERING ORD>
         return ost;
     }    
     
-    template<typename T>
+    template <typename T>
+    Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b) // matrix multiplication
+    {
+        Matrix<T> product_m(a.get_height(), b.get_width());
+
+        for (size_t i=0; i < a.get_height(); i++) { // rows of a
+            for (size_t j=0; j < b.get_width(); j++) { // cols of b
+                T m_entry = 0;
+                for (size_t k=0; k < a.get_width(); k++) {
+                    m_entry += a(i,k) * b(k,j);
+                }
+                product_m(i, j) = m_entry;
+            }
+        }
+        return product_m;
+    }
+    // TODO: ColMajor vs. RowMajor macht eh nur beim Konstruktor Unterschied... oder?
+
+
+
+    /*template<typename T>
         Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
         {
         //hier könnte ihr error handling stehen
@@ -140,7 +223,7 @@ template <typename T> //, ORDERING ORD>
                 typename a_ =         
             }
 
-        }
+        }*/
 
 
 
