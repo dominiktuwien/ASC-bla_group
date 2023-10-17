@@ -2,6 +2,7 @@
 #define FILE_MATRIX_H
 
 #include <iostream>
+//#include <vector.h>
 //#include <expression.h>
 
 namespace ASC_bla
@@ -38,13 +39,13 @@ template <typename T> //, ORDERING ORD>
             *this = m;
         }
 
-        Matrix (const Matrix && m) // TODO
+        Matrix (Matrix && m)
             : height_(0), width_(0), n_of_elements_(0), data_(nullptr)
         {
-            //std::swap(height_, m.height_);
-            //std::swap(widht_, m.widht_);
-            //std::swap(n_of_elements_, m.n_of_elements_);
-            //std::swap(data_, m.data_);
+            std::swap(height_, m.height_);
+            std::swap(width_, m.width_);
+            std::swap(n_of_elements_, m.n_of_elements_);
+            std::swap(data_, m.data_);
         }
 
         size_t get_height() const { return height_;}
@@ -59,7 +60,7 @@ template <typename T> //, ORDERING ORD>
 
         ~Matrix() {delete [] data_; }
 
-
+        // ----- 1-BASED ASSIGNEMENT OPERATORS -----
         // Matrix & operator=(const Matrix & v2)
         // {
 
@@ -75,7 +76,6 @@ template <typename T> //, ORDERING ORD>
         //     return *this;
         // }
 
-        // 0-based
         Matrix & operator=(const Matrix & v2)
         {
 
@@ -91,7 +91,7 @@ template <typename T> //, ORDERING ORD>
             return *this;
         }
 
-
+        // ----- 1-BASED TRANSPOSE -----
         // Matrix transpose(){
     
         //     double x[n_of_elements_];
@@ -111,7 +111,6 @@ template <typename T> //, ORDERING ORD>
         //     return X;
         // }
 
-        // 0-based transpose
         Matrix transpose(){
     
             double x[n_of_elements_];
@@ -130,9 +129,38 @@ template <typename T> //, ORDERING ORD>
             Matrix<T> X(height_, width_, data_);
             return X;
         }
+
+
+        Matrix inverse() const { // works only for 2x2 matrices
+            Matrix<T> inv_matrix(2,2);
+
+            if (height_ != 2 || width_ !=2) {
+                std::cout << "Oops... Try the Eigen library for inverting matrices with dimensions other than 2x2!" << std::endl;
+                return inv_matrix;
+            }
+
+            T det = data_[0] * data_[3] - data_[1] * data_[2];
+            if (det == 0) {
+                std::cout << "Oops... This is a singular matrix, there is no inverse!" << std::endl;
+                return inv_matrix;
+            }
+
+            inv_matrix(0,0) = data_[3] / det; // TODO: soll auch für ColMajor funktionieren
+            inv_matrix(0,1) = (-data_[1] / det);
+            inv_matrix(1,0) = (-data_[2]) / det;
+            inv_matrix(1,1) = data_[0] / det;
+            std::cout << inv_matrix(0,0) << std::endl;
+            std::cout << inv_matrix(0,1) << std::endl;
+            std::cout << inv_matrix(1,0) << std::endl;
+            std::cout << inv_matrix(1,1) << std::endl;
+
+            return inv_matrix;
+        }
+
         
     };
     
+    // ----- 1-BASED OSTREAM -----
     // template <typename T>
     // std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
     // {
@@ -155,7 +183,6 @@ template <typename T> //, ORDERING ORD>
     //     return ost;
     // }    
 
-    // 0-based ostream
     template <typename T>
     std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
     {
@@ -194,38 +221,23 @@ template <typename T> //, ORDERING ORD>
         }
         return product_m;
     }
-    // TODO: ColMajor vs. RowMajor macht eh nur beim Konstruktor Unterschied... oder?
+    // TODO: ColMajor vs. RowMajor ist hier egal... oder?
 
+    // ----- COMPATIBLE WITH OLD VECTOR CLASS -----
+    // template <typename T>
+    // Matrix<T> operator* (const Matrix<T> & a, const Vector<T> & v2) // matrix-vector multiplication
+    // {
+    //     Vector<T> product_v(a.get_height());
 
-
-    /*template<typename T>
-        Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
-        {
-        //hier könnte ihr error handling stehen
-        //habs gefixt :) -Da
-            for(size_t i = 0; i < a.get_height(); i++)
-            {
-                for(size_t j = 0; j < b.Size(); j+= b.get_width)
-                {
-
-                }
-            }
-
-        }
-    template<typename T>
-        Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
-        {
-            Matrix <T> X(b.get_height(),a.get_width())
-        //hier könnte ihr error handling stehen
-        //habs gefixt :) -Da
-            for(size_t i = 0; i < X.get_Size(); i++)
-            {
-                typename a_ =         
-            }
-
-        }*/
-
-
+    //     for (size_t i=0; i < a.get_height(); i++) { // rows of a
+    //         T v_entry = 0;
+    //         for (size_t j=0; j < a.get_width; j++) { // cols of a (= length of vector)
+    //             v_entry += a(i, j) * v2(j);
+    //         }
+    //         product_v(i) = v_entry;
+    //     }
+    //     return product_v;
+    // }
 
 }
 #endif
