@@ -22,6 +22,10 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     MatrixView (size_t height, size_t width, T * data)
       : data_(data), n_of_elements_(height*width), height_(height), width_(width) { }
     
+    /*den constructor kann man=Felix nicht aufrufen weil der TDIST type probleme macht
+    wenn ich MatrixView(1,1, new T[1], 1) mache erkennt er das TDIST argument als int und sagt er hat keine
+    "matching function", wenn ich den letzen einser als: std::integral_constant<size_t,1> übergebe erwartet er
+    eine "primary expression", soll heissen std::integral... ist zu komplex als funktionsargument*/
     MatrixView (size_t height, size_t width, T * data, TDIST dist)
       : data_(data), n_of_elements_(height*width), height_(height), width_(width), dist_(dist) { }
     
@@ -41,8 +45,8 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     }
 
     auto View() const { return MatrixView(height_, width_, n_of_elements_, dist_, data_); }
-    size_t Get_width() {return width_;}
-    size_t Get_height() {return height_;}
+    size_t Get_width() const {return width_;}
+    size_t Get_height() const {return height_;}
     size_t Size() const { return n_of_elements_; }
     T & operator()(size_t x, size_t y) { return data_[(x)*width_+y]; }
     const T & operator()(size_t x, size_t y) const { return data_[(x)*width_+y]; }
@@ -76,13 +80,13 @@ template <typename T> //, ORDERING ORD>
             1x1 array wo 0 drinnen ist*/
 
         Matrix (size_t height, size_t width)
-            : MatrixView<T> (height, width, height*width, new T[height*width],1) 
+            : MatrixView<T> (height, width, new T[height*width]) 
         { for (size_t i = 0; i < n_of_elements_; i++)    //füllt Matrix Element für Element mit 0
             data_[i] = 0.0;
         }
 
         Matrix (size_t height, size_t width, const T* inputdata)
-            : MatrixView<T> (height, width, height*width, new T[height*width]) 
+            : MatrixView<T> (height, width, new T[height*width]) 
         { for (size_t i = 0; i < n_of_elements_; i++)
             data_[i] = inputdata[i];
         }
@@ -93,8 +97,8 @@ template <typename T> //, ORDERING ORD>
             *this = m;
         }
 
-        Matrix (const Matrix && m)
-            : MatrixView<T> (0, 0, 0, nullptr)
+        Matrix (Matrix && m)
+            : MatrixView<T> (0, 0, nullptr)
         {
             std::swap(BASE::height_, m.height_);
             std::swap(BASE::width_, m.width_);
@@ -142,17 +146,37 @@ template <typename T> //, ORDERING ORD>
             }
 
 
-            Matrix<T> X(BASE::height_, BASE::width, data_);
+            Matrix<T> X(BASE::height_, BASE::width_, data_);
             return X;
         }
         
     };
     
     template <typename T>
-    std::ostream & operator<< (std::ostream & ost, const Matrix<T> & v)
+    std::ostream & operator<< (std::ostream & ost, const MatrixView<T> & v)
     {
         for (size_t i = 0; i < v.Get_height(); i++){
             for (size_t j = 0; j < v.Get_width(); j++){
+                if(j==0){
+                    ost << v(i,j);
+                }
+                if(j>0){
+                    ost << ", " << v(i,j);
+                }
+            }
+            ost << std::endl; 
+            
+            //if(i%(v.get_width-1)==0){
+                //ost << std::endl;
+            //}
+        }
+        return ost;
+    }
+    /*template <typename T>
+    std::ostream & operator<< (std::ostream & ost, const MatrixView<T> & v)
+    {
+        for (size_t i = 0; i < v.BASE::height_; i++){
+            for (size_t j = 0; j < v.BASE::width_; j++){
                 if(j==0){
                     ost << v(i,j);
                 }
@@ -166,7 +190,7 @@ template <typename T> //, ORDERING ORD>
             //}
         }
         return ost;
-    }    
+    } */   
     
     template<typename T>
         Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
