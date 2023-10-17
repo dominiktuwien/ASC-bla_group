@@ -131,7 +131,7 @@ template <typename T> //, ORDERING ORD>
         }
 
 
-        Matrix inverse() const { // works only for 2x2 matrices
+        Matrix inverse() const { // should work for 2x2 matrices, currently doesn't work at all...
             Matrix<T> inv_matrix(2,2);
 
             if (height_ != 2 || width_ !=2) {
@@ -146,13 +146,9 @@ template <typename T> //, ORDERING ORD>
             }
 
             inv_matrix(0,0) = data_[3] / det; // TODO: soll auch für ColMajor funktionieren
-            inv_matrix(0,1) = (-data_[1] / det);
+            inv_matrix(0,1) = (-data_[1]) / det;
             inv_matrix(1,0) = (-data_[2]) / det;
             inv_matrix(1,1) = data_[0] / det;
-            std::cout << inv_matrix(0,0) << std::endl;
-            std::cout << inv_matrix(0,1) << std::endl;
-            std::cout << inv_matrix(1,0) << std::endl;
-            std::cout << inv_matrix(1,1) << std::endl;
 
             return inv_matrix;
         }
