@@ -164,10 +164,7 @@ template <typename T> //, ORDERING ORD>
             for(size_t i=0; i<BASE::height_; i++){
                 for(size_t j=0; j<BASE::width_; j++){
                     data_[j*BASE::height_+i]=x[i*BASE::width_+j];
-                    //for trying to make nxm work
                     //should work now -Da
-                    //data_[(j)*BASE::width_+(i)]=x[(i)*BASE::width_+(j)];
-                    //std::cout << x[(i)*BASE::width_+(j)] << std::endl;
                 }
             }
 
@@ -179,8 +176,8 @@ template <typename T> //, ORDERING ORD>
         
     };
     
-    template <typename T>
-    std::ostream & operator<< (std::ostream & ost, const MatrixView<T> & v)
+    template <typename ...Args>
+    std::ostream & operator<< (std::ostream & ost, const MatrixView<Args...> & v)
     {
         for (size_t i = 0; i < v.Get_height(); i++){
             for (size_t j = 0; j < v.Get_width(); j++){

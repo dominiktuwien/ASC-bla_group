@@ -11,8 +11,10 @@ namespace ASC_bla
   {
   public:
     auto Upcast() const { return static_cast<const T&> (*this); }
+    size_t Get_height() const { return Upcast().Get_height();}
+    size_t Get_width() const { return Upcast().Get_width();}
     size_t Size() const { return Upcast().Size(); }
-    auto operator() (size_t i) const { return Upcast()(i); }
+    auto operator() (size_t i, size_t j) const { return Upcast()(i,j); }
   };
   
  
@@ -24,8 +26,10 @@ namespace ASC_bla
   public:
     SumMatExpr (TA a, TB b) : a_(a), b_(b) { }
 
-    auto operator() (size_t i) const { return a_(i)+b_(i); }
-    size_t Size() const { return a_.Size(); }      
+    auto operator() (size_t i, size_t j) const { return a_(i,j)+b_(i,j); }
+    size_t Size() const { return a_.Size(); }
+    size_t Get_height() const {return a_.Get_height();}
+    size_t Get_width() const {return a_.Get_width();}        
   };
   
   template <typename TA, typename TB>
@@ -45,8 +49,10 @@ namespace ASC_bla
   public:
     ScaleMatExpr (TSCAL scal, TM mat) : scal_(scal), mat_(mat) { }
 
-    auto operator() (size_t i) const { return scal_*mat_(i); }
-    size_t Size() const { return mat_.Size(); }      
+    auto operator() (size_t i, size_t j) const { return scal_*mat_(i, j); }
+    size_t Size() const { return mat_.Size(); }
+    size_t Get_height() const {return mat_.Get_height();}
+    size_t Get_width() const {return mat_.Get_width();}      
   };
   
   template <typename T>
@@ -58,22 +64,26 @@ namespace ASC_bla
   template <typename T>
   std::ostream & operator<< (std::ostream & ost, const MatExpr<T> & v)
   {
-      for (size_t i = 0; i < v.Get_height(); i++){
-          for (size_t j = 0; j < v.Get_width(); j++){
-              if(j==0){
-                  ost << v(i,j);
-              }
-              if(j>0){
-                  ost << ", " << v(i,j);
-              }
-          }
-          ost << std::endl; 
-            
-          //if(i%(v.get_width-1)==0){
-              //ost << std::endl;
-          //}
-      }
-      return ost;
+    //std::cout << "test" << std::endl;
+    //std::cout << v.Size() << std::endl;
+    //std::cout << v(0,0) << std::endl;
+    for (size_t i = 0; i < v.Get_height(); i++)
+    {
+      for (size_t j = 0; j < v.Get_width(); j++)
+      {
+        if(j==0){
+          ost << v(i,j);
+        }
+        if(j>0){
+          ost << ", " << v(i,j);
+        }
+      }  
+      ost << std::endl;   
+        //if(i%(v.get_width-1)==0){
+          //ost << std::endl;
+        //}
+    }
+    return ost;
   }
  
 }
