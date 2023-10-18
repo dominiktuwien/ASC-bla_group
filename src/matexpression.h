@@ -55,18 +55,26 @@ namespace ASC_bla
     return ScaleMatExpr(scal, v.Upcast());
   }
 
-
-
   template <typename T>
-  std::ostream & operator<< (std::ostream & ost, const MatExpr<T> & m)
+  std::ostream & operator<< (std::ostream & ost, const MatExpr<T> & v)
   {
-    if (m.Size() > 0)
-      ost << m(0);
-    for (size_t i = 1; i < m.Size(); i++)
-      ost << ", " << m(i);
-    return ost;
+      for (size_t i = 0; i < v.Get_height(); i++){
+          for (size_t j = 0; j < v.Get_width(); j++){
+              if(j==0){
+                  ost << v(i,j);
+              }
+              if(j>0){
+                  ost << ", " << v(i,j);
+              }
+          }
+          ost << std::endl; 
+            
+          //if(i%(v.get_width-1)==0){
+              //ost << std::endl;
+          //}
+      }
+      return ost;
   }
-  
-}
  
+}
 #endif

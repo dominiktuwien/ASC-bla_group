@@ -133,4 +133,6 @@ CMakeFiles/test_matrix.dir/tests/test_matrix.cc.obj: \
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/utility \
  C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/stl_relops.h \
  C:/Felix/ESC/ASC-bla_group/src/Matrix-Neu-using_expressions.h \
- C:/Felix/ESC/ASC-bla_group/src/matexpression.h
+ C:/Felix/ESC/ASC-bla_group/src/matexpression.h \
+ C:/Felix/ESC/ASC-bla_group/src/vector.h \
+ C:/Felix/ESC/ASC-bla_group/src/expression.h

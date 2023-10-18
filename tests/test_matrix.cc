@@ -6,7 +6,7 @@
 namespace bla = ASC_bla;
 int main()
 {
-    size_t x = 5;
+    /*size_t x = 5;
     size_t y = 6;
     bla::Matrix<double>();
     std::cout << "default constructor hat funktioniert" << std::endl;
@@ -28,7 +28,18 @@ int main()
     std::cout << C << std::endl;
     std::cout << C.transpose() << std::endl;
     B = D;
-    std::cout << B << std::endl;
+    std::cout << B << std::endl;*/
+
+    int test_asym[4] = {1,2,3,4};
+    bla::Matrix<int> J(2,2,test_asym);
+    int a;
+    a = J(0,0);
+    std::cout << J << std::endl;
+    std::cout << J.transpose() << std::endl;
+    std::cout << a << std::endl;
+    
+   
+    
 
     // This is a test :)
 

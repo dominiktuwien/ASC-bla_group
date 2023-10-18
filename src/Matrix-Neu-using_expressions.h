@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <matexpression.h>
+#include <vector.h>
 
 namespace ASC_bla
 {
@@ -54,6 +55,26 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     auto Range(size_t first_x, size_t first_y, size_t next_x, size_t next_y) const {
       return MatrixView((next_x-first_x)*(next_y-first_y), dist_, data_+(first_x)*width_+first_y*dist_);
     }
+
+    /*VectorView<T> Row(int row){
+        if(row <= height_){
+            T temp[width_];
+            for(int i = 0; i < width_; i++){
+                temp[i] = data_[(row*width_)+(i)];
+                std::cout << data_[(row*width_)+(i)] << std::endl;
+                std::cout << temp[i] << std::endl;
+            }
+            VectorView<T> A(width_, temp);
+            return A;
+        }
+        else{
+            size_t size = 0;
+            T trash[0];
+            return VectorView(size, trash);
+        } 
+    }*/
+
+    
 
     /*auto Slice(size_t first, size_t slice) const {
       return MatrixView<T,size_t> (size_/slice, dist_*slice, data_+first*dist_);
@@ -135,18 +156,23 @@ template <typename T> //, ORDERING ORD>
 
         Matrix transpose(){
     
-            double x[n_of_elements_];
+            T x[n_of_elements_];  //dieses array braucht den allgemeinen typ T, war vorher double
             for(size_t z = 0; z< n_of_elements_;z++){
                 x[z] = data_[z];
+                
             }
             for(size_t i=0; i<BASE::height_; i++){
                 for(size_t j=0; j<BASE::width_; j++){
                     data_[(i)*BASE::width_+(j)]=x[(j)*BASE::width_+(i)];
+                    //for trying to make nxm work
+                    //data_[(j)*BASE::width_+(i)]=x[(i)*BASE::width_+(j)];
+                    //std::cout << x[(i)*BASE::width_+(j)] << std::endl;
                 }
             }
 
 
-            Matrix<T> X(BASE::height_, BASE::width_, data_);
+            Matrix<T> X(BASE::width_, BASE::height_, data_); 
+            //height und width sind vertauscht, 3x2.transpose ist 2x3, altes width ist neues height
             return X;
         }
         
@@ -172,25 +198,7 @@ template <typename T> //, ORDERING ORD>
         }
         return ost;
     }
-    /*template <typename T>
-    std::ostream & operator<< (std::ostream & ost, const MatrixView<T> & v)
-    {
-        for (size_t i = 0; i < v.BASE::height_; i++){
-            for (size_t j = 0; j < v.BASE::width_; j++){
-                if(j==0){
-                    ost << v(i,j);
-                }
-                if(j>0){
-                    ost << ", " << v(i,j);
-                }
-            }
-            ost << std::endl;
-            //if(i%(v.get_width-1)==0){
-                //ost << std::endl;
-            //}
-        }
-        return ost;
-    } */   
+   
     
     template<typename T>
         Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)

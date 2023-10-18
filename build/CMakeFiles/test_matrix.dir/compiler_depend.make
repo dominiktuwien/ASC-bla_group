@@ -3,7 +3,9 @@
 
 CMakeFiles/test_matrix.dir/tests/test_matrix.cc.obj: C:/Felix/ESC/ASC-bla_group/tests/test_matrix.cc \
   C:/Felix/ESC/ASC-bla_group/src/Matrix-Neu-using_expressions.h \
+  C:/Felix/ESC/ASC-bla_group/src/expression.h \
   C:/Felix/ESC/ASC-bla_group/src/matexpression.h \
+  C:/Felix/ESC/ASC-bla_group/src/vector.h \
   C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include-fixed/limits.h \
   C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include-fixed/syslimits.h \
   C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/array \
@@ -138,8 +140,6 @@ CMakeFiles/test_matrix.dir/tests/test_matrix.cc.obj: C:/Felix/ESC/ASC-bla_group/
   C:/Strawberry/c/x86_64-w64-mingw32/include/wctype.h
 
 
-C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/alloc_traits.h:
-
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/string_view.tcc:
 
 C:/Strawberry/c/x86_64-w64-mingw32/include/stdlib.h:
@@ -147,6 +147,8 @@ C:/Strawberry/c/x86_64-w64-mingw32/include/stdlib.h:
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/postypes.h:
 
 C:/Felix/ESC/ASC-bla_group/tests/test_matrix.cc:
+
+C:/Felix/ESC/ASC-bla_group/src/vector.h:
 
 C:/Felix/ESC/ASC-bla_group/src/Matrix-Neu-using_expressions.h:
 
@@ -158,6 +160,10 @@ C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/functexcept.h:
 
 C:/Felix/ESC/ASC-bla_group/src/matexpression.h:
 
+C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/ext/string_conversions.h:
+
+C:/Felix/ESC/ASC-bla_group/src/expression.h:
+
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/cwctype:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/stl_iterator.h:
@@ -166,21 +172,21 @@ C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include-fixed/limits.h:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include-fixed/syslimits.h:
 
+C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/char_traits.h:
+
+C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/array:
+
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/ext/atomicity.h:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/backward/binders.h:
 
-C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/char_traits.h:
-
-C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/array:
+C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/alloc_traits.h:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/ostream_insert.h:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/locale_facets.tcc:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/bits/allocator.h:
-
-C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/ext/alloc_traits.h:
 
 C:/Strawberry/c/x86_64-w64-mingw32/include/stdio.h:
 
@@ -280,7 +286,7 @@ C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/debug/assertions.h:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/exception:
 
-C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/ext/string_conversions.h:
+C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/ext/alloc_traits.h:
 
 C:/Strawberry/c/lib/gcc/x86_64-w64-mingw32/8.3.0/include/c++/ext/type_traits.h:
 
