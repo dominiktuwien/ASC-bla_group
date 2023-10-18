@@ -41,8 +41,8 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     }
 
     auto View() const { return MatrixView(height_, width_, n_of_elements_, dist_, data_); }
-    size_t Get_width() {return width_}
-    size_t Get_height() {return height_}
+    size_t Get_width() {return width_;}
+    size_t Get_height() {return height_;}
     size_t Size() const { return n_of_elements_; }
     T & operator()(size_t x, size_t y) { return data_[(x)*width_+y]; }
     const T & operator()(size_t x, size_t y) const { return data_[(x)*width_+y]; }
@@ -52,7 +52,7 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     }
 
     auto Slice(size_t first, size_t slice) const {
-      return MatrixView<T,size_t> (size_/slice, dist_*slice, data_+first*dist_);
+      return MatrixView<T,size_t> (n_of_elements_/slice, dist_*slice, data_+first*dist_);
     }
       
   };
@@ -68,20 +68,17 @@ template <typename T> //, ORDERING ORD>
         
         public:
 
-        Matrix()    //Standard-Konstruktor --1x1 Matrix mit Nullelement
-            : height_(1), width_(1), n_of_elements_(1), data_(new T[1]){data_[0] = 0.0; }
+        //Matrix()    //Standard-Konstruktor --1x1 Matrix mit Nullelement
+            //: height_(1), width_(1), n_of_elements_(1), data_(new T[1]){data_[0] = 0.0; }
 
         Matrix (size_t height, size_t width)
-            : height_(height), width_(width), n_of_elements_(height*width), data_(new T[height*width]) 
-        { for (size_t i = 0; i < n_of_elements_; i++)    //füllt Matrix Element für Element mit 0
-            data_[i] = 0.0;
-        }
+          : MatrixView<T> (height, width, new T[height*width]){ ; }
 
-        Matrix (size_t height, size_t width, const T* imputdata)
-            : height_(height), width_(width), n_of_elements_(height*width), data_(new T[height*width]) 
-        { for (size_t i = 0; i < n_of_elements_; i++)
-            data_[i] = imputdata[i];
-        }
+        //Matrix (size_t height, size_t width, const T* imputdata)
+            //: height_(height), width_(width), n_of_elements_(height*width), data_(new T[height*width]) 
+        //{ for (size_t i = 0; i < n_of_elements_; i++)
+            //data_[i] = imputdata[i];
+        //}
 
         Matrix (const Matrix & m)       //wenn Matrix übergeben, muss nix verändert werden?
             : Matrix(m.get_height(),m.get_width())
@@ -90,21 +87,25 @@ template <typename T> //, ORDERING ORD>
         }
 
         Matrix (const Matrix && m)
-            : height_(0), width_(0), n_of_elements_(0), data_(nullptr)
+            : MatrixView<T> (0,0,nullptr)
         {
             //std::swap(height_, m.height_);
             //std::swap(widht_, m.widht_);
             //std::swap(n_of_elements_, m.n_of_elements_);
             //std::swap(data_, m.data_);
         }
-        size_t get_height() const { return height_;}
-        size_t get_width() const { return width_;}
-        size_t Size() const { return n_of_elements_; }        
-        T & operator()(size_t x, size_t y) { return data_[(x)*width_+y]; }
-        const T & operator()(size_t x, size_t y) const { return data_[(x)*width_+y]; }
 
+        template <typename TB>
+        Matrix (const MatExpr<TB> & v)
+        : Matrix(v.Get_width(),v.Get_height())
+        {
+        *this = v;
+        }
+        
 
         ~Matrix() {delete [] data_; }
+
+        using BASE::operator=;
 
 
         Matrix & operator=(const Matrix & v2)
@@ -131,12 +132,12 @@ template <typename T> //, ORDERING ORD>
             }
             for(size_t i=0; i<height_; i++){
                 for(size_t j=0; j<width_; j++){
-                    data_[(i)*width_+(j)]=x[(j)*width_+(i)];
+                    data_[j*height_+i]=x[i*width_+j];
                 }
             }
 
 
-            Matrix<T> X(height_, width_, data_);
+            Matrix<T> X(width_, height_, data_);
             return X;
         }
         
