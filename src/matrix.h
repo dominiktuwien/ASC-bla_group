@@ -80,14 +80,17 @@ template <typename T> //, ORDERING ORD>
             }
             //data_[1] = x[2];
             //data_[2] = x[1];
-            for(size_t i=1; i<height_+1; i++){
-                for(size_t j=1; j<width_+1; j++){
-                    data_[(i-1)*width_+(j-1)]=x[(j-1)*width_+(i-1)];
+            for(size_t i=0; i<height_; i++){
+                for(size_t j=0; j<width_; j++){
+                    //std::cout << "Data (" << i*width_+j << ") = " << "x (" << j*height_+i << ")" << std::endl; 
+                    data_[j*height_+i]=x[i*width_+j];
                 }
             }
+            //for(size_t i=0;i<n_of_elements_;i++){
+                //std::cout << data_[i] << std::endl;
+            //}
 
-
-            Matrix<T> X(height_, width_, data_);
+            Matrix<T> X(width_, height_, data_);
             return X;
         }
         
@@ -129,7 +132,7 @@ template <typename T> //, ORDERING ORD>
             }
 
         }
-    template<typename T>
+    /*template<typename T>
         Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
         {
             Matrix <T> X(b.get_height(),a.get_width())
@@ -137,11 +140,11 @@ template <typename T> //, ORDERING ORD>
         //habs gefixt :) -Da
             for(size_t i = 0; i < X.get_Size(); i++)
             {
-                typename a_ =         
+                //typename a_ =         
             }
 
         }
-
+*/
 
 
 }
