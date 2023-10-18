@@ -30,8 +30,8 @@ int main()
     B = D;
     std::cout << B << std::endl;*/
 
-    int test_asym[4] = {1,2,3,4};
-    bla::Matrix<int> J(2,2,test_asym);
+    int test_asym[6] = {1,2,3,4,5,6};
+    bla::Matrix<int> J(3,2,test_asym);
     int a;
     a = J(0,0);
     std::cout << J << std::endl;
