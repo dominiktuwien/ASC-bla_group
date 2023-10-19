@@ -34,9 +34,27 @@ int main()
     bla::Matrix<int> J(3,2,test_asym);
     int a;
     a = J(0,0);
-    std::cout << J << std::endl;
-    std::cout << J.transpose() << std::endl;
-    std::cout << a << std::endl;
+    //std::cout << J << std::endl;
+    //std::cout << J.transpose() << std::endl;
+    //std::cout << a << std::endl;
+    int test_a[6] = {1,2,3,4,5,6};
+    int test_b[6] = {6,5,4,3,2,1};
+    bla::Matrix<int> K(3,2,test_a);
+    bla::Matrix<int> M(3,2,test_b);
+    std::cout << K << std::endl;
+    std::cout << "type of (2*K) is  " << typeid(2*K).name() << std::endl;
+    std::cout << (4*K) << std::endl;
+    std::cout << "type of (M+K) is  " << typeid(M+K).name() << std::endl;
+    std::cout << (M+K) << std::endl;
+    std::cout << M.Row(0) << std::endl;
+    std::cout << M.Row(1) << std::endl;
+    std::cout << M.Row(2) << std::endl;
+    std::cout << M << std::endl;
+    std::cout << M.Column(0) << std::endl;
+    std::cout << M.Column(1) << std::endl;
+    //std::cout << U << std::endl;
+    //U = 2*K;
+    //std::cout << U << std::endl;
     
    
     

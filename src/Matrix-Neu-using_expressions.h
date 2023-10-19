@@ -49,12 +49,23 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     size_t Get_width() const {return width_;}
     size_t Get_height() const {return height_;}
     size_t Size() const { return n_of_elements_; }
-    T & operator()(size_t x, size_t y) { return data_[(x)*width_+y]; }
-    const T & operator()(size_t x, size_t y) const { return data_[(x)*width_+y]; }
+    T & operator()(size_t x, size_t y) { return data_[dist_*(x*width_+y)]; }
+    const T & operator()(size_t x, size_t y) const { return data_[dist_*(x*width_+y)]; }
     
     auto Range(size_t first_x, size_t first_y, size_t next_x, size_t next_y) const {
-      return MatrixView((next_x-first_x)*(next_y-first_y), dist_, data_+(first_x)*width_+first_y*dist_);
+      return MatrixView((next_x-first_x),(next_y-first_y), data_+(first_x)*width_+first_y*dist_, dist_);
+    } 
+    //Range funktioniert für (0,0,1,2) --> gibt nur erste Zeile aus
+    //Range funktioniert nur so halb für (0,0,2,1) --> gibt nur eine Spalte aus 
+    //(aber immer noch nur die ersten 2 Einträge <--falsch)
+
+    auto Row(size_t i) const {
+        return MatrixView(1,width_,data_+(i*width_));
     }
+
+    auto Column(size_t i) const {
+        return MatrixView<T,size_t>(height_,1,data_+i,dist_*width_);
+    } 
 
     /*VectorView<T> Row(int row){
         if(row <= height_){
