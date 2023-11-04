@@ -61,6 +61,33 @@ namespace ASC_bla
     return ScaleMatExpr(scal, v.Upcast());
   }
 
+  template<typename TMatA, typename TMatB>
+  class MatMatMulExpr : public MatExpr<MatMatMulExpr<TMatA,TMatB>>
+  {
+    TMatA matA_;
+    TMatB matB_;
+
+    public:
+      MatMatMulExpr(TMatA matA, TMatB matB) : matA_(matA), matB_(matB) { }
+
+      auto operator() (size_t i, size_t j) {
+        double result;
+        for(size_t c = 0; c < matA_.Get_width(); c++){
+          result += (matA_.Row(i))(0,c) * (matB_.Column(j))(c,0);        
+          }
+        return result;
+      }
+      size_t Size() const { return matA_.Get_height() * matB_.Get_width(); }
+      size_t Get_height() const {return matA_.Get_height();}
+      size_t Get_width() const {return matB_.Get_width();}
+  };
+
+  template<typename T>
+  auto operator* (const MatExpr<T> & left, const MatExpr<T> & right)
+  {
+    return MatMatMulExpr(left.Upcast(), right.Upcast());
+  };
+
   template <typename T>
   std::ostream & operator<< (std::ostream & ost, const MatExpr<T> & v)
   {

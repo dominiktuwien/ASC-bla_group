@@ -10,15 +10,15 @@ namespace ASC_bla
 enum ORDERING { ColMajor, RowMajor };
 
 
-template <typename T, typename TDIST = std::integral_constant<size_t,1> >
-  class MatrixView : public MatExpr<MatrixView<T,TDIST>>
+template <typename T, ORDERING ORD = ORDERING::RowMajor >
+  class MatrixView : public MatExpr<MatrixView<T,ORD>>
   {
   protected:
     T * data_;
     size_t height_;
     size_t width_;
     size_t n_of_elements_;
-    TDIST dist_;
+    size_t dist_ = 1;
   public:
     MatrixView (size_t height, size_t width, T * data)
       : data_(data), n_of_elements_(height*width), height_(height), width_(width) { }
@@ -27,7 +27,7 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     wenn ich MatrixView(1,1, new T[1], 1) mache erkennt er das TDIST argument als int und sagt er hat keine
     "matching function", wenn ich den letzen einser als: std::integral_constant<size_t,1> übergebe erwartet er
     eine "primary expression", soll heissen std::integral... ist zu komplex als funktionsargument*/
-    MatrixView (size_t height, size_t width, T * data, TDIST dist)
+    MatrixView (size_t height, size_t width, T * data, size_t dist)
       : data_(data), n_of_elements_(height*width), height_(height), width_(width), dist_(dist) { }
     
     template <typename TB>
@@ -49,8 +49,24 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     size_t Get_width() const {return width_;}
     size_t Get_height() const {return height_;}
     size_t Size() const { return n_of_elements_; }
-    T & operator()(size_t x, size_t y) { return data_[dist_*(x*width_+y)]; }
-    const T & operator()(size_t x, size_t y) const { return data_[dist_*(x*width_+y)]; }
+
+    T & operator()(size_t x, size_t y) {
+        if constexpr (ORD == RowMajor){
+            return data_[dist_*(x*width_+y)]; 
+            }
+        else { //heist ORD == ColMajor
+            return data_[dist_*(x+y*height_)];
+            }
+        }
+
+    const T & operator()(size_t x, size_t y) const {
+        if constexpr (ORD == RowMajor){
+            return data_[dist_*(x*width_+y)]; 
+            }
+        else { //heist ORD == ColMajor
+            return data_[dist_*(x+y*height_)];
+            }
+        }
     
     auto Range(size_t first_x, size_t first_y, size_t next_x, size_t next_y) const {
       return MatrixView((next_x-first_x),(next_y-first_y), data_+(first_x)*width_+first_y*dist_, dist_);
@@ -64,7 +80,7 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
     }
 
     auto Column(size_t i) const {
-        return MatrixView<T,size_t>(height_,1,data_+i,dist_*width_);
+        return MatrixView<T,ORD>(height_,1,data_+i,dist_*width_);
     } 
 
     /*VectorView<T> Row(int row){
@@ -94,11 +110,10 @@ template <typename T, typename TDIST = std::integral_constant<size_t,1> >
   };
 
 
-template <typename T> //, ORDERING ORD>
-    class Matrix : public MatrixView<T> 
+template <typename T, ORDERING ORD = ORDERING::RowMajor>
+    class Matrix : public MatrixView<T,ORD> 
     {
-        //ORDERING* order_;
-        typedef MatrixView<T> BASE;
+        typedef MatrixView<T,ORD> BASE;
         using BASE::n_of_elements_;
         using BASE::data_;
         
@@ -107,18 +122,18 @@ template <typename T> //, ORDERING ORD>
         //aufrufen und passend befüllen
 
         Matrix()    //Standard-Konstruktor --1x1 Matrix mit Nullelement
-            : MatrixView<T> (1, 1, new T[1]){data_[0]= 0.0; }
+            : MatrixView<T, ORD> (1, 1, new T[1]){data_[0]= 0.0; }
             /*Matrix() erstellt ein MatrixView object, constructor von oben, mit height1, width1, n_elements1 und einem
             1x1 array wo 0 drinnen ist*/
 
         Matrix (size_t height, size_t width)
-            : MatrixView<T> (height, width, new T[height*width]) 
+            : MatrixView<T, ORD> (height, width, new T[height*width]) 
         { for (size_t i = 0; i < n_of_elements_; i++)    //füllt Matrix Element für Element mit 0
             data_[i] = 0.0;
         }
 
         Matrix (size_t height, size_t width, const T* inputdata)
-            : MatrixView<T> (height, width, new T[height*width]) 
+            : MatrixView<T,ORD> (height, width, new T[height*width]) 
         { for (size_t i = 0; i < n_of_elements_; i++)
             data_[i] = inputdata[i];
         }
@@ -130,13 +145,15 @@ template <typename T> //, ORDERING ORD>
         }
 
         Matrix (Matrix && m)
-            : MatrixView<T> (0, 0, nullptr)
+            : MatrixView<T,ORD> (0, 0, nullptr)
         {
             std::swap(BASE::height_, m.height_);
             std::swap(BASE::width_, m.width_);
             std::swap(n_of_elements_, m.n_of_elements_);
             std::swap(data_, m.data_);
         }
+
+        
         
         //das alles ist schon in MatrixView abgehandelt
         /*size_t get_height() const { return height_;}
@@ -180,7 +197,7 @@ template <typename T> //, ORDERING ORD>
             }
 
 
-            Matrix<T> X(BASE::width_, BASE::height_, data_); 
+            Matrix<T, ORD> X(BASE::width_, BASE::height_, data_); 
             //height und width sind vertauscht, 3x2.transpose ist 2x3, altes width ist neues height
             return X;
         }
@@ -208,8 +225,8 @@ template <typename T> //, ORDERING ORD>
         return ost;
     }
    
-    
-    template<typename T>
+    //ist schon in ScalMatExpr gelöst worden
+    /*template<typename T>
         Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
         {
             for(size_t i = 0; i < a.get_height(); i++)
@@ -221,7 +238,7 @@ template <typename T> //, ORDERING ORD>
             }
 
         }
-
+*/
 
 
 }

@@ -28,15 +28,15 @@ int main()
     std::cout << C << std::endl;
     std::cout << C.transpose() << std::endl;
     B = D;
-    std::cout << B << std::endl;*/
+    std::cout << B << std::endl;
 
     int test_asym[6] = {1,2,3,4,5,6};
-    bla::Matrix<int> J(3,2,test_asym);
+    bla::Matrix<int, bla::ORDERING::ColMajor> J(3,2,test_asym);
     int a;
-    a = J(0,0);
-    //std::cout << J << std::endl;
-    //std::cout << J.transpose() << std::endl;
-    //std::cout << a << std::endl;
+    a = J(0,1);
+    std::cout << J << std::endl;
+    std::cout << J.transpose() << std::endl;
+    std::cout << a << std::endl;
     int test_a[6] = {1,2,3,4,5,6};
     int test_b[6] = {6,5,4,3,2,1};
     bla::Matrix<int> K(3,2,test_a);
@@ -51,13 +51,24 @@ int main()
     std::cout << M.Row(2) << std::endl;
     std::cout << M << std::endl;
     std::cout << M.Column(0) << std::endl;
-    std::cout << M.Column(1) << std::endl;
+    std::cout << M.Column(1) << std::endl;*/
     //std::cout << U << std::endl;
     //U = 2*K;
     //std::cout << U << std::endl;
     
-   
-    
+    //Matrix Multiplication tests
+    int testmul1[4] = {1,1,1,1};
+    int testmul2[4] = {1,1,1,1};
+
+    bla::Matrix<int> A(2,2,testmul1);
+    bla::Matrix<int> B(2,2,testmul2);
+    std::cout << "test" << std::endl;
+    std::cout << (A*B) << std::endl;
+    std::cout << "test" << std::endl;
+
+
+
+
 
     // gitignore Test
 
