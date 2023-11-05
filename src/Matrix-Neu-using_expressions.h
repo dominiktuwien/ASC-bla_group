@@ -75,31 +75,35 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     //Range funktioniert nur so halb für (0,0,2,1) --> gibt nur eine Spalte aus 
     //(aber immer noch nur die ersten 2 Einträge <--falsch)
 
+
+
+    // Row/Col mit VectorView - OHNE DIST BERUECKSICHTUNG :(
     auto Row(size_t i) const {
-        return MatrixView(1,width_,data_+(i*width_));
+        if constexpr (ORD == RowMajor) {
+            return VectorView(width_, data_+(i*width_));
+        }
+        else { //heisst ORD == ColMajor
+            T* RowData = new T[width_];
+            for (int k = 0; k < width_; k++) {
+                RowData[k] = data_[i + k*height_];
+                std::cout << RowData[k] << std::endl;
+            }
+            return VectorView(width_, RowData);
+        }
     }
 
     auto Column(size_t i) const {
-        return MatrixView<T,ORD>(height_,1,data_+i,dist_*width_);
-    } 
-
-    /*VectorView<T> Row(int row){
-        if(row <= height_){
-            T temp[width_];
-            for(int i = 0; i < width_; i++){
-                temp[i] = data_[(row*width_)+(i)];
-                std::cout << data_[(row*width_)+(i)] << std::endl;
-                std::cout << temp[i] << std::endl;
+        if constexpr (ORD == RowMajor) {
+            T* ColData = new T[height_];
+            for (int k = 0; k < height_; k++) {
+                ColData[k] = data_[i*dist_ + k*width_]; // dist?
             }
-            VectorView<T> A(width_, temp);
-            return A;
+            return VectorView(height_, ColData);
         }
-        else{
-            size_t size = 0;
-            T trash[0];
-            return VectorView(size, trash);
-        } 
-    }*/
+        else { //heisst ORD == ColMajor
+            return VectorView(height_, data_+i*(height_));
+        }
+    }
 
     
 
@@ -137,6 +141,9 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         { for (size_t i = 0; i < n_of_elements_; i++)
             data_[i] = inputdata[i];
         }
+
+        // Konstruktor mit dist?
+
 
         Matrix (const Matrix & m)       //wenn Matrix übergeben, muss nix verändert werden?
             : Matrix(m.Get_height(),m.Get_width())
