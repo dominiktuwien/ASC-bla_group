@@ -21,14 +21,14 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     size_t dist_ = 1;
   public:
     MatrixView (size_t height, size_t width, T * data)
-      : data_(data), n_of_elements_(height*width), height_(height), width_(width) { }
+      : height_(height), width_(width), data_(data), n_of_elements_(height*width) { }
     
     /*den constructor kann man=Felix nicht aufrufen weil der TDIST type probleme macht
     wenn ich MatrixView(1,1, new T[1], 1) mache erkennt er das TDIST argument als int und sagt er hat keine
     "matching function", wenn ich den letzen einser als: std::integral_constant<size_t,1> übergebe erwartet er
     eine "primary expression", soll heissen std::integral... ist zu komplex als funktionsargument*/
     MatrixView (size_t height, size_t width, T * data, size_t dist)
-      : data_(data), n_of_elements_(height*width), height_(height), width_(width), dist_(dist) { }
+      :  height_(height), width_(width), data_(data), n_of_elements_(height*width), dist_(dist) { }
     
     template <typename TB>
     MatrixView & operator= (const MatExpr<TB> & v2)
@@ -182,7 +182,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         }
 
 
-        Matrix transpose(){
+        /*Matrix transpose_old(){
     
             T x[n_of_elements_];  //dieses array braucht den allgemeinen typ T, war vorher double
             for(size_t z = 0; z< n_of_elements_;z++){
@@ -200,6 +200,15 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
             Matrix<T, ORD> X(BASE::width_, BASE::height_, data_); 
             //height und width sind vertauscht, 3x2.transpose ist 2x3, altes width ist neues height
             return X;
+        }*/
+
+        auto transpose(){
+            if constexpr(ORD == ORDERING::RowMajor){
+                return MatrixView<T, ORDERING::ColMajor>(BASE::width_,BASE::height_,BASE::data_);
+            }
+            else{
+                return MatrixView<T, ORDERING::RowMajor>(BASE::width_,BASE::height_,BASE::data_);
+            }
         }
         
     };
