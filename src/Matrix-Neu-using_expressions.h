@@ -104,6 +104,32 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
             return VectorView(height_, data_+i*(height_));
         }
     }
+    
+    auto Rows(size_t first, size_t last){
+        //error handling: first > last
+        //sonderfall Rows wird zu Row eventuell
+        if constexpr(ORD == ORDERING::RowMajor){
+            return MatrixView(last-first, width_, data_+(first*width_)*dist_);
+        }
+
+        }
+    }
+    
+    auto Columns(size_t first, size_t last){
+        //selbe probleme wie Rows
+        if constexpr(ORD == ORDERING::ColMajor){
+            return MatrixView(height_, last-first, data_+(first*height_)*dist_);
+        }
+    }
+
+    auto transpose(){
+            if constexpr(ORD == ORDERING::RowMajor){
+                return MatrixView<T, ORDERING::ColMajor>(width_,height_,data_);
+            }
+            else{
+                return MatrixView<T, ORDERING::RowMajor>(width_,height_,data_);
+            }
+        }
 
     
 

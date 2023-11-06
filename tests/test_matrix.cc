@@ -67,10 +67,15 @@ int main()
     std::cout << "test" << std::endl;*/
 
     //alt transpose test
-    int test_a[6] = {1,2,3,4,5,6};
+    /*int test_a[6] = {1,2,3,4,5,6};
     bla::Matrix<int, bla::ORDERING::RowMajor> J(2,3,test_a);
     std::cout << J << std::endl;
-    std::cout << J.transpose() << std::endl;
+    std::cout << J.transpose() << std::endl;*/
+
+    //Rows !!Mehrzahl, test
+    int test_rows[10] = {0,1,2,3,4,0,1,2,3,4};
+    bla::Matrix<int,bla::ORDERING::ColMajor> N(5,2,test_rows);
+    std::cout << N.Rows(0,2) << std::endl;
 
 
 
