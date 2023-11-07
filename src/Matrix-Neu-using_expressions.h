@@ -34,7 +34,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     MatrixView & operator= (const MatExpr<TB> & v2)
     {
       for (size_t i = 0; i < n_of_elements_; i++)
-        data_[dist_*i] = v2((i/v2.get_width()),(i%v2.get_width()) );
+        data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
       return *this;
     }
 
@@ -86,7 +86,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
             T* RowData = new T[width_];
             for (int k = 0; k < width_; k++) {
                 RowData[k] = data_[i + k*height_];
-                std::cout << RowData[k] << std::endl;
             }
             return VectorView(width_, RowData);
         }
@@ -111,8 +110,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         if constexpr(ORD == ORDERING::RowMajor){
             return MatrixView(last-first, width_, data_+(first*width_)*dist_);
         }
-
-        }
     }
     
     auto Columns(size_t first, size_t last){
@@ -129,7 +126,58 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
             else{
                 return MatrixView<T, ORDERING::RowMajor>(width_,height_,data_);
             }
+    }
+
+    // Inverse mit Gauss-Elimination (evtl. schneller mit Cramer'scher Regel?)
+    // TODO: "simplify using new features" -> sollen wsh. Row/Rows oder transpose fkt. verwenden...
+    auto inverse() { 
+        if (width_ != height_) {
+            std::cout << "Nicht quadratische Matrix!" << std::endl; // TODO: zu error machen
         }
+
+        // Identity matrix
+        T* id_data = new T[n_of_elements_]{0};
+        MatrixView<T> id_mat(height_, width_, id_data); // TODO: dist?
+        for (int i=0; i < height_; i++) {
+            id_mat(i,i) = 1;
+        }
+
+        // ursprüngliche Matrix kopieren, sodass diese nicht verändert wird
+        MatrixView<T> copy_mat(height_, width_, data_);
+
+        // Inverse berechnen
+        for (int i=0; i < height_; i++) { 
+
+            // i-te Zeile durch (i,i)-ten Eintrag dividieren:
+            T diag_element = copy_mat(i, i);
+            if (diag_element == 0) { std::cout << "Matrix ist singulaer" << std::endl;} // TODO: zu error machen
+            // copy_mat.Row(i) = copy_mat.Row(i) * (1/diag_element);
+            // id_mat.Row(i) = id_mat.Row(i) * (1/diag_element);
+                // -> fkt. nicht weil .Row VectorView zurückgibt und * dafür nicht def. ist
+            // copy_mat.Rows(i, i+1) = copy_mat.Rows(i, i+1) * (1/diag_element); // gibt MatrixView, * sollte fkt.?
+            // id_mat.Rows(i, i+1) = id_mat.Rows(i, i+1) * (1/diag_element);
+                // -> fkt. nicht weil keine Ahnung warum, ich versteh matexpression nicht gut genug
+            for (int j=0; j < height_; j++) {
+                copy_mat(i,j) /= diag_element;
+                id_mat(i,j) /= diag_element;
+            }
+
+            // andere Zeilen eliminieren:
+            for (int k=0; k < height_; k++) { 
+                if (k != i) {
+                    T factor = copy_mat(k, i);
+                    for (int j=0; j < height_; j++) {
+                        copy_mat(k,j) -= factor * copy_mat(i,j);
+                        id_mat(k,j) -= factor * id_mat(i,j);
+                    }
+                }
+            }
+        }
+        if (ORD == ORDERING::ColMajor) { id_mat = id_mat.transpose(); }
+            // -> Inverse der transp. Matrix == Transponierte der inv. Matrix (fkt. aber nicht)
+            // falls das so nix wird beim Initialisieren von id_mat Fallunterscheidung für ColMajor machen
+        return id_mat;
+    }
 
     
 
@@ -138,6 +186,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     }*/ //Slice function brauchen wir nicht
       
   };
+
 
 
 template <typename T, ORDERING ORD = ORDERING::RowMajor>
@@ -168,7 +217,11 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
             data_[i] = inputdata[i];
         }
 
-        // Konstruktor mit dist?
+        Matrix (size_t height, size_t width, const T* inputdata, size_t dist)
+            : MatrixView<T,ORD> (height, width, new T[height*width], dist) 
+        { for (size_t i = 0; i < n_of_elements_; i++)
+            data_[i] = inputdata[i];
+        }
 
 
         Matrix (const Matrix & m)       //wenn Matrix übergeben, muss nix verändert werden?
@@ -235,14 +288,15 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
             return X;
         }*/
 
-        auto transpose(){
+        /*auto transpose(){
             if constexpr(ORD == ORDERING::RowMajor){
                 return MatrixView<T, ORDERING::ColMajor>(BASE::width_,BASE::height_,BASE::data_);
             }
             else{
                 return MatrixView<T, ORDERING::RowMajor>(BASE::width_,BASE::height_,BASE::data_);
             }
-        }
+        }*/
+
         
     };
     
@@ -266,21 +320,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         }
         return ost;
     }
-   
-    //ist schon in ScalMatExpr gelöst worden
-    /*template<typename T>
-        Matrix<T> operator* (const Matrix<T> & a, const Matrix<T> & b)
-        {
-            for(size_t i = 0; i < a.get_height(); i++)
-            {
-                for(size_t j = 0; j < b.Size(); j+= b.get_width)
-                {
-
-                }
-            }
-
-        }
-*/
 
 
 }
