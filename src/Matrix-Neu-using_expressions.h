@@ -110,6 +110,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         if constexpr(ORD == ORDERING::RowMajor){
             return MatrixView(last-first, width_, data_+(first*width_)*dist_);
         }
+    }
     
     
     auto Columns(size_t first, size_t last){
