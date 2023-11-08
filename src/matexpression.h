@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<expression.h>
+#include<expression.h>
 
 namespace ASC_bla
 {
@@ -72,7 +73,7 @@ namespace ASC_bla
       MatMatMulExpr(TMatA matA, TMatB matB) : matA_(matA), matB_(matB) { }
 
       auto operator() (size_t i, size_t j) {
-        double result;
+        double result{0};
         for(size_t c = 0; c < matA_.Get_width(); c++){
           result += (matA_.Row(i))(c) * (matB_.Column(j))(c);        
           }
@@ -87,25 +88,25 @@ namespace ASC_bla
   auto operator* (const MatExpr<T> & left, const MatExpr<T> & right)
   {
     return MatMatMulExpr(left.Upcast(), right.Upcast());
-  };
+  }
 
-    template<typename TMat, typename TVec>
-  class MatMulVecExpr : public VecExpr<MatMulVecExpr<TMat,TVec>>
+  template<typename TMatA, typename TVecB>
+  class MatMulVecExpr : public VecExpr<MatMulVecExpr<TMatA,TVecB>>
   {
-    TMat mat_;
-    TVec vec_;
+    TMatA matA_;
+    TVecB vecB_;
 
     public:
-      MatMulVecExpr(TMat mat, TVec vec) : mat_(mat), vec_(vec) { }
+      MatMulVecExpr(TMatA matA, TVecB vecB) : matA_(matA), vecB_(vecB) { }
 
       auto operator() (size_t i) {
-        double result;
-        for(size_t c = 0; c < mat_.Get_width(); c++){
-          result += (mat_.Row(i))(c) * vec_(c);        
+        double result{0};
+        for(size_t c = 0; c < vecB_.Size(); c++){
+          result += (matA_.Row(i))(c) * (vecB_)(c);        
           }
         return result;
       }
-      size_t Size() const { return vec_.Size();}
+      size_t Size() const { return vecB_.Size(); }
   };
 
   template<typename T, typename U>
@@ -113,6 +114,10 @@ namespace ASC_bla
   {
     return MatMulVecExpr(left.Upcast(), right.Upcast());
   };
+
+
+
+
 
   template <typename T>
   std::ostream & operator<< (std::ostream & ost, const MatExpr<T> & v)
