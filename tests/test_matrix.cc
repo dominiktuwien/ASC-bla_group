@@ -57,14 +57,14 @@ int main()
     //std::cout << U << std::endl;
     
     //Matrix Multiplication tests
-    /*int testmul1[4] = {1,1,1,1};
+    int testmul1[4] = {1,1,1,1};
     int testmul2[4] = {1,1,1,1};
 
     bla::Matrix<int> A(2,2,testmul1);
     bla::Matrix<int> B(2,2,testmul2);
     std::cout << "test" << std::endl;
     std::cout << (A*B) << std::endl;
-    std::cout << "test" << std::endl;*/
+    std::cout << "test" << std::endl;
 
     //alt transpose test
     /*int test_a[6] = {1,2,3,4,5,6};
@@ -73,9 +73,9 @@ int main()
     std::cout << J.transpose() << std::endl;*/
 
     //Rows !!Mehrzahl, test
-    int test_rows[10] = {0,1,2,3,4,0,1,2,3,4};
+    /*int test_rows[10] = {0,1,2,3,4,0,1,2,3,4};
     bla::Matrix<int,bla::ORDERING::ColMajor> N(5,2,test_rows);
-    std::cout << N.Rows(0,2) << std::endl;
+    std::cout << N.Rows(0,2) << std::endl;*/
 
 
 

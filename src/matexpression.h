@@ -73,7 +73,7 @@ namespace ASC_bla
       auto operator() (size_t i, size_t j) {
         double result;
         for(size_t c = 0; c < matA_.Get_width(); c++){
-          result += (matA_.Row(i))(0,c) * (matB_.Column(j))(c,0);        
+          result += (matA_.Row(i))(c) * (matB_.Column(j))(c);        
           }
         return result;
       }
