@@ -2,6 +2,7 @@
 #define FILE_MATRIX_EXPRESSION_H
 
 #include<iostream>
+#include<expression.h>
 
 namespace ASC_bla
 {
@@ -86,6 +87,31 @@ namespace ASC_bla
   auto operator* (const MatExpr<T> & left, const MatExpr<T> & right)
   {
     return MatMatMulExpr(left.Upcast(), right.Upcast());
+  };
+
+    template<typename TMat, typename TVec>
+  class MatMulVecExpr : public VecExpr<MatMulVecExpr<TMat,TVec>>
+  {
+    TMat mat_;
+    TVec vec_;
+
+    public:
+      MatMulVecExpr(TMat mat, TVec vec) : mat_(mat), vec_(vec) { }
+
+      auto operator() (size_t i) {
+        double result;
+        for(size_t c = 0; c < mat_.Get_width(); c++){
+          result += (mat_.Row(i))(c) * vec_(c);        
+          }
+        return result;
+      }
+      size_t Size() const { return vec_.Size();}
+  };
+
+  template<typename T, typename U>
+  auto operator* (const MatExpr<T> & left, const VecExpr<U> & right)
+  {
+    return MatMulVecExpr(left.Upcast(), right.Upcast());
   };
 
   template <typename T>

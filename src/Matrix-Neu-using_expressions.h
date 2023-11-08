@@ -104,6 +104,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         }
     }
     
+    //UNFERTIG!
     auto Rows(size_t first, size_t last){
         //error handling: first > last
         //sonderfall Rows wird zu Row eventuell
