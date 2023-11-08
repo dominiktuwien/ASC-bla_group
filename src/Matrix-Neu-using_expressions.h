@@ -112,12 +112,15 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         }
     }
     
+    
     auto Columns(size_t first, size_t last){
         //selbe probleme wie Rows
         if constexpr(ORD == ORDERING::ColMajor){
             return MatrixView(height_, last-first, data_+(first*height_)*dist_);
         }
     }
+
+  
 
     auto transpose(){
             if constexpr(ORD == ORDERING::RowMajor){
