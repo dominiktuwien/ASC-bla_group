@@ -68,14 +68,21 @@ int main()
 
     //alt transpose test
     /*int test_a[6] = {1,2,3,4,5,6};
-    bla::Matrix<int, bla::ORDERING::RowMajor> J(2,3,test_a);
+    bla::Matrix<int, bla::ORDERING::ColMajor> J(2,3,test_a);
     std::cout << J << std::endl;
     std::cout << J.transpose() << std::endl;*/
 
     //Rows !!Mehrzahl, test
-    /*int test_rows[10] = {0,1,2,3,4,0,1,2,3,4};
-    bla::Matrix<int,bla::ORDERING::ColMajor> N(5,2,test_rows);
-    std::cout << N.Rows(0,2) << std::endl;*/
+    // int test_rows[10] = {0,1,2,3,4,0,1,2,3,4};
+    // bla::Matrix<int,bla::ORDERING::ColMajor> N(5,2,test_rows);
+    // std::cout << N.Rows(0,2) << std::endl;
+
+    //inverse test
+    double test_inv[9] = {1.0, 2.0, 3.0, 2.0, 5.0, 8.0, 9.0, 6.0, 4.0};
+    bla::Matrix<double, bla::ORDERING::RowMajor> I(3, 3, test_inv);
+    std::cout << I << std::endl;
+    std::cout << I.inverse() << std::endl;
+
 
 
 
