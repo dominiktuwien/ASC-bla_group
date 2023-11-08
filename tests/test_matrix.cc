@@ -2,6 +2,7 @@
 #include <array>
 
 #include <Matrix-Neu-using_expressions.h>
+#include <vector.h>
 
 namespace bla = ASC_bla;
 int main()
@@ -57,14 +58,20 @@ int main()
     //std::cout << U << std::endl;
     
     //Matrix Multiplication tests
-    /*int testmul1[4] = {1,1,1,1};
-    int testmul2[4] = {1,1,1,1};
+    int testmul1[4] = {2,1,1,1};
+    int testmul2[4] = {2,2,3,1};
+    int testmul3[2] = {3,1};
 
     bla::Matrix<int> A(2,2,testmul1);
     bla::Matrix<int> B(2,2,testmul2);
-    std::cout << "test" << std::endl;
-    std::cout << (A*B) << std::endl;
-    std::cout << "test" << std::endl;*/
+    bla::Vector<int> C(2,testmul3);
+    //std::cout << C << std::endl;
+    //std::cout << 3*C << std::endl;
+    //std::cout << "" << std::endl;
+    //std::cout << "testing" << std::endl;
+    //std::cout << (B*A) << std::endl;
+    std::cout << B*C << std::endl;
+    //std::cout << "test" << std::endl;
 
     //alt transpose test
     /*int test_a[6] = {1,2,3,4,5,6};
@@ -78,11 +85,12 @@ int main()
     // std::cout << N.Rows(0,2) << std::endl;
 
     //inverse test
+    /*
     double test_inv[9] = {1.0, 2.0, 3.0, 2.0, 5.0, 8.0, 9.0, 6.0, 4.0};
     bla::Matrix<double, bla::ORDERING::RowMajor> I(3, 3, test_inv);
     std::cout << I << std::endl;
     std::cout << I.inverse() << std::endl;
-
+    */
 
 
 

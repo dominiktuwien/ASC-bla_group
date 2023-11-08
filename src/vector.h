@@ -67,7 +67,10 @@ namespace ASC_bla
   public:
     Vector (size_t size) 
       : VectorView<T> (size, new T[size]) { ; }
-    
+
+    Vector (size_t size, T* data)
+      : VectorView<T> (size, data) { ; }
+
     Vector (const Vector & v)
       : Vector(v.Size())
     {
@@ -116,6 +119,7 @@ namespace ASC_bla
       ost << v(0);
     for (size_t i = 1; i < v.Size(); i++)
       ost << ", " << v(i);
+    //std::cout << "test" << std::endl;
     return ost;
   }
   

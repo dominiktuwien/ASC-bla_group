@@ -2,6 +2,7 @@
 #define FILE_MATRIX_EXPRESSION_H
 
 #include<iostream>
+#include<expression.h>
 
 namespace ASC_bla
 {
@@ -71,9 +72,9 @@ namespace ASC_bla
       MatMatMulExpr(TMatA matA, TMatB matB) : matA_(matA), matB_(matB) { }
 
       auto operator() (size_t i, size_t j) {
-        double result;
+        double result{0};
         for(size_t c = 0; c < matA_.Get_width(); c++){
-          result += (matA_.Row(i))(0,c) * (matB_.Column(j))(c,0);        
+          result += (matA_.Row(i))(c) * (matB_.Column(j))(c);        
           }
         return result;
       }
@@ -86,7 +87,36 @@ namespace ASC_bla
   auto operator* (const MatExpr<T> & left, const MatExpr<T> & right)
   {
     return MatMatMulExpr(left.Upcast(), right.Upcast());
+  }
+
+  template<typename TMatA, typename TVecB>
+  class MatMulVecExpr : public VecExpr<MatMulVecExpr<TMatA,TVecB>>
+  {
+    TMatA matA_;
+    TVecB vecB_;
+
+    public:
+      MatMulVecExpr(TMatA matA, TVecB vecB) : matA_(matA), vecB_(vecB) { }
+
+      auto operator() (size_t i) {
+        double result{0};
+        for(size_t c = 0; c < vecB_.Size(); c++){
+          result += (matA_.Row(i))(c) * (vecB_)(c);        
+          }
+        return result;
+      }
+      size_t Size() const { return vecB_.Size(); }
   };
+
+  template<typename T, typename U>
+  auto operator* (const MatExpr<T> & left, const VecExpr<U> & right)
+  {
+    return MatMulVecExpr(left.Upcast(), right.Upcast());
+  };
+
+
+
+
 
   template <typename T>
   std::ostream & operator<< (std::ostream & ost, const MatExpr<T> & v)
