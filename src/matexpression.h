@@ -40,6 +40,26 @@ namespace ASC_bla
     return SumMatExpr(a.Upcast(), b.Upcast());
   }
 
+    template <typename TA, typename TB>
+  class DiffMatExpr : public MatExpr<DiffMatExpr<TA,TB>>
+  {
+    TA a_;
+    TB b_;
+  public:
+    DiffMatExpr (TA a, TB b) : a_(a), b_(b) { }
+
+    auto operator() (size_t i, size_t j) const { return a_(i,j)-b_(i,j); }
+    size_t Size() const { return a_.Size(); }
+    size_t Get_height() const {return a_.Get_height();}
+    size_t Get_width() const {return a_.Get_width();}        
+  };
+  
+  template <typename TA, typename TB>
+  auto operator- (const MatExpr<TA> & a, const MatExpr<TB> & b)
+  {
+    return DiffMatExpr(a.Upcast(), b.Upcast());
+  }
+
 
 
   
