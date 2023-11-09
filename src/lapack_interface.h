@@ -64,7 +64,7 @@ namespace ASC_bla
   // doublereal *b, integer *ldb, doublereal *beta, doublereal *c__, 
   // integer *ldc);
 
-  /*  
+    
   // c = a*b
   template <ORDERING OA, ORDERING OB>
   void MultMatMatLapack (MatrixView<double, OA> a,
@@ -74,15 +74,16 @@ namespace ASC_bla
     char transa_ = (OA == ColMajor) ? 'N' : 'T';
     char transb_ = (OB == ColMajor) ? 'N' : 'T'; 
   
-    integer n = c.Height();
-    integer m = c.Width();
-    integer k = a.Width();
+    integer n = c.Get_height();
+    integer m = c.Get_width();
+    integer k = a.Get_width();
   
     double alpha = 1.0;
     double beta = 0;
-    integer lda = std::max(a.Dist(), 1ul);
-    integer ldb = std::max(b.Dist(), 1ul);
-    integer ldc = std::max(c.Dist(), 1ul);
+    integer lda = std::max(a.Dist(), size_t(1ul));
+    integer ldb = std::max(b.Dist(), size_t(1ul));
+    integer ldc = std::max(c.Dist(), size_t(1ul));
+    std::cout << transa_ << ";" << transb_ << ";"<< n << ";" << m <<";" <<k << ";" << alpha<< ";" << lda << ";" <<ldb <<";"<< ldc << std::endl;
 
     int err =
       dgemm_ (&transa_, &transb_, &n, &m, &k, &alpha, 
@@ -92,14 +93,14 @@ namespace ASC_bla
       throw std::runtime_error(std::string("MultMatMat got error "+std::to_string(err)));
   }
                        
-  template <ORDERING OA, ORDERING OB>
+  /*template <ORDERING OA, ORDERING OB>
   int MultMatMatLapack (MatrixView<double, OA> a,
                         MatrixView<double, OB> b,
                         MatrixView<double, RowMajor> c)
   {
     MultMatMatLapack (Trans(b), Trans(a), Trans(c));
-  }
-  */
+  }*/
+  
 
   
 
