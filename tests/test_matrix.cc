@@ -70,7 +70,7 @@ int main()
     //std::cout << "" << std::endl;
     //std::cout << "testing" << std::endl;
     //std::cout << (B*A) << std::endl;
-    std::cout << B*C << std::endl;
+    //std::cout << B*C << std::endl;
     //std::cout << "test" << std::endl;
 
     //alt transpose test
@@ -79,10 +79,11 @@ int main()
     std::cout << J << std::endl;
     std::cout << J.transpose() << std::endl;*/
 
-    //Rows !!Mehrzahl, test
-    // int test_rows[10] = {0,1,2,3,4,0,1,2,3,4};
-    // bla::Matrix<int,bla::ORDERING::ColMajor> N(5,2,test_rows);
-    // std::cout << N.Rows(0,2) << std::endl;
+    //Columns !!Mehrzahl, test
+    int test_cols[15] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+    bla::Matrix<int,bla::ORDERING::ColMajor> N(3,5,test_cols);
+    std::cout << N << std::endl;
+    std::cout << N.Rows(1,3) << std::endl;
 
     //inverse test
     

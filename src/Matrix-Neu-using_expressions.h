@@ -111,6 +111,17 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         if constexpr(ORD == ORDERING::RowMajor){
             return MatrixView(last-first, width_, data_+(first*width_)*dist_);
         }
+        if constexpr(ORD == ORDERING::ColMajor){
+            T* RowData = new T[(last-first)*height_];
+            data_ += first;
+            for(int i = 0; i < width_;i++){
+                for(int j = 0; j < (last-first);j++){
+                    RowData[j+i*(last-first)] = data_[j+i*(height_)];
+                }
+            }
+            data_ -= first;
+            return MatrixView((last-first),width_,RowData);
+        }
     }
     
     
@@ -118,6 +129,17 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         //selbe probleme wie Rows
         if constexpr(ORD == ORDERING::ColMajor){
             return MatrixView(height_, last-first, data_+(first*height_)*dist_);
+        }
+        if constexpr(ORD == ORDERING::RowMajor){
+            T* ColumnData = new T[(last-first)*height_];
+            data_ += first;
+            for (int k = 0; k < height_; k++){
+                for (int j = 0; j < (last-first); j++){
+                    ColumnData[k*(last-first)+j] = data_[j+k*width_];
+                }
+            }
+            data_ -= first; //got a weird assertion in Visual Studio Code, this might fix it
+            return MatrixView(height_,(last-first),ColumnData);
         }
     }
 
