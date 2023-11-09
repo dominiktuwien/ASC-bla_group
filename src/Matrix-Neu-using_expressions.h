@@ -155,7 +155,8 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     }
 
     // Inverse mit Gauss-Elimination (evtl. schneller mit Cramer'scher Regel?)
-    // TODO: "simplify using new features" -> sollen wsh. Row/Rows oder transpose fkt. verwenden...
+    //has been simplified using new features Row (i)
+    //still no option to inverse ColMajors
     auto inverse() { 
         if (width_ != height_) {
             std::cout << "Nicht quadratische Matrix!" << std::endl; // TODO: zu error machen
@@ -170,6 +171,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
 
         // ursprüngliche Matrix kopieren, sodass diese nicht verändert wird
         MatrixView<T> copy_mat(height_, width_, data_);
+        //if(ORD == ORDERING::ColMajor){copy_mat = this->transpose;}
 
         // Inverse berechnen
         for (int i=0; i < height_; i++) { 
@@ -177,25 +179,29 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
             // i-te Zeile durch (i,i)-ten Eintrag dividieren:
             T diag_element = copy_mat(i, i);
             if (diag_element == 0) { std::cout << "Matrix ist singulaer" << std::endl;} // TODO: zu error machen
-            // copy_mat.Row(i) = copy_mat.Row(i) * (1/diag_element);
-            // id_mat.Row(i) = id_mat.Row(i) * (1/diag_element);
+            copy_mat.Row(i) = (1/diag_element) * copy_mat.Row(i);
+            id_mat.Row(i) = (1/diag_element) * id_mat.Row(i);
                 // -> fkt. nicht weil .Row VectorView zurückgibt und * dafür nicht def. ist
             // copy_mat.Rows(i, i+1) = copy_mat.Rows(i, i+1) * (1/diag_element); // gibt MatrixView, * sollte fkt.?
             // id_mat.Rows(i, i+1) = id_mat.Rows(i, i+1) * (1/diag_element);
                 // -> fkt. nicht weil keine Ahnung warum, ich versteh matexpression nicht gut genug
-            for (int j=0; j < height_; j++) {
+                //geile workaround idee eigentlich
+            /*for (int j=0; j < height_; j++) {
                 copy_mat(i,j) /= diag_element;
                 id_mat(i,j) /= diag_element;
-            }
+            }*/
 
             // andere Zeilen eliminieren:
             for (int k=0; k < height_; k++) { 
                 if (k != i) {
                     T factor = copy_mat(k, i);
-                    for (int j=0; j < height_; j++) {
+                    /*for (int j=0; j < height_; j++) {
                         copy_mat(k,j) -= factor * copy_mat(i,j);
                         id_mat(k,j) -= factor * id_mat(i,j);
-                    }
+                        }*/
+                    copy_mat.Row(k) = copy_mat.Row(k) - (factor * copy_mat.Row(i));
+                    id_mat.Row(k) = id_mat.Row(k) - (factor * id_mat.Row(i));
+
                 }
             }
         }
