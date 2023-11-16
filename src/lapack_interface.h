@@ -88,6 +88,8 @@ namespace ASC_bla
     unsigned long c1 = c.Dist();
     integer ldc = std::max(c1, 1ul);
 
+    //std::cout << transa_ << ";" << transb_ << ";"<< n << ";" << m <<";" <<k << ";" << alpha<< ";" << lda << ";" <<ldb <<";"<< ldc << std::endl;
+
     int err =
       dgemm_ (&transa_, &transb_, &n, &m, &k, &alpha, 
               a.Data(), &lda, b.Data(), &ldb, &beta, c.Data(), &ldc);
