@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include <vector.h>
+#include <Matrix-Neu-using_expressions.h>
 #include <lapack_interface.h>
 
 

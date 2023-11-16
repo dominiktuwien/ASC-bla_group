@@ -114,7 +114,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         }
     }
     
-    //UNFERTIG!
     auto Rows(size_t first, size_t last){
         //error handling: first > last
         //sonderfall Rows wird zu Row eventuell
@@ -200,7 +199,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
                 copy_mat(i,j) /= diag_element;
                 id_mat(i,j) /= diag_element;
             }*/
-
             // andere Zeilen eliminieren:
             for (int k=0; k < height_; k++) { 
                 if (k != i) {

@@ -80,15 +80,15 @@ int main()
     std::cout << J.transpose() << std::endl;*/
 
     //Columns !!Mehrzahl, test
-    int test_cols[15] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+    /*int test_cols[15] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14};
     bla::Matrix<int,bla::ORDERING::ColMajor> N(3,5,test_cols);
     std::cout << N << std::endl;
-    std::cout << N.Rows(1,3) << std::endl;
+    std::cout << N.Rows(1,3) << std::endl;*/
 
     //inverse test
     
     double test_inv[9] = {1.0, 2.0, 3.0, 2.0, 5.0, 8.0, 9.0, 6.0, 4.0};
-    bla::Matrix<double, bla::ORDERING::ColMajor> I(3, 3, test_inv);
+    bla::Matrix<double, bla::ORDERING::RowMajor> I(3, 3, test_inv);
     std::cout << I << std::endl;
     std::cout << I.inverse() << std::endl;
     
