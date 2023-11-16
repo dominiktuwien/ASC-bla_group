@@ -38,6 +38,14 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
       return *this;
     }
 
+    template <typename TB>
+    MatrixView & operator= (const MatMatMulExpr<TB,TB> & v2)
+    {
+      for (size_t i = 0; i < n_of_elements_; i++)
+        data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
+      return *this;
+    }
+
     MatrixView & operator= (T scal)
     {
       for (size_t i = 0; i < n_of_elements_; i++)
@@ -304,6 +312,14 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         {
             for (size_t i = 0; i < n_of_elements_; i++)
                 data_[i] = v2((i/v2.Get_width())  ,(i%v2.Get_width()));     
+            return *this;
+        }
+    
+        template <typename TB, typename TC>
+        Matrix & operator= (MatMatMulExpr<TB, TC> & v2)
+        {
+            for (size_t i = 0; i < n_of_elements_; i++)
+                data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
             return *this;
         }
 
