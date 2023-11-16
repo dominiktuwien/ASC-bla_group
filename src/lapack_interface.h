@@ -5,6 +5,7 @@
 #include <string>
 
 #include "vector.h"
+#include "Matrix-Neu-using_expressions.h"
 
 
 
@@ -64,42 +65,47 @@ namespace ASC_bla
   // doublereal *b, integer *ldb, doublereal *beta, doublereal *c__, 
   // integer *ldc);
 
-  /*  
+    
   // c = a*b
-  template <ORDERING OA, ORDERING OB>
-  void MultMatMatLapack (MatrixView<double, OA> a,
-                         MatrixView<double, OB> b,
-                         MatrixView<double, ColMajor> c)
+  template <typename T, typename U, typename V, ORDERING OA, ORDERING OB>
+  void MultMatMatLapack (MatrixView<T, OA> a,
+                         MatrixView<U, OB> b,
+                         MatrixView<V, ColMajor> c)
   {
     char transa_ = (OA == ColMajor) ? 'N' : 'T';
     char transb_ = (OB == ColMajor) ? 'N' : 'T'; 
   
-    integer n = c.Height();
-    integer m = c.Width();
-    integer k = a.Width();
+    integer n = c.Get_height();
+    integer m = c.Get_width();
+    integer k = a.Get_width();
   
     double alpha = 1.0;
     double beta = 0;
-    integer lda = std::max(a.Dist(), 1ul);
-    integer ldb = std::max(b.Dist(), 1ul);
-    integer ldc = std::max(c.Dist(), 1ul);
+    unsigned long a1 = a.Dist();
+    integer lda = std::max(a1, 1ul);
+    unsigned long b1 = b.Dist();
+    integer ldb = std::max(b1, 1ul);
+    unsigned long c1 = c.Dist();
+    integer ldc = std::max(c1, 1ul);
 
     int err =
       dgemm_ (&transa_, &transb_, &n, &m, &k, &alpha, 
               a.Data(), &lda, b.Data(), &ldb, &beta, c.Data(), &ldc);
 
-    if (err != 0)
-      throw std::runtime_error(std::string("MultMatMat got error "+std::to_string(err)));
+    //if (err != 0)
+    //  throw std::runtime_error(std::string("MultMatMat got error "+std::to_string(err)));
   }
-                       
-  template <ORDERING OA, ORDERING OB>
-  int MultMatMatLapack (MatrixView<double, OA> a,
-                        MatrixView<double, OB> b,
-                        MatrixView<double, RowMajor> c)
+
+
+
+  template <typename U, typename V, typename W, ORDERING OA, ORDERING OB>
+  void MultMatMatLapack (MatrixView<U, OA> a,
+                        MatrixView<V, OB> b,
+                        MatrixView<W, RowMajor> c)
   {
-    MultMatMatLapack (Trans(b), Trans(a), Trans(c));
+    MultMatMatLapack (b.transpose(), a.transpose(), c.transpose());
   }
-  */
+
 
   
 

@@ -49,6 +49,16 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     size_t Get_width() const {return width_;}
     size_t Get_height() const {return height_;}
     size_t Size() const { return n_of_elements_; }
+    size_t Dist() const {
+        if constexpr (ORD == RowMajor){
+            return width_; 
+            }
+        else { //heist ORD == ColMajor
+            return height_;
+            }
+        
+    }
+    auto Data() const {return data_;}
 
     T & operator()(size_t x, size_t y) {
         if constexpr (ORD == RowMajor){
