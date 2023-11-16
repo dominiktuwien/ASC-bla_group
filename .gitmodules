@@ -1,0 +1,3 @@
+[submodule "ASC-HPC_physics_group"]
+	path = ASC-HPC_physics_group
+	url = https://github.com/dominiktuwien/ASC-HPC_physics_group.git
