@@ -38,13 +38,14 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
       return *this;
     }
 
-    template <typename TB>
+    // deactivated bc doesn't work with MatMul test in test_matrix.cc
+    /*template <typename TB>
     MatrixView & operator= (const MatMatMulExpr<TB,TB> & v2)
     {
       for (size_t i = 0; i < n_of_elements_; i++)
         data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
       return *this;
-    }
+    }*/
 
     MatrixView & operator= (T scal)
     {
@@ -243,6 +244,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         typedef MatrixView<T,ORD> BASE;
         using BASE::n_of_elements_;
         using BASE::data_;
+        using BASE::dist_;
         
         public:
         //alle Matrix() kontruktor sind nur pseudo-konstruktor da wir einfach den dazugehörigen MatrixView konstruktor
@@ -299,6 +301,8 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
 
         ~Matrix() {delete [] data_; }
 
+
+        using BASE::operator=; // enables Matrix = MatrixView, e.g. A = B.transpose()
 
         Matrix & operator=(const Matrix & v2)
         {
