@@ -30,6 +30,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     MatrixView (size_t height, size_t width, T * data, size_t dist)
       :  height_(height), width_(width), data_(data), n_of_elements_(height*width), dist_(dist) { }
     
+
     template <typename TB>
     MatrixView & operator= (const MatExpr<TB> & v2)
     {
@@ -57,7 +58,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         else { //heist ORD == ColMajor
             return height_;
             }
-        
     }
     auto Data() const {return data_;}
 
@@ -152,7 +152,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
             return MatrixView(height_,(last-first),ColumnData);
         }
     }
-
   
 
     auto transpose(){
@@ -282,7 +281,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         ~Matrix() {delete [] data_; }
 
 
-        using BASE::operator=; // enables Matrix = MatrixView, e.g. A = B.transpose()
+        using BASE::operator=; // enables Matrix = MatrixView, e.g. A = B.transpose(), C=A*B, etc..
 
         Matrix & operator=(const Matrix & v2)
         {
@@ -323,7 +322,6 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         }
         return ost;
     }
-
 
 }
 #endif
