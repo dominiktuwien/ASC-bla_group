@@ -7,8 +7,7 @@
 #include "vector.h"
 #include "Matrix-Neu-using_expressions.h"
 
-
-
+#include <vector> // for LU decomposition
 #include <complex>
 
 typedef int integer;
@@ -111,7 +110,7 @@ namespace ASC_bla
 
   
 
-  /*
+  
   template <ORDERING ORD>
   class LapackLU {
     Matrix <double, ORD> a;
@@ -119,10 +118,10 @@ namespace ASC_bla
     
   public:
     LapackLU (Matrix<double,ORD> _a)
-      : a(std::move(_a)), ipiv(a.Height()) {
-      integer m = a.Height();
+      : a(std::move(_a)), ipiv(a.Get_height()) {
+      integer m = a.Get_height();
       if (m == 0) return;
-      integer n = a.Width();
+      integer n = a.Get_width();
       integer lda = a.Dist();
       integer info;
     
@@ -135,7 +134,7 @@ namespace ASC_bla
     // b overwritten with A^{-1} b
     void Solve (VectorView<double> b) const {
       char transa =  (ORD == ColMajor) ? 'N' : 'T';
-      integer n = a.Height();
+      integer n = a.Get_height();
       integer nrhs = 1;
       integer lda = a.Dist();
       integer ldb = b.Size();
@@ -151,7 +150,7 @@ namespace ASC_bla
     Matrix<double,ORD> Inverse() && {
       double hwork;
       integer lwork = -1;
-      integer n = a.Height();      
+      integer n = a.Get_height();      
       integer lda = a.Dist();
       integer info;
 
@@ -167,11 +166,47 @@ namespace ASC_bla
       return std::move(a);      
     }
 
-    // Matrix<double,ORD> LFactor() const { ... }
-    // Matrix<double,ORD> UFactor() const { ... }
-    // Matrix<double,ORD> PFactor() const { ... }
+    Matrix<double,ORD> LFactor() const { // = lower triangular matrix with unit diagonal elements
+      integer m = a.Get_height();
+      integer n = a.Get_width();
+      Matrix<double,ORD> L(m,n);
+
+      for (int i=0; i < m; i++) {
+        for (int j=0; j < n; j++) {
+          if (i > j) { L(i,j) = a(i,j); }
+          else if (i == j) { L(i,j) = 1,0; }
+          else { L(i,j) = 0.0; }
+        }
+      }
+      return L;
+    }
+
+    Matrix<double,ORD> UFactor() const { // upper triangular matrix -> TODO: wrong U...
+      integer m = a.Get_height();
+      integer n = a.Get_width();
+      Matrix<double,ORD> U(m,n);
+      
+      for (int i=0; i < m; i++) {
+        for (int j=0; j < n; j++) {
+          if (i <= j) { U(i,j) = a(i,j); }
+          else { U(i,j) = 0.0; }
+        }
+      }
+      return U;
+    }
+
+    Matrix<double,ORD> PFactor() const { // Permutation Matrix
+      integer m = a.Get_height();
+      integer n = a.Get_width();
+      Matrix<double,ORD> P(m,n);
+      
+      for (int i=0; i < m; i++) {
+        P(i, ipiv[i]-1) = 1.0; // -1 bc LAPACK (Fortran) indexing starts at 1
+      }
+      return P;
+     }
   };
-  */ 
+  
 
   
 }

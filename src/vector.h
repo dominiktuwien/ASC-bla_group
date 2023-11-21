@@ -43,6 +43,7 @@ namespace ASC_bla
     auto View() const { return VectorView(size_, dist_, data_); }
     size_t Size() const { return size_; }
     auto Dist() const { return dist_; }    
+    auto Data() const {return data_;} // necessary for Lapack
     T & operator()(size_t i) { return data_[dist_*i]; }
     const T & operator()(size_t i) const { return data_[dist_*i]; }
     

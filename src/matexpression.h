@@ -3,7 +3,6 @@
 
 #include<iostream>
 #include<expression.h>
-#include<expression.h>
 
 namespace ASC_bla
 {
@@ -134,9 +133,6 @@ namespace ASC_bla
   {
     return MatMulVecExpr(left.Upcast(), right.Upcast());
   };
-
-
-
 
 
   template <typename T>

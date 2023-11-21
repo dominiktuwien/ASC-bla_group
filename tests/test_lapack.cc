@@ -11,7 +11,7 @@ using namespace std;
 
 int main()
 {
-  Vector<double> x(5);
+/*  Vector<double> x(5);
   Vector<double> y(5);
   double amatrix[6] = {2,2,3,1,4,1};
   double bmatrix[4] = {5,2,7,1};
@@ -33,14 +33,13 @@ int main()
  // cout << "y = " << y << endl;
   
   //AddVectorLapack (2, x, y);  
-  //cout << "y+2*x = " << y << endl;
+  //cout << "y+2*x = " << y << endl;*/
 
-  //MultMatMatLapack(A,B,C);
-  //C = A*B;
-  //cout << "test" << endl;
-  //cout << "A*B = " << endl;
-  //cout << C << endl;
-  Matrix<double> T1(10,10);
+
+
+//Matrix Matrix Multiplication
+
+  /*Matrix<double> T1(10,10);
   Matrix<double> T2(10,10);
   Matrix<double> T3(10,10);
   for (int j = 0; j < 10; j++){
@@ -49,11 +48,14 @@ int main()
       T2(j,k) = 3;
     }
   }
+
   //T3 = T1*T2;
   MultMatMatLapack(T1,T2,T3);
-  cout << T3 << endl;
-/*
- int n = 10;
+  //T3 = T1*T2 | Lapack;
+  
+  cout << T3 << endl;*/
+
+ /*int n = 10;
  size_t flops = n*n*n;
  size_t runs = size_t (1e9 / flops) + 1;
  auto start = std::chrono::high_resolution_clock::now();
@@ -67,15 +69,62 @@ int main()
       T2(j,k) = 3;
     }
   }
+
   MultMatMatLapack(T1,T2,T3); 
-  //T3 = T1*T2; 
+  //T3 = T1*T2; // DON'T USE IF YOU WANT YOUR DEVICE TO FIX
    
    };
  auto end = std::chrono::high_resolution_clock::now();
  double time = std::chrono::duration<double>(end-start).count();
         
- cout << "n = " << n << ", time = " << time << " s, GFlops = " << (flops*runs)/time*1e-9 << endl;
-*/
+ cout << "n = " << n << ", time = " << time << " s, GFlops = " << (flops*runs)/time*1e-9 << endl;*/
+
+
+
+//LU-decomposition
+  double Mdata[9] = {1,1,0.5,3,1.5,3,0,0,2.5};
+  Matrix<double> M(3,3, Mdata);
+
+  // Inverse
+    Matrix<double> invM = LapackLU(M).Inverse();
+    cout << invM << endl;
+    cout << M << endl;
+
+    Matrix<double> invM_mov = LapackLU(std::move(M)).Inverse();
+    cout << invM_mov << endl;
+    cout << M << endl; // is now empty 
+
+  // Solve (linear system Ax=b);
+   /* Matrix<double> A(M);
+    double bdata[3] = {1,1,1};
+    Vector<double> b(3, bdata);
+    cout << b << endl;
+
+    LapackLU(M).Solve(b); // Ax=b -> x=A^{-1}b
+    cout << b << endl; // b is now x
+    cout << A*b << endl; // A*x = A*(A^{-1}b) = b
+    */
+
+   // A = PLU
+    /*Matrix<double> A(M);
+    Matrix<double> L = LapackLU(A).LFactor();
+    Matrix<double> U = LapackLU(A).UFactor();
+    Matrix<double> P = LapackLU(A).PFactor();
+    cout << A << endl;
+    cout << L << endl;
+    cout << U << endl;
+    cout << P << endl;
+
+    Matrix<double> LU(3,3);
+    LU = (L*U);
+    Matrix<double> newA(3,3);
+    newA = P*LU;
+    cout << newA << endl; // should be the same as A ...almost correct :(
+      */
+
+  
+
+
 }
 
   

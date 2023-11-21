@@ -38,21 +38,13 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
       return *this;
     }
 
-    // deactivated bc doesn't work with MatMul test in test_matrix.cc
-    /*template <typename TB>
-    MatrixView & operator= (const MatMatMulExpr<TB,TB> & v2)
-    {
-      for (size_t i = 0; i < n_of_elements_; i++)
-        data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
-      return *this;
-    }*/
-
     MatrixView & operator= (T scal)
     {
       for (size_t i = 0; i < n_of_elements_; i++)
         data_[dist_*i] = scal;
       return *this;
     }
+    
 
     auto View() const { return MatrixView(height_, width_, n_of_elements_, dist_, data_); }
     size_t Get_width() const {return width_;}
@@ -172,7 +164,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
             }
     }
 
-    // Inverse mit Gauss-Elimination (evtl. schneller mit Cramer'scher Regel?)
+    // Inverse mit Gauss-Elimination
     //has been simplified using new features Row (i)
     //still no option to inverse ColMajors
     auto inverse() { 
@@ -199,23 +191,11 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
             if (diag_element == 0) { std::cout << "Matrix ist singulaer" << std::endl;} // TODO: zu error machen
             copy_mat.Row(i) = (1/diag_element) * copy_mat.Row(i);
             id_mat.Row(i) = (1/diag_element) * id_mat.Row(i);
-                // -> fkt. nicht weil .Row VectorView zurückgibt und * dafür nicht def. ist
-            // copy_mat.Rows(i, i+1) = copy_mat.Rows(i, i+1) * (1/diag_element); // gibt MatrixView, * sollte fkt.?
-            // id_mat.Rows(i, i+1) = id_mat.Rows(i, i+1) * (1/diag_element);
-                // -> fkt. nicht weil keine Ahnung warum, ich versteh matexpression nicht gut genug
-                //geile workaround idee eigentlich
-            /*for (int j=0; j < height_; j++) {
-                copy_mat(i,j) /= diag_element;
-                id_mat(i,j) /= diag_element;
-            }*/
+            
             // andere Zeilen eliminieren:
             for (int k=0; k < height_; k++) { 
                 if (k != i) {
                     T factor = copy_mat(k, i);
-                    /*for (int j=0; j < height_; j++) {
-                        copy_mat(k,j) -= factor * copy_mat(i,j);
-                        id_mat(k,j) -= factor * id_mat(i,j);
-                        }*/
                     copy_mat.Row(k) = copy_mat.Row(k) - (factor * copy_mat.Row(i));
                     id_mat.Row(k) = id_mat.Row(k) - (factor * id_mat.Row(i));
 
@@ -318,44 +298,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
                 data_[i] = v2((i/v2.Get_width())  ,(i%v2.Get_width()));     
             return *this;
         }
-    
-        template <typename TB, typename TC>
-        Matrix & operator= (MatMatMulExpr<TB, TC> & v2)
-        {
-            for (size_t i = 0; i < n_of_elements_; i++)
-                data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
-            return *this;
-        }
 
-
-        /*Matrix transpose_old(){
-    
-            T x[n_of_elements_];  //dieses array braucht den allgemeinen typ T, war vorher double
-            for(size_t z = 0; z< n_of_elements_;z++){
-                x[z] = data_[z];
-                
-            }
-            for(size_t i=0; i<BASE::height_; i++){
-                for(size_t j=0; j<BASE::width_; j++){
-                    data_[j*BASE::height_+i]=x[i*BASE::width_+j];
-                    //should work now -Da
-                }
-            }
-
-
-            Matrix<T, ORD> X(BASE::width_, BASE::height_, data_); 
-            //height und width sind vertauscht, 3x2.transpose ist 2x3, altes width ist neues height
-            return X;
-        }*/
-
-        /*auto transpose(){
-            if constexpr(ORD == ORDERING::RowMajor){
-                return MatrixView<T, ORDERING::ColMajor>(BASE::width_,BASE::height_,BASE::data_);
-            }
-            else{
-                return MatrixView<T, ORDERING::RowMajor>(BASE::width_,BASE::height_,BASE::data_);
-            }
-        }*/
 
         
     };
