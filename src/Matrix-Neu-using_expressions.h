@@ -153,7 +153,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         }
     }
   
-    //test test test
+    //dies ist ein test
 
     auto transpose(){
             if constexpr(ORD == ORDERING::RowMajor){
