@@ -269,6 +269,27 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
             std::swap(data_, m.data_);
         }
 
+        Matrix (initializer_list<initializer_list<T>> llist)
+        : FlatMatrix<T,ORD> (0,0,nullptr)
+        {
+        int h = llist.size();
+        int w = 0;
+        for (auto row : llist)
+        w = std::max(w, int(row.size()));
+
+        SetSize (h, w);
+        (*this) = T(0.0);
+
+        int r = 0;
+        for (auto row : llist)
+        {
+        int c = 0;
+        for (auto col : row)
+        (*this)(r,c++) = col;
+        r++;
+        }
+        }
+
         
         
         //das alles ist schon in MatrixView abgehandelt
