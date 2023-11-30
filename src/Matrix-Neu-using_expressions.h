@@ -10,7 +10,7 @@ namespace ASC_bla
 enum ORDERING { ColMajor, RowMajor };
 
 
-template <typename T, ORDERING ORD = ORDERING::RowMajor >
+template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to make Matrix<> work (instead of Matrix<double>)
   class MatrixView : public MatExpr<MatrixView<T,ORD>>
   {
   protected:
@@ -218,7 +218,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
 
 
 
-template <typename T, ORDERING ORD = ORDERING::RowMajor>
+template <typename T=double, ORDERING ORD = ORDERING::RowMajor>
     class Matrix : public MatrixView<T,ORD> 
     {
         typedef MatrixView<T,ORD> BASE;
