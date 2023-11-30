@@ -11,7 +11,7 @@ namespace ASC_bla
 
 
  
-  template <typename T, typename TDIST = std::integral_constant<size_t,1> >
+  template <typename T=double, typename TDIST = std::integral_constant<size_t,1> >
   class VectorView : public VecExpr<VectorView<T,TDIST>>
   {
   protected:
@@ -60,7 +60,7 @@ namespace ASC_bla
   
 
   
-  template <typename T>
+  template <typename T=double>
   class Vector : public VectorView<T>
   {
     typedef VectorView<T> BASE;
