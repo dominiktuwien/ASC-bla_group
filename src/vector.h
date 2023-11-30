@@ -92,6 +92,14 @@ namespace ASC_bla
     {
       *this = v;
     }
+
+    Vector (initializer_list<T> list)
+    : FlatVector<T> (list.size(), new T[list.size()])
+    {
+    size_t cnt = 0;
+    for (auto val : list)
+    (*this)[cnt++] = val;
+    }
     
     
     ~Vector () { delete [] data_; }
