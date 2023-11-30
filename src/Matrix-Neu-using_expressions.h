@@ -153,7 +153,9 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         }
     }
   
-    //dies ist ein test
+    auto Diag(){
+        return VectorView(height_, (dist_+1), data_)
+    }
 
     auto transpose(){
             if constexpr(ORD == ORDERING::RowMajor){
