@@ -2,6 +2,7 @@
 #define FILE_VECTOR_H
 
 #include <iostream>
+#include <cmath>
 
 #include "expression.h"
 
@@ -37,6 +38,13 @@ namespace ASC_bla
     {
       for (size_t i = 0; i < size_; i++)
         data_[dist_*i] = scal;
+      return *this;
+    }
+
+    auto & operator*= (double scal)
+    {
+      for (size_t i = 0; i < size_; i++)
+        data_[dist_*i] *= scal;
       return *this;
     }
     
@@ -111,7 +119,20 @@ namespace ASC_bla
       return *this;
     }
     
+    
   };
+
+  template <typename T>
+  auto L2Norm(Vector<T> & v)
+  {
+    double temp = 0.0; //ACHTUNG HIER SOLLTE TEMPLATE TYPE VERWENDET WERDEN
+    for(int i = 0; i < v.Size(); i++)
+      {
+        temp += v(i)*v(i);
+      }
+    temp = std::sqrt(temp);
+    return temp;  
+  }
 
 
   template <typename ...Args>

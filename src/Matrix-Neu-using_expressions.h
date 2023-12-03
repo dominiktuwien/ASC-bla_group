@@ -154,7 +154,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
     }
   
     auto Diag(){
-        return VectorView(height_, (dist_+1), data_)
+        return VectorView(height_, (dist_+1), data_);
     }
 
     auto transpose(){
@@ -220,7 +220,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
 
 
 
-template <typename T, ORDERING ORD = ORDERING::RowMajor>
+template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
     class Matrix : public MatrixView<T,ORD> 
     {
         typedef MatrixView<T,ORD> BASE;
