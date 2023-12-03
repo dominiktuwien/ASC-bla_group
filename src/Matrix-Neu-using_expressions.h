@@ -10,7 +10,7 @@ namespace ASC_bla
 enum ORDERING { ColMajor, RowMajor };
 
 
-template <typename T, ORDERING ORD = ORDERING::RowMajor >
+template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to make Matrix<> work (instead of Matrix<double>)
   class MatrixView : public MatExpr<MatrixView<T,ORD>>
   {
   protected:
@@ -220,7 +220,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
 
 
 
-template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
+template <typename T, ORDERING ORD = ORDERING::RowMajor>
     class Matrix : public MatrixView<T,ORD> 
     {
         typedef MatrixView<T,ORD> BASE;
@@ -269,6 +269,27 @@ template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
             std::swap(BASE::width_, m.width_);
             std::swap(n_of_elements_, m.n_of_elements_);
             std::swap(data_, m.data_);
+        }
+
+        Matrix (initializer_list<initializer_list<T>> llist)
+        : FlatMatrix<T,ORD> (0,0,nullptr)
+        {
+        int h = llist.size();
+        int w = 0;
+        for (auto row : llist)
+        w = std::max(w, int(row.size()));
+
+        SetSize (h, w);
+        (*this) = T(0.0);
+
+        int r = 0;
+        for (auto row : llist)
+        {
+        int c = 0;
+        for (auto col : row)
+        (*this)(r,c++) = col;
+        r++;
+        }
         }
 
         
