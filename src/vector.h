@@ -25,6 +25,9 @@ namespace ASC_bla
     
     VectorView (size_t size, TDIST dist, T * data)
       : data_(data), size_(size), dist_(dist) { }
+
+    VectorView (size_t size)
+      : size_(size) {}
     
     template <typename TB>
     VectorView & operator= (const VecExpr<TB> & v2)

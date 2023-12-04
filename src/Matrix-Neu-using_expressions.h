@@ -30,6 +30,8 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
     MatrixView (size_t height, size_t width, T * data, size_t dist)
       :  height_(height), width_(width), data_(data), n_of_elements_(height*width), dist_(dist) { }
     
+    MatrixView (size_t height, size_t width)
+      :  height_(height), width_(width), n_of_elements_(height*width) { }
 
     template <typename TB>
     MatrixView & operator= (const MatExpr<TB> & v2)
@@ -153,7 +155,9 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
         }
     }
   
-    //test test test NOCH EIN TEST AAAAH
+    auto Diag(){
+        return VectorView(height_, (dist_+1), data_);
+    }
 
     auto transpose(){
             if constexpr(ORD == ORDERING::RowMajor){
@@ -218,7 +222,7 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
 
 
 
-template <typename T, ORDERING ORD = ORDERING::RowMajor>
+template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
     class Matrix : public MatrixView<T,ORD> 
     {
         typedef MatrixView<T,ORD> BASE;
@@ -288,8 +292,8 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         (*this)(r,c++) = col;
         r++;
         }
-        }
-        */
+        }*/
+
         
         
         //das alles ist schon in MatrixView abgehandelt
