@@ -33,7 +33,13 @@ namespace ASC_bla
     return SumVecExpr(a.Upcast(), b.Upcast());
   }
 
-    template <typename TA, typename TB>
+  template <typename TA, typename TB>
+  auto operator+= (VecExpr<TA> & a, const VecExpr<TB> & b)
+  {
+    return SumVecExpr(a.Upcast(), b.Upcast());
+  }
+
+  template <typename TA, typename TB>
   class DiffVecExpr : public VecExpr<DiffVecExpr<TA,TB>>
   {
     TA a_;
@@ -47,6 +53,12 @@ namespace ASC_bla
   
   template <typename TA, typename TB>
   auto operator- (const VecExpr<TA> & a, const VecExpr<TB> & b)
+  {
+    return DiffVecExpr(a.Upcast(), b.Upcast());
+  }
+
+  template <typename TA, typename TB>
+  auto operator-= (const VecExpr<TA> & a, const VecExpr<TB> & b)
   {
     return DiffVecExpr(a.Upcast(), b.Upcast());
   }
@@ -71,6 +83,8 @@ namespace ASC_bla
   {
     return ScaleVecExpr(scal, v.Upcast());
   }
+
+  
 
 
 

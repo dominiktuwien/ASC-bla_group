@@ -39,7 +39,13 @@ namespace ASC_bla
     return SumMatExpr(a.Upcast(), b.Upcast());
   }
 
-    template <typename TA, typename TB>
+  template <typename TA, typename TB>
+  auto operator+= (MatExpr<TA> & a, const MatExpr<TB> & b)
+  {
+    return SumMatExpr(a.Upcast(), b.Upcast());
+  }
+
+  template <typename TA, typename TB>
   class DiffMatExpr : public MatExpr<DiffMatExpr<TA,TB>>
   {
     TA a_;
@@ -55,6 +61,12 @@ namespace ASC_bla
   
   template <typename TA, typename TB>
   auto operator- (const MatExpr<TA> & a, const MatExpr<TB> & b)
+  {
+    return DiffMatExpr(a.Upcast(), b.Upcast());
+  }
+
+  template <typename TA, typename TB>
+  auto operator-= (const MatExpr<TA> & a, const MatExpr<TB> & b)
   {
     return DiffMatExpr(a.Upcast(), b.Upcast());
   }
@@ -78,6 +90,12 @@ namespace ASC_bla
   
   template <typename T>
   auto operator* (double scal, const MatExpr<T> & v)
+  {
+    return ScaleMatExpr(scal, v.Upcast());
+  }
+
+  template <typename T>
+  auto operator*= (MatExpr<T> & v, double scal)
   {
     return ScaleMatExpr(scal, v.Upcast());
   }
