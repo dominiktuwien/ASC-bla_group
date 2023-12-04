@@ -153,7 +153,10 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor >
         }
     }
   
-    //test test test NOCH EIN TEST AAAAH
+    auto Diag()
+    {
+        return VectorView(height_, (dist_+1), data_);
+    }
 
     auto transpose(){
             if constexpr(ORD == ORDERING::RowMajor){
@@ -269,7 +272,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
             std::swap(data_, m.data_);
         }
 
-        Matrix (initializer_list<initializer_list<T>> llist)
+        /*Matrix (initializer_list<initializer_list<T>> llist)
         : FlatMatrix<T,ORD> (0,0,nullptr)
         {
         int h = llist.size();
@@ -289,7 +292,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         r++;
         }
         }
-
+        */
         
         
         //das alles ist schon in MatrixView abgehandelt
