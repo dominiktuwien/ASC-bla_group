@@ -220,7 +220,7 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
 
 
 
-template <typename T, ORDERING ORD = ORDERING::RowMajor>
+template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
     class Matrix : public MatrixView<T,ORD> 
     {
         typedef MatrixView<T,ORD> BASE;
@@ -271,7 +271,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
             std::swap(data_, m.data_);
         }
 
-        Matrix (initializer_list<initializer_list<T>> llist)
+        /*Matrix (initializer_list<initializer_list<T>> llist)
         : FlatMatrix<T,ORD> (0,0,nullptr)
         {
         int h = llist.size();
@@ -290,7 +290,7 @@ template <typename T, ORDERING ORD = ORDERING::RowMajor>
         (*this)(r,c++) = col;
         r++;
         }
-        }
+        }*/
 
         
         
