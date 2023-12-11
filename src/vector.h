@@ -26,6 +26,9 @@ namespace ASC_bla
     VectorView (size_t size, TDIST dist, T * data)
       : data_(data), size_(size), dist_(dist) { }
 
+    //VectorView (size_t size)
+    //  : size_(size), data_(new T[size]) {}
+    
     VectorView (size_t size)
       : size_(size) {}
     
@@ -78,8 +81,11 @@ namespace ASC_bla
     using BASE::size_;
     using BASE::data_;
   public:
+    //Vector (double size) 
+    //  : VectorView<T> (size, new T[size]) { ; }
+
     Vector (size_t size) 
-      : VectorView<T> (size, new T[size]) { ; }
+    : VectorView<T> (size) { ; } 
 
     Vector (size_t size, T* data)
       : VectorView<T> (size, data) { ; }

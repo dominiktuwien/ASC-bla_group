@@ -31,7 +31,7 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
       :  height_(height), width_(width), data_(data), n_of_elements_(height*width), dist_(dist) { }
     
     MatrixView (size_t height, size_t width)
-      :  height_(height), width_(width), n_of_elements_(height*width) { }
+      :  height_(height), width_(width), n_of_elements_(height*width), data_(new T[height*width]) { }
 
     template <typename TB>
     MatrixView & operator= (const MatExpr<TB> & v2)
