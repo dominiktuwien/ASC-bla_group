@@ -29,8 +29,14 @@ namespace ASC_bla
     //VectorView (size_t size)
     //  : size_(size), data_(new T[size]) {}
     
-    VectorView (size_t size)
-      : size_(size) {}
+
+
+    VectorView & operator= (const VectorView & v2) // for ODE
+    {
+      for (size_t i = 0; i < size_; i++)
+        data_[dist_*i] = v2(i);
+      return *this;
+    }
     
     template <typename TB>
     VectorView & operator= (const VecExpr<TB> & v2)
@@ -47,12 +53,30 @@ namespace ASC_bla
       return *this;
     }
 
-    auto & operator*= (double scal)
+    
+    template <typename TB>
+    VectorView & operator+= (const VecExpr<TB> & v2)
+    {
+      for (size_t i = 0; i < size_; i++)
+        data_[dist_*i] += v2(i);
+      return *this;
+    }
+
+    VectorView & operator*= (double scal)
     {
       for (size_t i = 0; i < size_; i++)
         data_[dist_*i] *= scal;
       return *this;
     }
+
+    template <typename TB>
+    VectorView & operator-= (const VecExpr<TB> & v2)
+    {
+      for (size_t i = 0; i < size_; i++)
+        data_[dist_*i] -= v2(i);
+      return *this;
+    }
+
     
     auto View() const { return VectorView(size_, dist_, data_); }
     size_t Size() const { return size_; }

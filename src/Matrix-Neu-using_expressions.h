@@ -47,6 +47,24 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
         data_[dist_*i] = scal;
       return *this;
     }
+
+
+    template <typename TB>
+    MatrixView & operator+= (const MatExpr<TB> & v2)
+    {
+      for (size_t i = 0; i < n_of_elements_; i++)
+        data_[dist_*i] += v2((i/v2.Get_width()),(i%v2.Get_width()) );
+      return *this;
+    }
+
+    MatrixView & operator*= (T scal)
+    {
+      for (size_t i = 0; i < n_of_elements_; i++)
+        data_[dist_*i] *= scal;
+      return *this;
+    }
+
+
     
 
     auto View() const { return MatrixView(height_, width_, n_of_elements_, dist_, data_); }
