@@ -174,7 +174,7 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
     }
   
     auto Diag(){
-        return VectorView(height_, (dist_+1), data_);
+        return VectorView(height_, (dist_+2), data_);
     }
 
     auto transpose(){
