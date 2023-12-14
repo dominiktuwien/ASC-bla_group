@@ -174,7 +174,7 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
     }
   
     auto Diag(){
-        return VectorView(height_, (dist_+1), data_);
+        return VectorView(height_, (dist_+width_), data_); // nur für width
     }
 
     auto transpose(){
@@ -186,10 +186,73 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
             }
     }
 
+    void swapRows(size_t row1, size_t row2) {
+        for (size_t col = 0; col < width_; ++col) {
+            std::swap(data_[row1 * width_ + col], data_[row2 * width_ + col]);
+        }
+    }
+
     // Inverse mit Gauss-Elimination
     //has been simplified using new features Row (i)
     //still no option to inverse ColMajors
     auto inverse() { 
+        if (width_ != height_) {
+            throw std::invalid_argument("Non-square matrix, inverse does not exist!"); // TODO: zu error machen
+        }
+
+        // Identity matrix
+        T* id_data = new T[n_of_elements_]{0};
+        MatrixView<T> id_mat(height_, width_, id_data); // TODO: dist?
+        for (int i=0; i < height_; i++) {
+            id_mat(i,i) = 1;
+        }
+
+        // ursprüngliche Matrix kopieren, sodass diese nicht verändert wird
+        MatrixView<T> copy_mat(height_, width_, data_);
+        //if(ORD == ORDERING::ColMajor){copy_mat = this->transpose;}
+
+        // Inverse berechnen
+        for (int i=0; i < height_; i++) { 
+            
+            // Zeilenvertauschung falls notwendig
+            size_t maxRow = i;
+            for (size_t k = i + 1; k < height_; k++) {
+                if (std::abs(copy_mat(k, i)) > std::abs(copy_mat(maxRow, i))) {
+                    maxRow = k;
+                }
+            }
+            if (maxRow != i) {
+                // Zeilen vertauschen
+                copy_mat.swapRows(i, maxRow);
+                id_mat.swapRows(i, maxRow);
+            }
+
+            // i-te Zeile durch (i,i)-ten Eintrag dividieren:
+            T diag_element = copy_mat(i, i);
+            if (diag_element == 0) { std::cout << "Matrix ist singulaer" << std::endl;} // TODO: zu error machen
+            copy_mat.Row(i) = (1/diag_element) * copy_mat.Row(i);
+            id_mat.Row(i) = (1/diag_element) * id_mat.Row(i);
+            
+            // andere Zeilen eliminieren:
+            for (int k=0; k < height_; k++) { 
+                if (k != i) {
+                    T factor = copy_mat(k, i);
+                    copy_mat.Row(k) = copy_mat.Row(k) - (factor * copy_mat.Row(i));
+                    id_mat.Row(k) = id_mat.Row(k) - (factor * id_mat.Row(i));
+
+                }
+            }
+        }
+        if (ORD == ORDERING::ColMajor) { id_mat = id_mat.transpose(); }
+            // -> Inverse der transp. Matrix == Transponierte der inv. Matrix (fkt. aber nicht)
+            // falls das so nix wird beim Initialisieren von id_mat Fallunterscheidung für ColMajor machen
+        return id_mat;
+    }
+    
+    // Inverse mit Gauss-Elimination
+    //has been simplified using new features Row (i)
+    //still no option to inverse ColMajors
+    /*auto inverse() { 
         if (width_ != height_) {
             std::cout << "Nicht quadratische Matrix!" << std::endl; // TODO: zu error machen
         }
@@ -228,7 +291,7 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
             // -> Inverse der transp. Matrix == Transponierte der inv. Matrix (fkt. aber nicht)
             // falls das so nix wird beim Initialisieren von id_mat Fallunterscheidung für ColMajor machen
         return id_mat;
-    }
+    }*/
 
     
 
@@ -258,7 +321,7 @@ template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
             1x1 array wo 0 drinnen ist*/
 
         Matrix (size_t height, size_t width)
-            : MatrixView<T, ORD> (height, width, new T[height*width]) 
+            : MatrixView<T, ORD> (height, width, new T[height*width])
         { for (size_t i = 0; i < n_of_elements_; i++)    //füllt Matrix Element für Element mit 0
             data_[i] = 0.0;
         }
