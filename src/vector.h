@@ -26,8 +26,11 @@ namespace ASC_bla
     VectorView (size_t size, TDIST dist, T * data)
       : data_(data), size_(size), dist_(dist) { }
 
-    //VectorView (size_t size)
-    //  : size_(size), data_(new T[size]) {}
+    VectorView (size_t size)
+      : size_(size), data_(new T[size]) {}
+
+    //VectorView(size_t size)
+    //    :   size_(size) {}
     
 
 
@@ -95,7 +98,11 @@ namespace ASC_bla
       
   };
   
-  
+  template <int SIZE, typename T=double>
+  class Vec : public VecExpr<Vec<SIZE,T>>
+  {
+    T data[SIZE];
+  };  
 
   
   template <typename T=double>
@@ -133,15 +140,16 @@ namespace ASC_bla
     {
       *this = v;
     }
+ 
 
-    /*Vector (initializer_list<T> list)
-    : FlatVector<T> (list.size(), new T[list.size()])
+    Vector (std::initializer_list <T> list)
+    : Vector<T> (list.size(), new T[list.size()])
     {
     size_t cnt = 0;
     for (auto val : list)
-    (*this)[cnt++] = val;
+    (*this)(cnt++) = val;
     }
-    */
+    
     
     ~Vector () { delete [] data_; }
 
