@@ -2,8 +2,8 @@
 #define FILE_MATRIX_H
 
 #include <iostream>
-#include <matexpression.h>
-#include <vector.h>
+#include "matexpression.h"
+#include "vector.h"
 
 namespace ASC_bla
 {
@@ -212,7 +212,7 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
         //if(ORD == ORDERING::ColMajor){copy_mat = this->transpose;}
 
         // Inverse berechnen
-        for (int i=0; i < height_; i++) { 
+        for (size_t i=0; i < height_; i++) { 
             
             // Zeilenvertauschung falls notwendig
             size_t maxRow = i;
@@ -230,8 +230,10 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
             // i-te Zeile durch (i,i)-ten Eintrag dividieren:
             T diag_element = copy_mat(i, i);
             if (diag_element == 0) { std::cout << "Matrix ist singulaer" << std::endl;} // TODO: zu error machen
-            copy_mat.Row(i) = (1/diag_element) * copy_mat.Row(i);
-            id_mat.Row(i) = (1/diag_element) * id_mat.Row(i);
+            //copy_mat.Row(i) = (1/diag_element) * copy_mat.Row(i);
+            //id_mat.Row(i) = (1/diag_element) * id_mat.Row(i);
+            copy_mat.Row(i) /= diag_element;
+            id_mat.Row(i) /= diag_element;
             
             // andere Zeilen eliminieren:
             for (int k=0; k < height_; k++) { 
@@ -354,25 +356,24 @@ template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
             std::swap(data_, m.data_);
         }
 
-        /*Matrix (initializer_list<initializer_list<T>> llist)
-        : FlatMatrix<T,ORD> (0,0,nullptr)
+        /*Matrix (initializer_list<initializer_list<T>> llist) : FlatMatrix<T,ORD> (0,0,nullptr)
         {
-        int h = llist.size();
-        int w = 0;
-        for (auto row : llist)
-        w = std::max(w, int(row.size()));
+            int h = llist.size();
+            int w = 0;
+            for (auto row : llist)
+            w = std::max(w, int(row.size()));
 
-        SetSize (h, w);
-        (*this) = T(0.0);
+            SetSize (h, w);
+            (*this) = T(0.0);
 
-        int r = 0;
-        for (auto row : llist)
-        {
-        int c = 0;
-        for (auto col : row)
-        (*this)(r,c++) = col;
-        r++;
-        }
+            int r = 0;
+            for (auto row : llist)
+            {
+                int c = 0;
+                for (auto col : row)
+                (*this)(r,c++) = col;
+                r++;
+            }
         }*/
 
         

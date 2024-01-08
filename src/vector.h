@@ -5,10 +5,46 @@
 #include <cmath>
 
 #include "expression.h"
+#include "Matrix-Neu-using_expressions.h"
 
 
 namespace ASC_bla
 {
+
+  // Vec class for use in mass_spring
+  template <int SIZE, typename T=double>
+  class Vec : public VecExpr<Vec<SIZE, T>>
+  {
+    T data[SIZE];
+
+    public:
+    Vec() { ; }
+
+    Vec(T val) 
+    {
+      for (size_t i = 0; i < SIZE; i++) {
+        data[i] = val;
+      }
+    }
+
+    Vec(std::initializer_list<T> values) 
+    {
+      for (size_t i = 0; i < values.size(); i++) {
+        data[i] = values.begin()[i];
+      }
+    }
+
+    template<typename TB>
+    Vec(const VecExpr<TB> &v2)
+    {
+      for (size_t i=0; i < SIZE; i++)
+        data[i] = v2(i);
+    }
+
+    T & operator()(size_t i) { return data[i]; }
+    const T & operator()(size_t i) const { return data[i]; }
+    
+  };
 
 
  
@@ -74,6 +110,13 @@ namespace ASC_bla
       return *this;
     }
 
+    VectorView & operator/= (double scal)
+    {
+      for (size_t i = 0; i < size_; i++)
+        data_[dist_*i] /= scal;
+      return *this;
+    }
+
     
     auto View() const { return VectorView(size_, dist_, data_); }
     size_t Size() const { return size_; }
@@ -88,6 +131,13 @@ namespace ASC_bla
 
     auto Slice(size_t first, size_t slice) const {
       return VectorView<T,size_t> (size_/slice, dist_*slice, data_+first*dist_);
+    }
+
+
+    // for Mass_Spring:
+    auto AsMatrix(size_t height, size_t width) const
+    {
+      return MatrixView<T, ORDERING::RowMajor>(height, width, data_); 
     }
       
   };
@@ -128,14 +178,14 @@ namespace ASC_bla
       *this = v;
     }
 
-    /*Vector (initializer_list<T> list)
-    : FlatVector<T> (list.size(), new T[list.size()])
+    Vector (std::initializer_list<T> list)
+    : Vector<T> (list.size(), new T[list.size()])
     {
     size_t cnt = 0;
     for (auto val : list)
-    (*this)[cnt++] = val;
+    (*this)(cnt++) = val;
     }
-    */
+    
     
     ~Vector () { delete [] data_; }
 
@@ -158,7 +208,7 @@ namespace ASC_bla
   };
 
   template <typename T>
-  auto L2Norm(Vector<T> & v)
+  auto L2Norm(const VecExpr<T> & v)
   {
     double temp = 0.0; //ACHTUNG HIER SOLLTE TEMPLATE TYPE VERWENDET WERDEN
     for(int i = 0; i < v.Size(); i++)
