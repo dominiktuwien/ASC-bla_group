@@ -1,10 +1,14 @@
 # search for libraray like bla.cpython-312-darwin.so in the build directory:
-# import sys
-# sys.path.append('/Users/joachim/texjs/lva/ws2324/ScientificComputing/ASC-bla/build')
-# from bla import Vector
+import sys
+sys.path.append(r'C:\Users\eichl\Uni\7. Semester\Scientific Computing\Git-Clone\ASC-ODE_physics_group\ASC-bla_group\_skbuild\win-amd64-3.10\cmake-install\ASCsoft')
+#import os
+#os.add_dll_directory(r'C:\Users\eichl\Uni\7. Semester\Scientific Computing\Git-Clone\ASC-ODE_physics_group\ASC-bla_group\_skbuild\win-amd64-3.10\cmake-install\ASCsoft')
+
+print(sys.path)
+#from ASCsoft import Vector
 
 # import from the installed ASCsoft package:
-from ASCsoft.bla import Vector
+import foo
 
 x = Vector(3)
 y = Vector(3)

@@ -1,3 +1,3 @@
-from .bla import *
+from . import *
 
 print ("importing ASC-bla")
