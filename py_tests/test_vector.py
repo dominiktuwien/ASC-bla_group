@@ -8,7 +8,8 @@ print(sys.path)
 #from ASCsoft import Vector
 
 # import from the installed ASCsoft package:
-import foo
+from ASCsoft.bla import *
+
 
 x = Vector(3)
 y = Vector(3)
@@ -31,6 +32,9 @@ print (x)
 
 x[0:10:2] = 3
 print (x)
+
+
+
 
 
 

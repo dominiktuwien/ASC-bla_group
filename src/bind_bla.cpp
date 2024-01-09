@@ -2,11 +2,11 @@
 #include <pybind11/pybind11.h>
 
 #include "vector.h"
+#include "Matrix-Neu-using_expressions.h"
+#include "matexpression.h"
 
 using namespace ASC_bla;
 namespace py = pybind11;
-
-
 
 
 PYBIND11_MODULE(bla, m) {
@@ -61,5 +61,43 @@ PYBIND11_MODULE(bla, m) {
           std::memcpy(&v(0), PYBIND11_BYTES_AS_STRING(mem.ptr()), v.Size()*sizeof(double));
           return v;
         }))
+    ;
+    py::class_<Matrix<double,ORDERING::RowMajor>> (m, "Matrix")
+    .def(py::init<size_t,size_t>(),
+         py::arg("height"), py::arg("width"),
+         "create matrix of height times width" )
+    .def("__width__", &Matrix<double,ORDERING::RowMajor>::Get_width,
+         "return with of Matrix")
+    .def("__height__", &Matrix<double, ORDERING::RowMajor>::Get_height,
+        "return height of Matrix")
+    .def("__size__", &Matrix<double,ORDERING::RowMajor>::Size,
+        "return size of Matrix")
+    .def("__dist__", &Matrix<double,ORDERING::RowMajor>::Dist,
+        "return dist of Matrix")
+
+    .def("__getitem__",
+      [](Matrix<double, RowMajor> self, std::tuple<int, int> ind) {
+           return self(std::get<0>(ind), std::get<1>(ind));
+      })
+    .def("__setitem__",
+      [](Matrix<double,RowMajor> self, std::tuple<int,int> ind, double val) {
+            self(std::get<0>(ind), std::get<1>(ind)) = val;
+      })
+    .def_property_readonly("shape",
+      [](const Matrix<double, RowMajor>& self) {
+           return std::tuple(self.Get_width(), self.Get_height());
+      })
+
+    .def("__add__", [](Matrix<double,ORDERING::RowMajor> & self, Matrix<double,ORDERING::RowMajor> & other)
+    { return (Matrix<double,ORDERING::RowMajor> (self) + Matrix<double,ORDERING::RowMajor> (other)); })
+
+    .def("__sub__",[](Matrix<double,ORDERING::RowMajor> & self, Matrix<double,ORDERING::RowMajor> & other)
+    { return (Matrix<double,ORDERING::RowMajor> (self) - Matrix<double,ORDERING::RowMajor> (other)); })
+
+    .def("__matmul__", [](Matrix<double,ORDERING::RowMajor> & self, Matrix<double,ORDERING::RowMajor> & other)
+    { return (Matrix<double,ORDERING::RowMajor> (self) * Matrix<double,ORDERING::RowMajor> (other)); })
+    
+    .def("__scalmul__", [](double scal, Matrix<double,ORDERING::RowMajor> & other)
+    { return (scal * Matrix<double,ORDERING::RowMajor> (other)); })   
     ;
 }
