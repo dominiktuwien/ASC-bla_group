@@ -4,6 +4,8 @@
 #include <iostream>
 #include <matexpression.h>
 #include <vector.h>
+#include <../ASC-HPC_physics_group/src/taskmanager.h>
+#include <../ASC-HPC_physics_group/src/timer.h>
 
 namespace ASC_bla
 {
@@ -39,6 +41,39 @@ template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to 
       for (size_t i = 0; i < n_of_elements_; i++)
         data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
       return *this;
+    }
+
+    template<typename TMatA, typename TMatB>
+    MatrixView operator= (const ParMulExpr<TMatA, TMatB> & v2)
+    {
+      int n1 = v2.Get_matA().Get_height();
+      int n2 = v2.Get_matA().Get_width();
+      int m1 = v2.Get_matB().Get_height();
+      int m2 = v2.Get_matB().Get_width();
+      int s = v2.Get_height();
+        Matrix<> a(n1,n2), b(m1,m2), c(n1,m2);
+        a = v2.Get_matA(); b = v2.Get_matB();
+        //std::cout << "a = " << a << std::endl;
+        //std::cout << "b = " << b << std::endl;
+        //std::cout << "a dim = " << a.Get_height() << ", " << a.Get_width() << std::endl;
+        //std::cout << "b dim = " << b.Get_height() << ", " << b.Get_width() << std::endl;
+        std::cout << "c dim = " << c.Get_height() << ", " << c.Get_width() << std::endl;
+        ASC_HPC::StartWorkers(3);
+        //std::mutex mut;
+        ASC_HPC::RunParallel(20, [s, &a, &b,&c] (int i, int size) {
+            //std::lock_guard<std::mutex> lock(mut);
+            size_t first = (i*s) / size;
+            size_t next = ((i+1)*s) / size;
+            //std::cout << "first: " << first << ", next: " << next << std::endl;
+            c.Rows(first, next) = a.Rows(first, next) * b; });
+        ASC_HPC::StopWorkers();
+        std::cout << "done with calc" << std::endl;
+        //std::cout << "in calc: " << c << std::endl;
+        for (size_t j = 0; j < n_of_elements_; j++)
+        {
+            data_[dist_*j] = c((j/c.Get_width()),(j%c.Get_width()) );
+        }
+        return *this;
     }
 
     MatrixView & operator= (T scal)
@@ -404,7 +439,6 @@ template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
                 data_[i] = v2((i/v2.Get_width())  ,(i%v2.Get_width()));     
             return *this;
         }
-
 
         
     };

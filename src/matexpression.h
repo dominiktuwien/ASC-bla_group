@@ -105,6 +105,8 @@ namespace ASC_bla
       size_t Size() const { return matA_.Get_height() * matB_.Get_width(); }
       size_t Get_height() const {return matA_.Get_height();}
       size_t Get_width() const {return matB_.Get_width();}
+      TMatA Get_matA() const {return matA_;}
+      TMatB Get_matB() const {return matB_;}
   };
 
   template<typename T>
@@ -112,6 +114,7 @@ namespace ASC_bla
   {
     return MatMatMulExpr(left.Upcast(), right.Upcast());
   }
+
 
   template<typename TMatA, typename TVecB>
   class MatMulVecExpr : public VecExpr<MatMulVecExpr<TMatA,TVecB>>
@@ -163,6 +166,35 @@ namespace ASC_bla
     }
     return ost;
   }
+
+  class T_Par {};
+  static constexpr T_Par Par;
+
+  template<typename TMatA, typename TMatB>
+  class ParMulExpr : public MatExpr<ParMulExpr<TMatA,TMatB>>
+  {
+    TMatA matA_;
+    TMatB matB_;
+
+    public:
+      ParMulExpr(TMatA matA, TMatB matB) : matA_(matA), matB_(matB) { }
+
+      size_t Size() const { return matA_.Get_height() * matB_.Get_width(); }
+      size_t Get_height() const {return matA_.Get_height();}
+      size_t Get_width() const {return matB_.Get_width();}
+      TMatA Get_matA() const {return matA_;}
+      TMatB Get_matB() const {return matB_;}
+  };
+
+  template<typename T = double, typename TMatA,typename TMatB>
+  auto operator| (const MatMatMulExpr<TMatA,TMatB> & left, const T_Par & right)
+  {
+    ParMulExpr<TMatA,TMatB> X(left.Get_matA(),left.Get_matB());
+    return X;
+  };
+
+    
+
  
 }
 #endif

@@ -3,6 +3,9 @@
 
 #include <Matrix-Neu-using_expressions.h>
 #include <vector.h>
+//#include <../ASC-HPC_physics_group/src/taskmanager.h>
+//#include <../ASC-HPC_physics_group/src/timer.h>
+
 
 namespace bla = ASC_bla;
 int main()
@@ -76,17 +79,29 @@ int main()
     std::cout << F.Columns(2,4) << std::endl;*/
 
  //inverse
-    double test_inv[9] = {1.0, 2.0, 3.0, 2.0, 5.0, 8.0, 9.0, 6.0, 4.0};
-    bla::Matrix<double, bla::ORDERING::RowMajor> G(3, 3, test_inv);
-    std::cout << G << std::endl;
-    std::cout << G.inverse() << std::endl;
-    
+    //double test_inv[9] = {1.0, 2.0, 3.0, 2.0, 5.0, 8.0, 9.0, 6.0, 4.0};
+    //bla::Matrix<double, bla::ORDERING::RowMajor> G(3, 3, test_inv);
+    //std::cout << G << std::endl;
+    //std::cout << G.inverse() << std::endl;
 
+//Parallelization
+   class T_Par {};
+   static constexpr ASC_bla::T_Par Par;
 
+   //double test_A[6] = {1.0,1.0,1.0,1.0,1.0,1.0};
+   //double test_B[6] = {2.0,3.0,4.0,1.0,3.0,2.0};
+   bla::Matrix<double> A(170,170);
+   A = 2;
+   bla::Matrix<double> B(170,170);
+   B = 3;
+   bla::Matrix<double> C(170,170);
+   //std::cout << (A*B).Get_matB() << std::endl;
+   C = A*B | Par;
+   //C = A*B;
+   std::cout << "done" << std::endl;
+   //std::cout << C << std::endl;
+   //std::cout << "test" << std::endl;    
 
-
-    // gitignore Test
-
-
-    return 0;
+ // gitignore Test
+   return 0;
 }
