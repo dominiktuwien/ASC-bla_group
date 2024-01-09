@@ -4,7 +4,8 @@
 # from bla import Vector
 
 # import from the installed ASCsoft package:
-from ASCsoft.bla import Vector
+from ASCsoft.bla import *
+
 
 x = Vector(3)
 y = Vector(3)
@@ -27,6 +28,9 @@ print (x)
 
 x[0:10:2] = 3
 print (x)
+
+
+
 
 
 
