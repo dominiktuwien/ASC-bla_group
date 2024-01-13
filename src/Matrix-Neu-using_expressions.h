@@ -2,15 +2,16 @@
 #define FILE_MATRIX_H
 
 #include <iostream>
+#include "mat_vec_decl.h"
 #include "matexpression.h"
-#include "vector.h"
+//#include "vector.h"
 
 namespace ASC_bla
 {
-enum ORDERING { ColMajor, RowMajor };
+//enum ORDERING { ColMajor, RowMajor };
 
 
-template <typename T=double, ORDERING ORD = ORDERING::RowMajor > // T=double to make Matrix<> work (instead of Matrix<double>)
+template <typename T, ORDERING ORD> 
   class MatrixView : public MatExpr<MatrixView<T,ORD>>
   {
   protected:

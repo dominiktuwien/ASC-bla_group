@@ -4,8 +4,9 @@
 #include <iostream>
 #include <cmath>
 
+#include "mat_vec_decl.h"
 #include "expression.h"
-#include "Matrix-Neu-using_expressions.h"
+
 
 
 namespace ASC_bla
@@ -43,12 +44,16 @@ namespace ASC_bla
 
     T & operator()(size_t i) { return data[i]; }
     const T & operator()(size_t i) const { return data[i]; }
+
+    size_t Size() const { return SIZE; }
+
+    
     
   };
 
 
  
-  template <typename T=double, typename TDIST = std::integral_constant<size_t,1> >
+  template <typename T, typename TDIST>
   class VectorView : public VecExpr<VectorView<T,TDIST>>
   {
   protected:
