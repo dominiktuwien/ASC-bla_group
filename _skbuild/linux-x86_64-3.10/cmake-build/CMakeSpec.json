@@ -1,1 +1,0 @@
-{"args": ["/tmp/pip-build-env-uhh6i6jk/overlay/local/lib/python3.10/dist-packages/cmake/data/bin/cmake", "-DCMAKE_BUILD_TYPE:STRING=Release"], "version": "3.28.1", "environment": {"PYTHONNOUSERSITE": "1", "PYTHONPATH": "/tmp/pip-build-env-uhh6i6jk/site"}}
