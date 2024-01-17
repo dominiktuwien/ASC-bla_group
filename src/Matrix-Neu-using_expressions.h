@@ -5,6 +5,8 @@
 #include "mat_vec_decl.h"
 #include "matexpression.h"
 //#include "vector.h"
+#include "../ASC-HPC_physics_group/src/taskmanager.h"
+#include "../ASC-HPC_physics_group/src/timer.h"
 
 namespace ASC_bla
 {
@@ -40,6 +42,40 @@ template <typename T, ORDERING ORD>
       for (size_t i = 0; i < n_of_elements_; i++)
         data_[dist_*i] = v2((i/v2.Get_width()),(i%v2.Get_width()) );
       return *this;
+    }
+    // WIEDER AUSKOMMENTIEREN - FUNKTIONIERT NICHT MIT GCC
+
+    template<typename TMatA, typename TMatB>
+    MatrixView operator= (const ParMulExpr<TMatA, TMatB> & v2)
+    {
+      int n1 = v2.Get_matA().Get_height();
+      int n2 = v2.Get_matA().Get_width();
+      int m1 = v2.Get_matB().Get_height();
+      int m2 = v2.Get_matB().Get_width();
+      int s = v2.Get_height();
+        MatrixView<> a(n1,n2), b(m1,m2), c(n1,m2);
+        a = v2.Get_matA(); b = v2.Get_matB();
+        //std::cout << "a = " << a << std::endl;
+        //std::cout << "b = " << b << std::endl;
+        //std::cout << "a dim = " << a.Get_height() << ", " << a.Get_width() << std::endl;
+        //std::cout << "b dim = " << b.Get_height() << ", " << b.Get_width() << std::endl;
+        std::cout << "c dim = " << c.Get_height() << ", " << c.Get_width() << std::endl;
+        ASC_HPC::StartWorkers(3);
+        //std::mutex mut;
+        ASC_HPC::RunParallel(20, [s, &a, &b,&c] (int i, int size) {
+            //std::lock_guard<std::mutex> lock(mut);
+            size_t first = (i*s) / size;
+            size_t next = ((i+1)*s) / size;
+            //std::cout << "first: " << first << ", next: " << next << std::endl;
+            c.Rows(first, next) = a.Rows(first, next) * b; });
+        ASC_HPC::StopWorkers();
+        std::cout << "done with calc" << std::endl;
+        //std::cout << "in calc: " << c << std::endl;
+        for (size_t j = 0; j < n_of_elements_; j++)
+        {
+            data_[dist_*j] = c((j/c.Get_width()),(j%c.Get_width()) );
+        }
+        return *this;
     }
 
     MatrixView & operator= (T scal)
@@ -231,8 +267,6 @@ template <typename T, ORDERING ORD>
             // i-te Zeile durch (i,i)-ten Eintrag dividieren:
             T diag_element = copy_mat(i, i);
             if (diag_element == 0) { std::cout << "Matrix ist singulaer" << std::endl;} // TODO: zu error machen
-            //copy_mat.Row(i) = (1/diag_element) * copy_mat.Row(i);
-            //id_mat.Row(i) = (1/diag_element) * id_mat.Row(i);
             copy_mat.Row(i) /= diag_element;
             id_mat.Row(i) /= diag_element;
             
@@ -252,57 +286,9 @@ template <typename T, ORDERING ORD>
         return id_mat;
     }
     
-    // Inverse mit Gauss-Elimination
-    //has been simplified using new features Row (i)
-    //still no option to inverse ColMajors
-    /*auto inverse() { 
-        if (width_ != height_) {
-            std::cout << "Nicht quadratische Matrix!" << std::endl; // TODO: zu error machen
-        }
-
-        // Identity matrix
-        T* id_data = new T[n_of_elements_]{0};
-        MatrixView<T> id_mat(height_, width_, id_data); // TODO: dist?
-        for (int i=0; i < height_; i++) {
-            id_mat(i,i) = 1;
-        }
-
-        // ursprüngliche Matrix kopieren, sodass diese nicht verändert wird
-        MatrixView<T> copy_mat(height_, width_, data_);
-        //if(ORD == ORDERING::ColMajor){copy_mat = this->transpose;}
-
-        // Inverse berechnen
-        for (int i=0; i < height_; i++) { 
-
-            // i-te Zeile durch (i,i)-ten Eintrag dividieren:
-            T diag_element = copy_mat(i, i);
-            if (diag_element == 0) { std::cout << "Matrix ist singulaer" << std::endl;} // TODO: zu error machen
-            copy_mat.Row(i) = (1/diag_element) * copy_mat.Row(i);
-            id_mat.Row(i) = (1/diag_element) * id_mat.Row(i);
-            
-            // andere Zeilen eliminieren:
-            for (int k=0; k < height_; k++) { 
-                if (k != i) {
-                    T factor = copy_mat(k, i);
-                    copy_mat.Row(k) = copy_mat.Row(k) - (factor * copy_mat.Row(i));
-                    id_mat.Row(k) = id_mat.Row(k) - (factor * id_mat.Row(i));
-
-                }
-            }
-        }
-        if (ORD == ORDERING::ColMajor) { id_mat = id_mat.transpose(); }
-            // -> Inverse der transp. Matrix == Transponierte der inv. Matrix (fkt. aber nicht)
-            // falls das so nix wird beim Initialisieren von id_mat Fallunterscheidung für ColMajor machen
-        return id_mat;
-    }*/
-
-    
-
-    /*auto Slice(size_t first, size_t slice) const {
-      return MatrixView<T,size_t> (size_/slice, dist_*slice, data_+first*dist_);
-    }*/ //Slice function brauchen wir nicht
       
   };
+
 
 
 
@@ -406,7 +392,6 @@ template <typename T = double, ORDERING ORD = ORDERING::RowMajor>
                 data_[i] = v2((i/v2.Get_width())  ,(i%v2.Get_width()));     
             return *this;
         }
-
 
         
     };
